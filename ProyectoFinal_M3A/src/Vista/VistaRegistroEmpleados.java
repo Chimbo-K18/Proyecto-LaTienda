@@ -62,8 +62,10 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(17, 177, 124));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +80,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, 50));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Registro Empleado");
@@ -115,8 +118,6 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jPanel3.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 365, 140, -1));
         jPanel3.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 422, 140, -1));
 
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setOpaque(true);
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 160, 140));
 
@@ -125,6 +126,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 530, 460));
 
+        jTable1.setForeground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -140,6 +142,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 810, 120));
 
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton3.setText("Guardar");
