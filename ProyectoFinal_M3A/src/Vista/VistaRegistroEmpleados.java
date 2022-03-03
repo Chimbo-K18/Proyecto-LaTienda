@@ -224,7 +224,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Registro Empleado");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 11, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         jLabel2.setText("ID VENDEDOR:");
         jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, -1, -1));
@@ -258,6 +258,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jPanel3.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
         jPanel3.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 140, -1));
 
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel10.setOpaque(true);
         jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 160, 140));
 
