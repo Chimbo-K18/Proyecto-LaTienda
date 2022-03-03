@@ -58,6 +58,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,7 +76,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jButton1.setText("Buscar");
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 11, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 0, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, 50));
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -122,7 +123,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         jButton2.setText("Examinar");
         jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
 
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 52, 530, 480));
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 530, 460));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,23 +138,26 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 810, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 550, 810, 120));
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Guardar");
         jPanel4.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 42, -1, -1));
 
-        jButton4.setText("jButton4");
-        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 115, -1, -1));
+        jButton4.setText("Editar");
+        jPanel4.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 70, -1));
 
-        jButton5.setText("jButton5");
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, -1, -1));
+        jButton5.setText("Nuevo");
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 70, -1));
 
-        jButton6.setText("jButton6");
-        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, -1));
+        jButton6.setText("Eliminar");
+        jPanel4.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 180, 330));
+        jButton7.setText("Imprimir");
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, -1));
+
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 100, 180, 350));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +167,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 681, Short.MAX_VALUE)
         );
 
         pack();
@@ -215,6 +219,7 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
