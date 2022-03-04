@@ -19,6 +19,7 @@ public class ProyectoFinal_M3A {
         System.out.println("HOLA");
         System.out.println("HOLAx2");
         
+        System.out.println("");
     }
     
 }

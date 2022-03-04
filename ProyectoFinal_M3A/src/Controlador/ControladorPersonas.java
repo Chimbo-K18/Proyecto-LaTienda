@@ -10,5 +10,5 @@ package Controlador;
  * @author Santiago
  */
 public class ControladorPersonas {
-    
+    private int id;
 }
