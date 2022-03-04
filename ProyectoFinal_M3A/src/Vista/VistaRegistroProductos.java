@@ -45,7 +45,6 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
         pnlBuscar.setBackground(new java.awt.Color(255, 255, 255));
         pnlBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        txtBuscarRp.setBackground(new java.awt.Color(255, 255, 255));
         txtBuscarRp.setForeground(new java.awt.Color(51, 51, 51));
 
         btnBuscarRp.setBackground(new java.awt.Color(153, 153, 153));
@@ -76,19 +75,14 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
         pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
         pnlRegistro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Registro Producto");
 
-        txtIdRp.setBackground(new java.awt.Color(255, 255, 255));
         txtIdRp.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID Producto");
 
-        txtNombreRp.setBackground(new java.awt.Color(255, 255, 255));
         txtNombreRp.setForeground(new java.awt.Color(51, 51, 51));
 
-        txtPrecioRp.setBackground(new java.awt.Color(255, 255, 255));
         txtPrecioRp.setForeground(new java.awt.Color(51, 51, 51));
         txtPrecioRp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,25 +90,18 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
             }
         });
 
-        txtStockRp.setBackground(new java.awt.Color(255, 255, 255));
         txtStockRp.setForeground(new java.awt.Color(51, 51, 51));
 
-        txtDescripcionRp.setBackground(new java.awt.Color(255, 255, 255));
         txtDescripcionRp.setForeground(new java.awt.Color(51, 51, 51));
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Nombre");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Precio");
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Stock");
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Desecripcion");
 
-        lblFotoRp.setForeground(new java.awt.Color(0, 0, 0));
         lblFotoRp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFotoRp.setText("Foto");
         lblFotoRp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -180,13 +167,13 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
                         .addGap(2, 2, 2)
                         .addComponent(lblFotoRp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDescripcionRp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
+                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRegistroLayout.createSequentialGroup()
                         .addGap(7, 7, 7)
-                        .addComponent(btnFotoRp)))
+                        .addComponent(btnFotoRp))
+                    .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtDescripcionRp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
@@ -241,8 +228,6 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        tblRegistrosRp.setBackground(new java.awt.Color(255, 255, 255));
-        tblRegistrosRp.setForeground(new java.awt.Color(0, 0, 0));
         tblRegistrosRp.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
