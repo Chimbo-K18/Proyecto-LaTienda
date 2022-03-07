@@ -1,6 +1,5 @@
 
 package Vista;
-import com.toedter.calendar.JDateChooser;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -450,11 +449,6 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_botonLimpiarActionPerformed
 
 
-//Getters y Setters
-    
-    
-    
-    
     public JButton getBotonGuardar() {
         return botonGuardar;
     }
