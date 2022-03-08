@@ -13,9 +13,9 @@ import java.util.logging.Logger;
 
 public class ConctionBDD {
     Connection con;
-    String cadConexion="jdbc:postgresql://localhost:5432/latiendaBDD";
+    String cadConexion="jdbc:postgresql://localhost:5432/LaTiendaDB";
     String pgUser="postgres";
-    String pgPass="1234";
+    String pgPass="1";
 
     public ConctionBDD() {
         try {

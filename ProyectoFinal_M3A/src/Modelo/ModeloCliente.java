@@ -41,7 +41,7 @@ public class ModeloCliente extends Cliente{
             byte[] bytea;
             while (rs.next()) {
                 Persona persona = new Persona();
-
+                
                 persona.setEdad(rs.getString("edad"));
                 persona.setDireccion(rs.getString("direccion"));
                 persona.setGenero(rs.getString("genero"));
