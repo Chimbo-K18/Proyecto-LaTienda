@@ -271,9 +271,6 @@
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPrecioRpActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtStockRp">
               <Properties>
@@ -398,9 +395,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Editar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEditarRpActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnNuevoRp">
               <Properties>

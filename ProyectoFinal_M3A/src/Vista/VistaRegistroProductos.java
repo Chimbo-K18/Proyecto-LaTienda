@@ -84,11 +84,6 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
         txtNombreRp.setForeground(new java.awt.Color(51, 51, 51));
 
         txtPrecioRp.setForeground(new java.awt.Color(51, 51, 51));
-        txtPrecioRp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPrecioRpActionPerformed(evt);
-            }
-        });
 
         txtStockRp.setForeground(new java.awt.Color(51, 51, 51));
 
@@ -187,11 +182,6 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
         btnEditarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnEditarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarRp.setText("Editar");
-        btnEditarRp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEditarRpActionPerformed(evt);
-            }
-        });
 
         btnNuevoRp.setBackground(new java.awt.Color(153, 153, 153));
         btnNuevoRp.setForeground(new java.awt.Color(255, 255, 255));
@@ -286,14 +276,6 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEditarRpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarRpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarRpActionPerformed
-
-    private void txtPrecioRpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecioRpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPrecioRpActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

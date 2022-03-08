@@ -10,5 +10,5 @@ package Modelo;
  * @author Santiago
  */
 public class ModeloPersonas {
-    private int nombre;
+
 }
