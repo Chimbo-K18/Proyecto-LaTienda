@@ -110,7 +110,7 @@ public class ModeloCliente extends Cliente{
     public boolean crearPersonaByte() {
         try {
             String sql;
-            sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genro)";
+            sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
             sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setString(1, getIdPersona());
