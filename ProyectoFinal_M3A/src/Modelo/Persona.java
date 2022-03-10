@@ -8,50 +8,51 @@ import java.io.FileInputStream;
 
 
 public class Persona {
-    private String idPersona;
-    private String nombres;
-    private String apellidos;
+    private String cedula;
+    private String nombre;
+    private String apellido;
     private String edad;
-    private String direccion;
     private String genero;
-    private Image foto; //Foto
-    private FileInputStream imagen; //Guardar la foto
-    private int largo;
-
-    public Persona(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
-        this.idPersona = idPersona;
-        this.nombres = nombres;
-        this.apellidos = apellidos;
-        this.edad = edad;
-        this.direccion = direccion;
-        this.genero = genero;
-    }
+    private String direccion;
+    private String telefono;
+    private String email;
 
     public Persona() {
     }
 
-    public String getIdPersona() {
-        return idPersona;
+    public Persona(String cedula, String nombre, String apellido, String edad, String genero, String direccion, String telefono, String email) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.genero = genero;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
     }
 
-    public void setIdPersona(String idPersona) {
-        this.idPersona = idPersona;
+    public String getCedula() {
+        return cedula;
     }
 
-    public String getNombres() {
-        return nombres;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getEdad() {
@@ -62,6 +63,14 @@ public class Persona {
         this.edad = edad;
     }
 
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
     public String getDireccion() {
         return direccion;
     }
@@ -70,37 +79,23 @@ public class Persona {
         this.direccion = direccion;
     }
 
-    public String getGenero() {
-        return genero;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-    
-    public FileInputStream getImagen() {
-        return imagen;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
-    public void setImagen(FileInputStream imagen) {
-        this.imagen = imagen;
+    public String getEmail() {
+        return email;
     }
 
-    public int getLargo() {
-        return largo;
-    }
-    
-    public void setLargo(int largo) {
-        this.largo = largo;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public Image getFoto() {
-        return foto;
-    }
 
-    public void setFoto(Image foto) {
-        this.foto = foto;
-    }
 }
 
 

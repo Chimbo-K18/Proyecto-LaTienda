@@ -1,6 +1,6 @@
-/** @author Bryan Orellana */
 package Modelo;
 
+import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -15,17 +15,21 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import java.awt.Image;
 
-public class Modelo_Persona extends Persona {
+/**
+ *
+ * @author Santiago
+ */
+public class ModeloCliente extends Cliente{
+    
+    
+        ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
 
-    ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
+//    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
+//        super(idPersona, nombres, apellidos, edad, direccion, genero);
+//    }
 
-    public Modelo_Persona(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
-        super(idPersona, nombres, apellidos, edad, direccion, genero);
-    }
-
-    public Modelo_Persona() {
+    public ModeloCliente() {
     }
 
     public List<Persona> listarPersonas() {
@@ -37,9 +41,7 @@ public class Modelo_Persona extends Persona {
             byte[] bytea;
             while (rs.next()) {
                 Persona persona = new Persona();
-                persona.setIdPersona(rs.getString("idpersona"));
-                persona.setNombres(rs.getString("nombres"));
-                persona.setApellidos(rs.getString("apellidos"));
+                
                 persona.setEdad(rs.getString("edad"));
                 persona.setDireccion(rs.getString("direccion"));
                 persona.setGenero(rs.getString("genero"));
@@ -49,18 +51,14 @@ public class Modelo_Persona extends Persona {
                 if (bytea != null) {
                     //Decodificando del formato de la base.(Base64)
                     //bytea=Base64.decode(bytea,0,bytea.length);
-                    try {
-                        persona.setFoto(obtenerImagen(bytea));
-                    } catch (IOException ex) {
-                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
                 }
                 lista.add(persona);
             }
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -82,8 +80,8 @@ public class Modelo_Persona extends Persona {
     //**********************CREAR PERSONA******************************************************
     public boolean crearPersona() {
         String sql;
-        sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genro)";
-        sql += "VALUES('" + getIdPersona() + "',' " + getNombres() + "','" + getApellidos() + "','" + getEdad()+ "','" + getDireccion()+ "',' " + getGenero()+"');";
+        sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
+
         return cpg.accion(sql);
     }
 
@@ -93,33 +91,24 @@ public class Modelo_Persona extends Persona {
         return cpg.accion(sql);
     }
 
-    //**********************MODIFICAR PERSONA******************************************************
-    public boolean modificar(String identificador) { //modificar identificador es la llave primaria UPDATE= MODIFICAR
-        String sql =
-                "UPDATE public.persona "
-                + "SET nombres='" + getNombres() + "', apellidos='" + getApellidos() +"',edad='" + getEdad()+ "', direccion='" + getDireccion()+ "', genero='" + getGenero() 
-                + "' WHERE idpersona = '" + identificador + "';";
-        return cpg.accion(sql);
-    }
+
 
     //**********************CREAR PERSONA BYTE******************************************************
     public boolean crearPersonaByte() {
         try {
             String sql;
-            sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genro)";
+            sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
             sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setString(1, getIdPersona());
-            ps.setString(2, getNombres());
-            ps.setString(3, getApellidos());
+
             ps.setString(4, getEdad());
             ps.setString(5, getDireccion());
             ps.setString(6, getGenero());
-            ps.setBinaryStream(7, getImagen(), getLargo());
+
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }

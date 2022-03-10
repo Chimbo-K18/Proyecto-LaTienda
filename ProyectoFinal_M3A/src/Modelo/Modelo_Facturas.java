@@ -18,13 +18,15 @@ import java.util.logging.Logger;
  */
 public class Modelo_Facturas extends Factura{
 
+    ConctionBDD cpg = new ConctionBDD();
+    
     public Modelo_Facturas() {
     }
     
-    /*public boolean crearFactura() {
+    public boolean crearFactura() {
         String sql;
         sql="INSERT INTO facturas(id_factura,id_cliente,id_empleado,fecha)";
-        sql+="VALUES ('" +getId_factura()+ "' , '" +getId_cliente()+ "' , '" +getId_empleado()+ "' ,'" +getFecha()+"')";
+        sql+="VALUES ('" +getIdFactura()+ "' , '" +getIdCliente()+ "' , '" +getIdEmpleado()+ "' ,'" +getFecha()+"')";
         return cpg.accion(sql);
 
     }
@@ -40,7 +42,7 @@ public class Modelo_Facturas extends Factura{
                 Factura fac = new Factura();
                 fac.setIdFactura(rs.getInt("id_factura"));
                 fac.setIdCliente(rs.getInt("id_cliente"));
-                fac.setIdVendedor(rs.getInt("id_empleado"));
+                fac.setIdEmpleado(rs.getInt("id_empleado"));
                 fac.setFecha(rs.getDate("fecha"));
 
                 listaFac.add(fac);
@@ -52,5 +54,5 @@ public class Modelo_Facturas extends Factura{
             Logger.getLogger(Modelo_Facturas.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }*/
+    }
 }

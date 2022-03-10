@@ -14,16 +14,16 @@ import java.util.Date;
 public class Factura {
     private int idFactura;
     private int idCliente;
-    private int idVendedor;
+    private int idEmpleado;
     private Date fecha;
 
     public Factura() {
     }
 
-    public Factura(int idFactura, int idCliente, int idVendedor, Date fecha) {
+    public Factura(int idFactura, int idCliente, int idEmpleado, Date fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
-        this.idVendedor = idVendedor;
+        this.idEmpleado = idEmpleado;
         this.fecha = fecha;
     }
 
@@ -43,13 +43,15 @@ public class Factura {
         this.idCliente = idCliente;
     }
 
-    public int getIdVendedor() {
-        return idVendedor;
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
 
-    public void setIdVendedor(int idVendedor) {
-        this.idVendedor = idVendedor;
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
+
+
 
     public Date getFecha() {
         return fecha;
