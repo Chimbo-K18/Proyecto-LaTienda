@@ -41,9 +41,7 @@ public class ModeloCliente extends Cliente{
             byte[] bytea;
             while (rs.next()) {
                 Persona persona = new Persona();
-                persona.setIdPersona(rs.getString("idpersona"));
-                persona.setNombres(rs.getString("nombres"));
-                persona.setApellidos(rs.getString("apellidos"));
+
                 persona.setEdad(rs.getString("edad"));
                 persona.setDireccion(rs.getString("direccion"));
                 persona.setGenero(rs.getString("genero"));
@@ -53,11 +51,7 @@ public class ModeloCliente extends Cliente{
                 if (bytea != null) {
                     //Decodificando del formato de la base.(Base64)
                     //bytea=Base64.decode(bytea,0,bytea.length);
-                    try {
-                        persona.setFoto(obtenerImagen(bytea));
-                    } catch (IOException ex) {
-                        Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+
                 }
                 lista.add(persona);
             }
@@ -87,7 +81,7 @@ public class ModeloCliente extends Cliente{
     public boolean crearPersona() {
         String sql;
         sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
-        sql += "VALUES('" + getIdPersona() + "',' " + getNombres() + "','" + getApellidos() + "','" + getEdad()+ "','" + getDireccion()+ "',' " + getGenero()+"');";
+
         return cpg.accion(sql);
     }
 
@@ -97,14 +91,7 @@ public class ModeloCliente extends Cliente{
         return cpg.accion(sql);
     }
 
-    //**********************MODIFICAR PERSONA******************************************************
-    public boolean modificar(String identificador) { //modificar identificador es la llave primaria UPDATE= MODIFICAR
-        String sql =
-                "UPDATE public.persona "
-                + "SET nombres='" + getNombres() + "', apellidos='" + getApellidos() +"',edad='" + getEdad()+ "', direccion='" + getDireccion()+ "', genero='" + getGenero() 
-                + "' WHERE idpersona = '" + identificador + "';";
-        return cpg.accion(sql);
-    }
+
 
     //**********************CREAR PERSONA BYTE******************************************************
     public boolean crearPersonaByte() {
@@ -113,13 +100,11 @@ public class ModeloCliente extends Cliente{
             sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
             sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setString(1, getIdPersona());
-            ps.setString(2, getNombres());
-            ps.setString(3, getApellidos());
+
             ps.setString(4, getEdad());
             ps.setString(5, getDireccion());
             ps.setString(6, getGenero());
-            ps.setBinaryStream(7, getImagen(), getLargo());
+
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {

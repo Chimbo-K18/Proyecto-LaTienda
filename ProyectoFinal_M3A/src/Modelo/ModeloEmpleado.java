@@ -4,6 +4,6 @@ package Modelo;
  *
  * @author Santiago
  */
-public class ModeloEmpleado {
+public class ModeloEmpleado extends Empleado{
     
 }
