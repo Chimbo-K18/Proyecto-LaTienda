@@ -27,7 +27,7 @@ import javax.imageio.stream.ImageInputStream;
  */
 public class ModeloProductos extends Productos {
 
-    ConectionPg cpg = new ConectionPg();//INVOCA A LA CONEXION DE LA BASE DE DATOS
+    ConctionBDD cpg = new ConctionBDD();
 
     public ModeloProductos() {
     }

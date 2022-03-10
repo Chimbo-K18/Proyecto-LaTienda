@@ -1,6 +1,6 @@
-/** @author Bryan Orellana */
 package Modelo;
 
+import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.PreparedStatement;
@@ -15,17 +15,21 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import java.awt.Image;
 
-public class Modelo_Persona extends Persona {
+/**
+ *
+ * @author Santiago
+ */
+public class ModeloCliente extends Cliente{
+    
+    
+        ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
 
-    ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
+//    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
+//        super(idPersona, nombres, apellidos, edad, direccion, genero);
+//    }
 
-    public Modelo_Persona(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
-        super(idPersona, nombres, apellidos, edad, direccion, genero);
-    }
-
-    public Modelo_Persona() {
+    public ModeloCliente() {
     }
 
     public List<Persona> listarPersonas() {
@@ -52,7 +56,7 @@ public class Modelo_Persona extends Persona {
                     try {
                         persona.setFoto(obtenerImagen(bytea));
                     } catch (IOException ex) {
-                        Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
                 lista.add(persona);
@@ -60,7 +64,7 @@ public class Modelo_Persona extends Persona {
             rs.close();
             return lista;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
@@ -82,7 +86,7 @@ public class Modelo_Persona extends Persona {
     //**********************CREAR PERSONA******************************************************
     public boolean crearPersona() {
         String sql;
-        sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genro)";
+        sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
         sql += "VALUES('" + getIdPersona() + "',' " + getNombres() + "','" + getApellidos() + "','" + getEdad()+ "','" + getDireccion()+ "',' " + getGenero()+"');";
         return cpg.accion(sql);
     }
@@ -119,7 +123,7 @@ public class Modelo_Persona extends Persona {
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Persona.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
     }
