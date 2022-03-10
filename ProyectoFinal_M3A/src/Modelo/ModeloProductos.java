@@ -27,7 +27,7 @@ import javax.imageio.stream.ImageInputStream;
  */
 public class ModeloProductos extends Productos {
 
-    ConctionBDD cpg = new ConctionBDD();
+    ConectionBDD cpg = new ConectionBDD();
 
     public ModeloProductos() {
     }

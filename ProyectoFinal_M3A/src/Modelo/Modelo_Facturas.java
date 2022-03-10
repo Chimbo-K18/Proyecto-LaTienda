@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class Modelo_Facturas extends Factura{
 
-    ConctionBDD cpg = new ConctionBDD();
+    ConectionBDD cpg = new ConectionBDD();
     
     public Modelo_Facturas() {
     }

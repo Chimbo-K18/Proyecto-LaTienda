@@ -4,6 +4,6 @@
 package Controlador;
 
 
-public class Controlador_Persona {
+public class Controlador_Cliente {
     private int id;
 }

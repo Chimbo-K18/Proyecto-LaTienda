@@ -23,7 +23,7 @@ import javax.imageio.stream.ImageInputStream;
 public class ModeloCliente extends Cliente{
     
     
-        ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
+        ConectionBDD cpg = new ConectionBDD(); //INVOCA A LA CONEXION DE LA BASE DE DATOS
 
 //    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
 //        super(idPersona, nombres, apellidos, edad, direccion, genero);

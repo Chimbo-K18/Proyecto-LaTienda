@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import java.io.IOException;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class Modelo_DetalleFactura extends Detalle_Factura {
 
     
-    ConctionBDD cpg = new ConctionBDD();
+    ConectionBDD cpg = new ConectionBDD();
         
     public boolean crearDetalleFactura() {
 
