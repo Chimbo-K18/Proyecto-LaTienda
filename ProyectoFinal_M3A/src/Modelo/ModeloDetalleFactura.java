@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Santiago
  */
-public class Modelo_DetalleFactura extends Detalle_Factura {
+public class ModeloDetalleFactura extends ClaseDetalleFactura {
 
     
     ConectionBDD cpg = new ConectionBDD();
@@ -44,15 +44,15 @@ public class Modelo_DetalleFactura extends Detalle_Factura {
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_DetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
     }
 
-    public List<Detalle_Factura> listarProductos() {
+    public List<ClaseDetalleFactura> listarProductos() {
 
-        List<Detalle_Factura> listapr = new ArrayList<Detalle_Factura>();
+        List<ClaseDetalleFactura> listapr = new ArrayList<ClaseDetalleFactura>();
 
         String sql = " select* from producto";
         ResultSet rs = cpg.consulta(sql);
@@ -60,7 +60,7 @@ public class Modelo_DetalleFactura extends Detalle_Factura {
         try {
             while (rs.next()) {
 
-                Detalle_Factura detalle = new Detalle_Factura();
+                ClaseDetalleFactura detalle = new ClaseDetalleFactura();
 
                 detalle.setIdDetalle(rs.getInt("id_detalle"));
                 detalle.setIdFactura(rs.getInt("id_factura"));
@@ -77,7 +77,7 @@ public class Modelo_DetalleFactura extends Detalle_Factura {
             return listapr;
 
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_DetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
 

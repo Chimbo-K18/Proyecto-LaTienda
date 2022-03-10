@@ -20,7 +20,7 @@ import javax.imageio.stream.ImageInputStream;
  *
  * @author Santiago
  */
-public class ModeloCliente extends Cliente{
+public class ModeloCliente extends ClaseCliente{
     
     
         ConectionBDD cpg = new ConectionBDD(); //INVOCA A LA CONEXION DE LA BASE DE DATOS
@@ -32,15 +32,15 @@ public class ModeloCliente extends Cliente{
     public ModeloCliente() {
     }
 
-    public List<Persona> listarPersonas() {
-        List<Persona> lista = new ArrayList<Persona>();
+    public List<ClasePersona> listarPersonas() {
+        List<ClasePersona> lista = new ArrayList<ClasePersona>();
         try {
             String sql = "SELECT idpersona, nombres, apellidos, fechanacimiento,substring(cast(age(fechanacimiento) as varchar),1,2) edad , telefono, sexo, sueldo, cupo, foto FROM public.persona;";
 
             ResultSet rs = cpg.consulta(sql);
             byte[] bytea;
             while (rs.next()) {
-                Persona persona = new Persona();
+                ClasePersona persona = new ClasePersona();
                 
                 persona.setEdad(rs.getString("edad"));
                 persona.setDireccion(rs.getString("direccion"));

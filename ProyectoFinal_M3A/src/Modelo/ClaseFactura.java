@@ -11,16 +11,16 @@ import java.util.Date;
  *
  * @author byron
  */
-public class Factura {
+public class ClaseFactura {
     private int idFactura;
     private int idCliente;
     private int idEmpleado;
     private Date fecha;
 
-    public Factura() {
+    public ClaseFactura() {
     }
 
-    public Factura(int idFactura, int idCliente, int idEmpleado, Date fecha) {
+    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, Date fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
         this.idEmpleado = idEmpleado;

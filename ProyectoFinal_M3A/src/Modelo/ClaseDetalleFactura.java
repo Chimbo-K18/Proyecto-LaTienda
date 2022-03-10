@@ -9,7 +9,7 @@ package Modelo;
  *
  * @author Santiago
  */
-public class Detalle_Factura {
+public class ClaseDetalleFactura {
  
     private int idDetalle;
     private int idFactura;
@@ -18,10 +18,10 @@ public class Detalle_Factura {
     private double costo_unitario;
     private double total;
 
-    public Detalle_Factura() {
+    public ClaseDetalleFactura() {
     }
 
-    public Detalle_Factura(int idDetalle, int idFactura, int idProducto, int cantidad, double costo_unitario, double total) {
+    public ClaseDetalleFactura(int idDetalle, int idFactura, int idProducto, int cantidad, double costo_unitario, double total) {
         this.idDetalle = idDetalle;
         this.idFactura = idFactura;
         this.idProducto = idProducto;

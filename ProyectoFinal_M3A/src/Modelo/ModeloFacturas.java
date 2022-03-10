@@ -16,11 +16,11 @@ import java.util.logging.Logger;
  *
  * @author byron
  */
-public class Modelo_Facturas extends Factura{
+public class ModeloFacturas extends ClaseFactura{
 
     ConectionBDD cpg = new ConectionBDD();
     
-    public Modelo_Facturas() {
+    public ModeloFacturas() {
     }
     
     public boolean crearFactura() {
@@ -31,15 +31,15 @@ public class Modelo_Facturas extends Factura{
 
     }
     
-    public List <Factura> consultarFacturas(){
-        List<Factura>listaFac=new ArrayList<Factura>();
+    public List <ClaseFactura> consultarFacturas(){
+        List<ClaseFactura>listaFac=new ArrayList<ClaseFactura>();
         try {
             
             String sql= "SELECT * from facturas";
             ResultSet rs= cpg.consulta(sql);
 
             while(rs.next()){
-                Factura fac = new Factura();
+                ClaseFactura fac = new ClaseFactura();
                 fac.setIdFactura(rs.getInt("id_factura"));
                 fac.setIdCliente(rs.getInt("id_cliente"));
                 fac.setIdEmpleado(rs.getInt("id_empleado"));
@@ -51,7 +51,7 @@ public class Modelo_Facturas extends Factura{
             return listaFac;
             
         } catch (SQLException ex) {
-            Logger.getLogger(Modelo_Facturas.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloFacturas.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
