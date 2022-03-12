@@ -8,13 +8,13 @@ public class ClaseCliente {
     private String nombre;
     private String apellido;
     private String direccion;
-    private String telefono;
+    private int telefono;
     private String email;
 
     public ClaseCliente() {
     }
 
-    public ClaseCliente(String cedula, String nombre, String apellido, String direccion, String telefono, String email) {
+    public ClaseCliente(String cedula, String nombre, String apellido, String direccion, int telefono, String email) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -55,11 +55,11 @@ public class ClaseCliente {
         this.direccion = direccion;
     }
     
-    public String getTelefono() {
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
