@@ -13,7 +13,7 @@ public class ClaseEmpleado {
     private String direccion;
     private String usuario;
     private String contraseña;
-    private String salario;
+    private Double salario;
     private Image foto;
     private FileInputStream imagen;
     private int largo;
@@ -21,7 +21,7 @@ public class ClaseEmpleado {
     public ClaseEmpleado() {
     }
 
-    public ClaseEmpleado(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña, String salario, Image foto, FileInputStream imagen, int largo) {
+    public ClaseEmpleado(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña, Double salario, Image foto, FileInputStream imagen, int largo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -83,11 +83,11 @@ public class ClaseEmpleado {
         this.contraseña = contraseña;
     }
 
-    public String getSalario() {
+    public Double getSalario() {
         return salario;
     }
 
-    public void setSalario(String salario) {
+    public void setSalario(Double salario) {
         this.salario = salario;
     }
 
