@@ -32,8 +32,8 @@ public class ModeloCliente extends ClaseCliente{
     public ModeloCliente() {
     }
 
-    public List<ClasePersona> listarPersonas() {
-        List<ClasePersona> lista = new ArrayList<ClasePersona>();
+    public List<ClaseCliente> listarClientes() {
+        List<ClaseCliente> lista = new ArrayList<ClaseCliente>();
         try {
             String sql = "SELECT idpersona, nombres, apellidos, fechanacimiento,substring(cast(age(fechanacimiento) as varchar),1,2) edad , telefono, sexo, sueldo, cupo, foto FROM public.persona;";
 
@@ -42,9 +42,9 @@ public class ModeloCliente extends ClaseCliente{
             while (rs.next()) {
                 ClasePersona persona = new ClasePersona();
                 
-                persona.setEdad(rs.getString("edad"));
+               // persona.setEdad(rs.getString("edad"));
                 persona.setDireccion(rs.getString("direccion"));
-                persona.setGenero(rs.getString("genero"));
+                //persona.setGenero(rs.getString("genero"));
                 //Proceso de conversion del formato de la base (Base64) a el formato Image
                 //bytea> Bytes Array
                 bytea = rs.getBytes("foto");
@@ -53,7 +53,7 @@ public class ModeloCliente extends ClaseCliente{
                     //bytea=Base64.decode(bytea,0,bytea.length);
 
                 }
-                lista.add(persona);
+               //lista.add(persona);
             }
             rs.close();
             return lista;
@@ -101,9 +101,9 @@ public class ModeloCliente extends ClaseCliente{
             sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
 
-            ps.setString(4, getEdad());
+            //ps.setString(4, getEdad());
             ps.setString(5, getDireccion());
-            ps.setString(6, getGenero());
+            //ps.setString(6, getGenero());
 
             ps.executeUpdate();
             return true;

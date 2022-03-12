@@ -5,8 +5,12 @@ package Modelo;
 import java.awt.Image;
 import java.io.FileInputStream;
 
-public class ClaseEmpleado extends ClasePersona{
+public class ClaseEmpleado {
    
+    private String cedula;
+    private String nombre;
+    private String apellido;
+    private String direccion;
     private String usuario;
     private String contraseña;
     private String salario;
@@ -17,8 +21,11 @@ public class ClaseEmpleado extends ClasePersona{
     public ClaseEmpleado() {
     }
 
-    public ClaseEmpleado(String usuario, String contraseña, String salario, Image foto, FileInputStream imagen, int largo, String cedula, String nombre, String apellido, String direccion) {
-        super(cedula, nombre, apellido, direccion);
+    public ClaseEmpleado(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña, String salario, Image foto, FileInputStream imagen, int largo) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
         this.usuario = usuario;
         this.contraseña = contraseña;
         this.salario = salario;
@@ -26,6 +33,39 @@ public class ClaseEmpleado extends ClasePersona{
         this.imagen = imagen;
         this.largo = largo;
     }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+    
 
     public String getUsuario() {
         return usuario;
