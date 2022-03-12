@@ -24,7 +24,8 @@ public class ModeloCliente extends ClaseCliente{
     
     
         ConectionBDD cpg = new ConectionBDD(); //INVOCA A LA CONEXION DE LA BASE DE DATOS
-
+        PreparedStatement ps;
+        ResultSet rs;
 //    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
 //        super(idPersona, nombres, apellidos, edad, direccion, genero);
 //    }

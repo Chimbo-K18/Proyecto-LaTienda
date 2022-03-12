@@ -28,10 +28,14 @@ public class Controlador_Cliente {
         this.vista = vista;
         vista.setVisible(true);
         vista.setSize(1100,750);
+        cargarClientes();
     }
     
     public void iniciarControl(){
-        
+        vista.getBtnActualizar().addActionListener(l->cargarClientes());
+        vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
+        vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
+        vista.getBtnEliminar().addActionListener(l->eliminarCliente());
     }
     
     private void abrirDialogo(int ce){
