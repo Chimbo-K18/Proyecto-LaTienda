@@ -6,6 +6,8 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -22,12 +24,28 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         initComponents();
     }
 
+    public JButton getBtnActualizar() {
+        return btnActualizar;
+    }
+
+    public void setBtnActualizar(JButton btnActualizar) {
+        this.btnActualizar = btnActualizar;
+    }
+
     public JButton getBtnBuscar() {
         return btnBuscar;
     }
 
     public void setBtnBuscar(JButton btnBuscar) {
         this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnCrear() {
+        return btnCrear;
+    }
+
+    public void setBtnCrear(JButton btnCrear) {
+        this.btnCrear = btnCrear;
     }
 
     public JButton getBtnEditar() {
@@ -46,14 +64,6 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         this.btnEliminar = btnEliminar;
     }
 
-    public JButton getBtnGuardar() {
-        return btnGuardar;
-    }
-
-    public void setBtnGuardar(JButton btnGuardar) {
-        this.btnGuardar = btnGuardar;
-    }
-
     public JButton getBtnImprimir() {
         return btnImprimir;
     }
@@ -63,11 +73,19 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
     }
 
     public JButton getBtnNuevo() {
-        return btnNuevo;
+        return btnActualizar;
     }
 
     public void setBtnNuevo(JButton btnNuevo) {
-        this.btnNuevo = btnNuevo;
+        this.btnActualizar = btnNuevo;
+    }
+
+    public JDialog getDlgEmpleados() {
+        return dlgEmpleados;
+    }
+
+    public void setDlgEmpleados(JDialog dlgEmpleados) {
+        this.dlgEmpleados = dlgEmpleados;
     }
 
     public JTable getTablaEmpleados() {
@@ -78,12 +96,12 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         this.tablaEmpleados = tablaEmpleados;
     }
 
-    public JTextField getTxtAPELLIDO() {
-        return txtAPELLIDO;
+    public JTextField getTxtApellido() {
+        return txtApellido;
     }
 
-    public void setTxtAPELLIDO(JTextField txtAPELLIDO) {
-        this.txtAPELLIDO = txtAPELLIDO;
+    public void setTxtApellido(JTextField txtApellido) {
+        this.txtApellido = txtApellido;
     }
 
     public JTextField getTxtBuscar() {
@@ -94,6 +112,14 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         this.txtBuscar = txtBuscar;
     }
 
+    public JTextField getTxtCedulaEmpleado() {
+        return txtCedulaEmpleado;
+    }
+
+    public void setTxtCedulaEmpleado(JTextField txtCedulaEmpleado) {
+        this.txtCedulaEmpleado = txtCedulaEmpleado;
+    }
+
     public JTextField getTxtDireccion() {
         return txtDireccion;
     }
@@ -102,36 +128,12 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         this.txtDireccion = txtDireccion;
     }
 
-    public JTextField getTxtEDAD() {
-        return txtEDAD;
+    public JButton getTxtExaminar1() {
+        return btnExaminar;
     }
 
-    public void setTxtEDAD(JTextField txtEDAD) {
-        this.txtEDAD = txtEDAD;
-    }
-
-    public JTextField getTxtEmail() {
-        return txtEmail;
-    }
-
-    public void setTxtEmail(JTextField txtEmail) {
-        this.txtEmail = txtEmail;
-    }
-
-    public JButton getTxtExaminar() {
-        return txtExaminar;
-    }
-
-    public void setTxtExaminar(JButton txtExaminar) {
-        this.txtExaminar = txtExaminar;
-    }
-
-    public JTextField getTxtIDVENDEDOR() {
-        return txtIDVENDEDOR;
-    }
-
-    public void setTxtIDVENDEDOR(JTextField txtIDVENDEDOR) {
-        this.txtIDVENDEDOR = txtIDVENDEDOR;
+    public void setTxtExaminar1(JButton txtExaminar1) {
+        this.btnExaminar = txtExaminar1;
     }
 
     public JTextField getTxtNombre() {
@@ -142,20 +144,44 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
         this.txtNombre = txtNombre;
     }
 
-    public JTextField getTxtTelefono() {
-        return txtTelefono;
+    public JTextField getTxtSalario() {
+        return txtSalario;
     }
 
-    public void setTxtTelefono(JTextField txtTelefono) {
-        this.txtTelefono = txtTelefono;
+    public void setTxtSalario(JTextField txtSalario) {
+        this.txtSalario = txtSalario;
     }
 
-    public JTextField getTxtsexo() {
-        return txtsexo;
+    public JTextField getTxtUsuario() {
+        return txtUsuario;
     }
 
-    public void setTxtsexo(JTextField txtsexo) {
-        this.txtsexo = txtsexo;
+    public void setTxtUsuario(JTextField txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
+    public JTextField getTxtUsuarioE() {
+        return txtUsuarioE;
+    }
+
+    public void setTxtUsuarioE(JTextField txtUsuarioE) {
+        this.txtUsuarioE = txtUsuarioE;
+    }
+
+    public JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public void setLblFoto(JLabel lblFoto) {
+        this.lblFoto = lblFoto;
+    }
+
+    public JButton getBtnExaminar() {
+        return btnExaminar;
+    }
+
+    public void setBtnExaminar(JButton btnExaminar) {
+        this.btnExaminar = btnExaminar;
     }
 
     /**
@@ -167,38 +193,93 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dlgEmpleados = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        txtCedulaEmpleado = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        txtUsuarioE = new javax.swing.JTextField();
+        txtSalario = new javax.swing.JTextField();
+        lblFoto = new javax.swing.JLabel();
+        btnExaminar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtIDVENDEDOR = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
-        txtAPELLIDO = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtEDAD = new javax.swing.JTextField();
-        txtsexo = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        txtExaminar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tablaEmpleados = new javax.swing.JTable();
+        jLabel21 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        btnGuardar = new javax.swing.JButton();
+        btnCrear = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
-        btnNuevo = new javax.swing.JButton();
+        btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaEmpleados = new javax.swing.JTable();
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel11.setText("Registro Empleado");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
+
+        jLabel12.setText("ID VENDEDOR:");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, -1, -1));
+
+        jLabel13.setText("NOMBRE:");
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        jLabel14.setText("APELLIDO:");
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+
+        jLabel15.setText("DIRECCION:");
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+
+        jLabel16.setText("USUARIO:");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+
+        jLabel17.setText("CONTRASEÑA:");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+
+        jLabel18.setText("SALARIO");
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel5.add(txtCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 52, 140, -1));
+        jPanel5.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+        jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
+        jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
+        jPanel5.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
+        jPanel5.add(txtUsuarioE, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
+        jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
+
+        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblFoto.setOpaque(true);
+        jPanel5.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 160, 140));
+
+        btnExaminar.setText("Examinar");
+        jPanel5.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
+
+        javax.swing.GroupLayout dlgEmpleadosLayout = new javax.swing.GroupLayout(dlgEmpleados.getContentPane());
+        dlgEmpleados.getContentPane().setLayout(dlgEmpleadosLayout);
+        dlgEmpleadosLayout.setHorizontalGroup(
+            dlgEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgEmpleadosLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        dlgEmpleadosLayout.setVerticalGroup(
+            dlgEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 447, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -213,105 +294,75 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
                 txtBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 190, -1));
+        jPanel2.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 190, -1));
 
         btnBuscar.setText("Buscar");
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 11, -1, -1));
+        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 290, 50));
+        jLabel21.setText("ID/Nombre");
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Registro Empleado");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
-
-        jLabel2.setText("ID VENDEDOR:");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, -1, -1));
-
-        jLabel3.setText("NOMBRE:");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-
-        jLabel4.setText("APELLIDO:");
-        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
-
-        jLabel5.setText("DIRECCION:");
-        jPanel3.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
-
-        jLabel6.setText("EDAD:");
-        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
-
-        jLabel7.setText("SEXO:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
-
-        jLabel8.setText("TELEFONO");
-        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-
-        jLabel9.setText("EMAIL:");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
-        jPanel3.add(txtIDVENDEDOR, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 52, 140, -1));
-        jPanel3.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
-        jPanel3.add(txtAPELLIDO, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
-        jPanel3.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
-        jPanel3.add(txtEDAD, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
-        jPanel3.add(txtsexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
-        jPanel3.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
-        jPanel3.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 140, -1));
-
-        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jLabel10.setOpaque(true);
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 160, 140));
-
-        txtExaminar.setText("Examinar");
-        jPanel3.add(txtExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
-
-        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 520, 380));
-
-        tablaEmpleados.setForeground(new java.awt.Color(255, 255, 255));
-        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tablaEmpleados);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 750, 120));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 390, 50));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardar.setText("Guardar");
-        jPanel4.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, -1, -1));
+        btnCrear.setText("Crear");
+        jPanel4.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 110, -1));
 
         btnEditar.setText("Editar");
-        jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 70, -1));
+        jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 110, -1));
 
-        btnNuevo.setText("Nuevo");
-        jPanel4.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, 70, -1));
+        btnActualizar.setText("Actualizar");
+        jPanel4.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 110, -1));
 
         btnEliminar.setText("Eliminar");
-        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 110, -1));
 
         btnImprimir.setText("Imprimir");
-        jPanel4.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
+        jPanel4.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 110, -1));
 
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 150, 350));
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 740, 50));
+
+        tablaEmpleados.setForeground(new java.awt.Color(255, 255, 255));
+        tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Cédula", "Nombre", "Apellido", "Dirección", "Usuario", "Contraseña", "Salario", "Foto"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaEmpleados);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 790, 210));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 784, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
 
         pack();
@@ -357,37 +408,38 @@ public class VistaRegistroEmpleados extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
-    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnImprimir;
-    private javax.swing.JButton btnNuevo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JDialog dlgEmpleados;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JTable tablaEmpleados;
-    private javax.swing.JTextField txtAPELLIDO;
+    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtBuscar;
+    private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEDAD;
-    private javax.swing.JTextField txtEmail;
-    private javax.swing.JButton txtExaminar;
-    private javax.swing.JTextField txtIDVENDEDOR;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
-    private javax.swing.JTextField txtsexo;
+    private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtUsuarioE;
     // End of variables declaration//GEN-END:variables
 }
