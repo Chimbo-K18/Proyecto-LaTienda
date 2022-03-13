@@ -25,9 +25,9 @@ import javax.imageio.stream.ImageInputStream;
  *
  * @author Equipo
  */
-public class ModeloProductos extends Productos {
+public class ModeloProductos extends ClaseProductos {
 
-    ConctionBDD cpg = new ConctionBDD();
+    ConectionBDD cpg = new ConectionBDD();
 
     public ModeloProductos() {
     }
@@ -36,15 +36,15 @@ public class ModeloProductos extends Productos {
         super(id, nombre, precio, cantidad, descripcion);
     }
 
-    public List<Productos> listarProductos() {
-        List<Productos> lista = new ArrayList<Productos>();
+    public List<ClaseProductos> listarProductos() {
+        List<ClaseProductos> lista = new ArrayList<ClaseProductos>();
         try {
             String sql = "Select * from productos;";
 
             ResultSet rs = cpg.consulta(sql);
             byte[] bytea;
             while (rs.next()) {
-                Productos pro = new Productos();
+                ClaseProductos pro = new ClaseProductos();
                 pro.setId(rs.getInt("id_producto"));
                 pro.setNombre(rs.getString("nombre"));
                 pro.setPrecio(rs.getDouble("precio"));

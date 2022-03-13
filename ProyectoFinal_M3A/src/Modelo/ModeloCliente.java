@@ -20,11 +20,12 @@ import javax.imageio.stream.ImageInputStream;
  *
  * @author Santiago
  */
-public class ModeloCliente extends Cliente{
+public class ModeloCliente extends ClaseCliente{
     
     
-        ConctionBDD cpg = new ConctionBDD();//INVOCA A LA CONEXION DE LA BASE DE DATOS
-
+        ConectionBDD cpg = new ConectionBDD(); //INVOCA A LA CONEXION DE LA BASE DE DATOS
+        PreparedStatement ps;
+        ResultSet rs;
 //    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
 //        super(idPersona, nombres, apellidos, edad, direccion, genero);
 //    }
@@ -32,28 +33,21 @@ public class ModeloCliente extends Cliente{
     public ModeloCliente() {
     }
 
-    public List<Persona> listarPersonas() {
-        List<Persona> lista = new ArrayList<Persona>();
+    public List<ClaseCliente> listarClientes() {
+        List<ClaseCliente> lista = new ArrayList<ClaseCliente>();
         try {
-            String sql = "SELECT idpersona, nombres, apellidos, fechanacimiento,substring(cast(age(fechanacimiento) as varchar),1,2) edad , telefono, sexo, sueldo, cupo, foto FROM public.persona;";
-
+            String sql = "SELECT * from clientes";
             ResultSet rs = cpg.consulta(sql);
             byte[] bytea;
             while (rs.next()) {
-                Persona persona = new Persona();
-                
-                persona.setEdad(rs.getString("edad"));
-                persona.setDireccion(rs.getString("direccion"));
-                persona.setGenero(rs.getString("genero"));
-                //Proceso de conversion del formato de la base (Base64) a el formato Image
-                //bytea> Bytes Array
-                bytea = rs.getBytes("foto");
-                if (bytea != null) {
-                    //Decodificando del formato de la base.(Base64)
-                    //bytea=Base64.decode(bytea,0,bytea.length);
-
-                }
-                lista.add(persona);
+                ClaseCliente cliente = new ClaseCliente();
+                cliente.setCedula(rs.getString("cedula"));
+                cliente.setNombre(rs.getString("nombre"));
+                cliente.setApellido(rs.getString("apellido"));
+                cliente.setDireccion(rs.getString("direccion"));
+                cliente.setTelefono(rs.getInt("telefono"));
+                cliente.setEmail(rs.getString("email"));
+                lista.add(cliente);
             }
             rs.close();
             return lista;
@@ -64,7 +58,7 @@ public class ModeloCliente extends Cliente{
     }
 
     //**********************OBTENER IMAGEN******************************************************
-    private Image obtenerImagen(byte[] bytes) throws IOException {
+    /*private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
         Iterator it = ImageIO.getImageReadersByFormatName("png");
         ImageReader reader = (ImageReader) it.next();
@@ -75,22 +69,31 @@ public class ModeloCliente extends Cliente{
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
 
-    }
+    }*/
 
     //**********************CREAR PERSONA******************************************************
-    public boolean crearPersona() {
+    public boolean crearCliente() {
         String sql;
-        sql = "INSERT INTO persona (idpersona, nombres, apellidos, edad, direccion, genero)";
-
+        sql="INSERT INTO clientes(cedula,nombre,apellido,direccion,telefono,email)";
+        sql+="VALUES ('" +getCedula()+ "' , '" +getNombre()+ "' , '" +getApellido()+ "' ,'" +getDireccion()+ "' , '" +getTelefono()+ "','" +getEmail()+ "')";
+        
         return cpg.accion(sql);
     }
 
     //**********************ELIMINAR PERSONA******************************************************
-    public boolean eliminar(String identificador) { //eliminar
-        String sql = "DELETE from persona WHERE \"idpersona\"= '" + identificador + "'";
+    public boolean eliminar(String cedula) { //eliminar
+        String sql="DELETE FROM persona where clientes='"+cedula+"'";
         return cpg.accion(sql);
     }
-
+    
+    public boolean editarCliente(){
+        
+        String sql="UPDATE clientes SET \n"+
+                "cedula='"+getCedula()+"',nombre='"+getNombre()+"',apellido='"+getApellido()+"',direccion='"+getDireccion()+
+                "',telefono='"+getTelefono()+"',email='"+getEmail()+"'"+
+                "WHERE cedula='"+getCedula()+"';";
+        return cpg.accion(sql);
+    }
 
 
     //**********************CREAR PERSONA BYTE******************************************************
@@ -101,9 +104,9 @@ public class ModeloCliente extends Cliente{
             sql += "VALUES(?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
 
-            ps.setString(4, getEdad());
+            //ps.setString(4, getEdad());
             ps.setString(5, getDireccion());
-            ps.setString(6, getGenero());
+            //ps.setString(6, getGenero());
 
             ps.executeUpdate();
             return true;

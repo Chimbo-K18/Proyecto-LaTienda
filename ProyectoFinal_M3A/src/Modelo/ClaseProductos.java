@@ -12,7 +12,7 @@ import java.io.FileInputStream;
  *
  * @author Equipo
  */
-public class Productos {
+public class ClaseProductos {
     private int id;
     private String nombre;
     private Double precio;
@@ -23,7 +23,7 @@ public class Productos {
     //Guardar la foto
     private FileInputStream imagen;
     private int largo;
-    public Productos(int id, String nombre, Double precio, int stock, String descripcion) {
+    public ClaseProductos(int id, String nombre, Double precio, int stock, String descripcion) {
         this.id = id;
         this.nombre = nombre;
         this.precio = precio;
@@ -54,7 +54,7 @@ public class Productos {
         this.foto = foto;
     }
 
-    public Productos() {
+    public ClaseProductos() {
     }
 
     public int getId() {

@@ -1,31 +1,23 @@
-
 /**  @author Bryan Orellana */
 
 package Modelo;
 
-import java.awt.Image;
-import java.io.FileInputStream;
-
-
-public class Persona {
+public class ClaseCliente {
+    
     private String cedula;
     private String nombre;
     private String apellido;
-    private String edad;
-    private String genero;
     private String direccion;
-    private String telefono;
+    private int telefono;
     private String email;
 
-    public Persona() {
+    public ClaseCliente() {
     }
 
-    public Persona(String cedula, String nombre, String apellido, String edad, String genero, String direccion, String telefono, String email) {
+    public ClaseCliente(String cedula, String nombre, String apellido, String direccion, int telefono, String email) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.edad = edad;
-        this.genero = genero;
         this.direccion = direccion;
         this.telefono = telefono;
         this.email = email;
@@ -55,22 +47,6 @@ public class Persona {
         this.apellido = apellido;
     }
 
-    public String getEdad() {
-        return edad;
-    }
-
-    public void setEdad(String edad) {
-        this.edad = edad;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -78,12 +54,12 @@ public class Persona {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
-    public String getTelefono() {
+    
+    public int getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
+    public void setTelefono(int telefono) {
         this.telefono = telefono;
     }
 
@@ -95,7 +71,4 @@ public class Persona {
         this.email = email;
     }
 
-
 }
-
-
