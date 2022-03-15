@@ -15,7 +15,7 @@ import javax.swing.JTextField;
  *
  * @author Santiago
  */
-public class VistaRegistroEmpleados extends javax.swing.JFrame {
+public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form VistaRegistroEmpleados
