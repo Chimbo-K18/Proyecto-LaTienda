@@ -10,12 +10,12 @@ import javax.swing.JOptionPane;
  *
  * @author Santiago
  */
-public class Controlador_RegistroUsuarios {
+public class Controlador_RegistroNuevoUsuario {
     
     private Modelo_Usuario modelo;
     private VistaRegistroUsuarios vista;
 
-    public Controlador_RegistroUsuarios(Modelo_Usuario modelo, VistaRegistroUsuarios vista) {
+    public Controlador_RegistroNuevoUsuario(Modelo_Usuario modelo, VistaRegistroUsuarios vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);

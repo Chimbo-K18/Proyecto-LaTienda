@@ -1,7 +1,10 @@
 package Controlador;
 
+import Modelo.ModeloProductos;
 import Modelo.Modelo_Usuario;
 import Vista.VistaLogin;
+import Vista.VistaMenuPrincipal;
+import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroUsuarios;
 
 
@@ -13,6 +16,7 @@ public class Controlador_Login {
  
         VistaLogin vistaInicio;
 
+
     public Controlador_Login(VistaLogin vistaInicio) {
         this.vistaInicio = vistaInicio;
         vistaInicio.setVisible(true);
@@ -22,8 +26,8 @@ public class Controlador_Login {
     public void iniciaControl(){
         
         vistaInicio.getBtnRegistrarse().addActionListener(l-> registrarUsuario());
-        
-        
+        vistaInicio.getBtnIniciarSesion().addActionListener(l-> abrirMenuPrincipal());
+
     }
     
     
@@ -31,8 +35,18 @@ public class Controlador_Login {
         
         Modelo_Usuario modeloUsuario = new Modelo_Usuario();
         VistaRegistroUsuarios vistaRegistroUsuarios = new VistaRegistroUsuarios();
-        Controlador_RegistroUsuarios controladorRegUsuarios = new Controlador_RegistroUsuarios(modeloUsuario, vistaRegistroUsuarios);
+        Controlador_RegistroNuevoUsuario controladorRegUsuarios = new Controlador_RegistroNuevoUsuario(modeloUsuario, vistaRegistroUsuarios);
         
         controladorRegUsuarios.iniciaControl();
     }
+    
+    private void abrirMenuPrincipal(){
+        
+        VistaMenuPrincipal vistaMenuPrincipal = new VistaMenuPrincipal();
+        Controlador_MenuPrincipal controladorMenu = new Controlador_MenuPrincipal(vistaMenuPrincipal);
+        
+        controladorMenu.iniciaControl();
+    }
+
+
 }
