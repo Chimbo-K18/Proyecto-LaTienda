@@ -44,11 +44,11 @@ public class Controlador_Cliente {
         if(ce==1){
             title="CREAR CLIENTE";
             vista.getDlgClientes().setName("crear");
-            //limpiarCampos();
+            limpiarCampos();
         }else{
             title="EDITAR CLIENTE";
             vista.getDlgClientes().setName("editar");
-            //modificar();
+            modificar();
             //cargarPersonas();
         }
         vista.getDlgClientes().setLocationRelativeTo(vista);
