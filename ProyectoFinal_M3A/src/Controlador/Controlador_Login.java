@@ -42,15 +42,23 @@ public class Controlador_Login {
     }
     
     
+//    private void iniciarSesion(){
+//        
+//        Modelo_Usuario modUsuario = new Modelo_Usuario();
+//        VistaLogin visLogin = new VistaLogin();
+//        Controlador_Usuario controladorUsuarios = new Controlador_Usuario(modUsuario, visLogin);
+//        
+//        controladorUsuarios.iniciaControl();
+//    }
+
     private void iniciarSesion(){
         
         Modelo_Usuario modUsuario = new Modelo_Usuario();
-        VistaLogin visLogin = new VistaLogin();
-        Controlador_Usuario controladorUsuarios = new Controlador_Usuario(modUsuario, visLogin);
+        VistaMenuPrincipal visLogin = new VistaMenuPrincipal();
         
-        controladorUsuarios.iniciaControl();
+        visLogin.setVisible(true);
+      
     }
-
 
                
 
