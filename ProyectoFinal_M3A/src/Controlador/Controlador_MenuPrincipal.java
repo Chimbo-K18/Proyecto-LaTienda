@@ -1,9 +1,11 @@
 package Controlador;
 
+import Modelo.ModeloCliente;
 import Modelo.ModeloEmpleado;
 import Modelo.ModeloProductos;
 import Modelo.Modelo_Usuario;
 import Vista.VistaMenuPrincipal;
+import Vista.VistaRegistroClientes;
 import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroEmpleados;
 
@@ -52,6 +54,15 @@ public class Controlador_MenuPrincipal {
         
         Controlador_Empleado controladorCrudProductos = new Controlador_Empleado(modeloCrudEmpleados, vistaCrudEmpleados);
         controladorCrudProductos.iniciarControl();
+    }
+        
+    private void crudClientes(){
+        ModeloCliente mCliente = new ModeloCliente();
+        VistaRegistroClientes vClientes = new VistaRegistroClientes();
+        
+        vistaMenu.getjDeskPanel().add(vClientes);
+        Controlador_Cliente cCliente = new Controlador_Cliente(mCliente, vClientes);
+        cCliente.iniciarControl();
     }
     
 }
