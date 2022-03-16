@@ -1,9 +1,8 @@
 
 package proyectofinal_m3a;
 
-import Controlador.Controlador_RegistroUsuario;
 import Controlador.Controlador_Login;
-import Controlador.Controlador_RegistroNuevoUsuario;
+import Controlador.Controlador_NuevoUsuario;
 import Vista.VistaLogin;
 import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistroUsuarios;

@@ -139,8 +139,6 @@ public class VistaLogin extends javax.swing.JFrame {
             .addGap(0, 312, Short.MAX_VALUE)
         );
 
-        txtContraseña.setText("jPasswordField1");
-
         btnRegistrarse.setText("Registrarse");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
