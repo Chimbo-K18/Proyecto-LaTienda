@@ -36,6 +36,7 @@ public class Controlador_Cliente {
         vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
         vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
         vista.getBtnEliminar().addActionListener(l->eliminarCliente());
+        vista.getBtnOk().addActionListener(l->crearEditarClientes());
     }
     
     private void abrirDialogo(int ce){
@@ -43,11 +44,11 @@ public class Controlador_Cliente {
         if(ce==1){
             title="CREAR CLIENTE";
             vista.getDlgClientes().setName("crear");
-            //limpiarCampos();
+            limpiarCampos();
         }else{
             title="EDITAR CLIENTE";
             vista.getDlgClientes().setName("editar");
-            //modificar();
+            modificar();
             //cargarPersonas();
         }
         vista.getDlgClientes().setLocationRelativeTo(vista);
