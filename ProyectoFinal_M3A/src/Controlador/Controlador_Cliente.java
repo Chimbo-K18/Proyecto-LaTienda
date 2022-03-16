@@ -36,6 +36,7 @@ public class Controlador_Cliente {
         vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
         vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
         vista.getBtnEliminar().addActionListener(l->eliminarCliente());
+        vista.getBtnOk().addActionListener(l->crearEditarClientes());
     }
     
     private void abrirDialogo(int ce){

@@ -3,6 +3,7 @@ package proyectofinal_m3a;
 
 import Controlador.Controlador_RegistroUsuario;
 import Controlador.Controlador_Login;
+import Controlador.Controlador_MenuPrincipal;
 import Controlador.Controlador_RegistroNuevoUsuario;
 import Vista.VistaLogin;
 import Vista.VistaMenuPrincipal;
@@ -20,9 +21,13 @@ public class ProyectoFinal_M3A {
     public static void main(String[] args) {
         // TODO code application logic here
       
-        VistaLogin vista = new VistaLogin();
+        /*VistaLogin vista = new VistaLogin();
         Controlador_Login controlador = new Controlador_Login(vista);
-        controlador.iniciaControl();
+        controlador.iniciaControl();*/
+        
+        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
+        Controlador_MenuPrincipal cMenu = new Controlador_MenuPrincipal(vMenu);
+        cMenu.iniciaControl();
     }
     
 }

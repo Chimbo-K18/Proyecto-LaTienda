@@ -28,6 +28,7 @@ public class Controlador_MenuPrincipal {
         
         vistaMenu.getBtnAdminProductos().addActionListener(l-> crudProductos());
         vistaMenu.getBtnAdminPersonal().addActionListener(l-> crudEmpleados());
+        vistaMenu.getBtnRegistrarClientes().addActionListener(l->crudClientes());
 
     }
     
