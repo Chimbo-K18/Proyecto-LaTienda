@@ -13,12 +13,12 @@ import java.util.logging.Logger;
 
 public class ConectionBDD {
     
-        Connection con;
+     Connection con;
 
     String cadConexion = "jdbc:postgresql://localhost:5432/LaTiendaDB";
     String pgUser = "postgres";
-    String pgPass = "Chimbo-K18";
-
+    //String pgPass = "Chimbo-K18";
+    String pgPass = "12345";
     
     public ConectionBDD() {
         try {

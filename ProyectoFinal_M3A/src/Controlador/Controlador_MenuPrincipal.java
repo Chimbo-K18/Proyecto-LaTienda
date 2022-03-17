@@ -3,11 +3,13 @@ package Controlador;
 import Modelo.ModeloCliente;
 import Modelo.ModeloEmpleado;
 import Modelo.ModeloProductos;
+import Modelo.Modelo_Pedidos;
 import Modelo.Modelo_Usuario;
 import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistroClientes;
 import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroEmpleados;
+import Vista.VistaRegistroVentas;
 
 /**
  *
@@ -29,7 +31,7 @@ public class Controlador_MenuPrincipal {
         vistaMenu.getBtnAdminProductos().addActionListener(l-> crudProductos());
         vistaMenu.getBtnAdminPersonal().addActionListener(l-> crudEmpleados());
         vistaMenu.getBtnRegistrarClientes().addActionListener(l->crudClientes());
-
+        vistaMenu.getBtnVentas().addActionListener(l->crudClientes());
     }
     
     
@@ -65,5 +67,15 @@ public class Controlador_MenuPrincipal {
         Controlador_Cliente cCliente = new Controlador_Cliente(mCliente, vClientes);
         cCliente.iniciarControl();
     }
+    
+    public void Ventas (){
+        Modelo_Pedidos pedidos = new Modelo_Pedidos ();
+        VistaRegistroVentas ventas = new VistaRegistroVentas ();
+         vistaMenu.getjDeskPanel().add( ventas );
+         
+         Controlador_Pedido cPedido = new  Controlador_Pedido(ventas, pedidos);
+         cPedido.iniciaControl();
+    }
+    
     
 }
