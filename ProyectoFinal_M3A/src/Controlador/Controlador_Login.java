@@ -27,7 +27,7 @@ public class Controlador_Login {
     public void iniciaControl(){
         
         vistaInicio.getBtnRegistrarse().addActionListener(l-> registrarUsuario());
-        vistaInicio.getBtnIniciarSesion().addActionListener(l-> iniciarSesion());
+        vistaInicio.getBtnIniciarSesion().addActionListener(l-> abrirMenuPrincipal());
 
     }
     
@@ -42,24 +42,31 @@ public class Controlador_Login {
     }
     
     
-//    private void iniciarSesion(){
-//        
-//        Modelo_Usuario modUsuario = new Modelo_Usuario();
-//        VistaLogin visLogin = new VistaLogin();
-//        Controlador_Usuario controladorUsuarios = new Controlador_Usuario(modUsuario, visLogin);
-//        
-//        controladorUsuarios.iniciaControl();
-//    }
-
     private void iniciarSesion(){
         
         Modelo_Usuario modUsuario = new Modelo_Usuario();
-        VistaMenuPrincipal visLogin = new VistaMenuPrincipal();
+        VistaLogin visLogin = new VistaLogin();
+        Controlador_Usuario controladorUsuarios = new Controlador_Usuario(modUsuario, visLogin);
         
-        visLogin.setVisible(true);
-      
+        controladorUsuarios.iniciaControl();
     }
 
+//    private void iniciarSesion(){
+//        
+//        Modelo_Usuario modUsuario = new Modelo_Usuario();
+//        VistaMenuPrincipal visLogin = new VistaMenuPrincipal();
+//        
+//        visLogin.setVisible(true);
+//      
+//    }
+
+    private void abrirMenuPrincipal(){
+        
+        VistaMenuPrincipal vistaMenuPrincipal = new VistaMenuPrincipal();
+        Controlador_MenuPrincipal controladorMenu = new Controlador_MenuPrincipal(vistaMenuPrincipal);
+        
+        controladorMenu.iniciaControl();
+    }
                
 
     }
