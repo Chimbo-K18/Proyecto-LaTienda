@@ -19,7 +19,7 @@ public class Controlador_Pedido {
       
         
      }
-     //Método para Inser datos Pedidos
+     //Método para Insertar datos Pedidos
      public void CrearPedidos(){
      int idPedidos= GenerarSeriePedidos();
      String  nombrProducto=vistaVentas.getTextNombreProduc().getText();
