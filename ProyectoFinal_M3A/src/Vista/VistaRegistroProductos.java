@@ -1,9 +1,11 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 /** @author Bryan Orellana */
@@ -17,32 +19,90 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        DialogoProducto = new javax.swing.JDialog();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        txtprecio = new javax.swing.JTextField();
+        txtID = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        areaDescripcion = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtnombreP = new javax.swing.JTextField();
+        txtStock = new javax.swing.JTextField();
+        lblFoto = new javax.swing.JLabel();
+        btnExaminar = new javax.swing.JButton();
+        btnAceptar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         pnlBuscar = new javax.swing.JPanel();
         txtBuscarRp = new javax.swing.JTextField();
         btnBuscarRp = new javax.swing.JButton();
-        pnlRegistro = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtIdRp = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtNombreRp = new javax.swing.JTextField();
-        txtPrecioRp = new javax.swing.JTextField();
-        txtStockRp = new javax.swing.JTextField();
-        txtDescripcionRp = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        lblFotoRp = new javax.swing.JLabel();
-        btnFotoRp = new javax.swing.JButton();
         pnlBotones = new javax.swing.JPanel();
         btnGuardarRp = new javax.swing.JButton();
         btnEditarRp = new javax.swing.JButton();
         btnNuevoRp = new javax.swing.JButton();
         btnEliminarRp = new javax.swing.JButton();
-        btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setText("ID:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        jLabel8.setText("Precio:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, -1, -1));
+
+        jLabel9.setText("Descripcion:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 120, -1));
+        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 120, -1));
+
+        areaDescripcion.setColumns(20);
+        areaDescripcion.setRows(5);
+        jScrollPane2.setViewportView(areaDescripcion);
+
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, 60));
+
+        jLabel10.setText("Nombre:");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        jLabel11.setText("Stock:");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 130, -1, -1));
+        jPanel2.add(txtnombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 160, -1));
+        jPanel2.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 130, 130, -1));
+
+        lblFoto.setBackground(new java.awt.Color(255, 255, 255));
+        lblFoto.setOpaque(true);
+        jPanel2.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 50, 150, 120));
+
+        btnExaminar.setText("Examinar");
+        jPanel2.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, -1, -1));
+
+        btnAceptar.setText("Aceptar");
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 310, -1, -1));
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, -1, -1));
+
+        javax.swing.GroupLayout DialogoProductoLayout = new javax.swing.GroupLayout(DialogoProducto.getContentPane());
+        DialogoProducto.getContentPane().setLayout(DialogoProductoLayout);
+        DialogoProductoLayout.setHorizontalGroup(
+            DialogoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 723, Short.MAX_VALUE)
+        );
+        DialogoProductoLayout.setVerticalGroup(
+            DialogoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 358, Short.MAX_VALUE)
+        );
 
         setBackground(new java.awt.Color(153, 255, 153));
         setClosable(true);
@@ -63,56 +123,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         btnBuscarRp.setText("Buscar");
         pnlBuscar.add(btnBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 17, -1, -1));
 
-        jPanel1.add(pnlBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 11, 340, 60));
-
-        pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
-        pnlRegistro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Registro Producto");
-        pnlRegistro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 14, -1, -1));
-
-        txtIdRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlRegistro.add(txtIdRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 34, 100, -1));
-
-        jLabel2.setText("ID Producto");
-        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
-
-        txtNombreRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlRegistro.add(txtNombreRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 60, 100, -1));
-
-        txtPrecioRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlRegistro.add(txtPrecioRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 86, 100, -1));
-
-        txtStockRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlRegistro.add(txtStockRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 112, 100, -1));
-
-        txtDescripcionRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlRegistro.add(txtDescripcionRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 136, 150, 64));
-
-        jLabel3.setText("Nombre");
-        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 63, -1, -1));
-
-        jLabel4.setText("Precio");
-        pnlRegistro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 89, -1, -1));
-
-        jLabel5.setText("Stock");
-        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 115, -1, -1));
-
-        jLabel6.setText("Desecripcion");
-        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 161, -1, -1));
-
-        lblFotoRp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblFotoRp.setText("Foto");
-        lblFotoRp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pnlRegistro.add(lblFotoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 30, 111, 106));
-
-        btnFotoRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnFotoRp.setForeground(new java.awt.Color(255, 255, 255));
-        btnFotoRp.setText("Examinar");
-        pnlRegistro.add(btnFotoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 143, -1, -1));
-
-        jPanel1.add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, 460, 230));
+        jPanel1.add(pnlBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 340, 60));
 
         pnlBotones.setBackground(new java.awt.Color(255, 255, 255));
         pnlBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -121,61 +132,140 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         btnGuardarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnGuardarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarRp.setText("Guardar");
-        pnlBotones.add(btnGuardarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+        pnlBotones.add(btnGuardarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         btnEditarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnEditarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarRp.setText("Editar");
-        pnlBotones.add(btnEditarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 70, -1));
+        pnlBotones.add(btnEditarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 70, -1));
 
         btnNuevoRp.setBackground(new java.awt.Color(153, 153, 153));
         btnNuevoRp.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevoRp.setText("Nuevo");
-        pnlBotones.add(btnNuevoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, -1));
+        pnlBotones.add(btnNuevoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
 
         btnEliminarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnEliminarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarRp.setText("Eliminar");
-        pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
+        pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
-        btnImprimir.setBackground(new java.awt.Color(153, 153, 153));
-        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
-        btnImprimir.setText("Imprimir");
-        pnlBotones.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
-
-        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 87, 91, 179));
+        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 280));
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "ID Producto", "Nombre", "Precio", "Stock", "Foto"
+                "ID Producto", "Nombre", "Precio", "Stock", "Descripcion", "Foto"
             }
         ));
         jScrollPane1.setViewportView(tablaProductos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 560, 150));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 550, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 454, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtnAceptar() {
+        return btnAceptar;
+    }
+
+    public void setBtnAceptar(JButton btnAceptar) {
+        this.btnAceptar = btnAceptar;
+    }
+
+    public JButton getBtnCancelar() {
+        return btnCancelar;
+    }
+
+    public void setBtnCancelar(JButton btnCancelar) {
+        this.btnCancelar = btnCancelar;
+    }
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    public JTextArea getAreaDescripcion() {
+        return areaDescripcion;
+    }
+
+    public void setAreaDescripcion(JTextArea areaDescripcion) {
+        this.areaDescripcion = areaDescripcion;
+    }
+
+    public JButton getBtnExaminar() {
+        return btnExaminar;
+    }
+
+    public void setBtnExaminar(JButton btnExaminar) {
+        this.btnExaminar = btnExaminar;
+    }
+
+    public JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public void setLblFoto(JLabel lblFoto) {
+        this.lblFoto = lblFoto;
+    }
+
+    public JTextField getTxtID() {
+        return txtID;
+    }
+
+    public void setTxtID(JTextField txtID) {
+        this.txtID = txtID;
+    }
+
+    public JTextField getTxtStock() {
+        return txtStock;
+    }
+
+    public void setTxtStock(JTextField txtStock) {
+        this.txtStock = txtStock;
+    }
+
+    public JTextField getTxtnombreP() {
+        return txtnombreP;
+    }
+
+    public void setTxtnombreP(JTextField txtnombreP) {
+        this.txtnombreP = txtnombreP;
+    }
+
+    public JTextField getTxtprecio() {
+        return txtprecio;
+    }
+
+    public void setTxtprecio(JTextField txtprecio) {
+        this.txtprecio = txtprecio;
+    }
+
+    public JDialog getDialogoProducto() {
+        return DialogoProducto;
+    }
+
+    public void setDialogoProducto(JDialog DialogoProducto) {
+        this.DialogoProducto = DialogoProducto;
+    }
 
     public JButton getBtnBuscarRp() {
         return btnBuscarRp;
@@ -201,24 +291,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.btnEliminarRp = btnEliminarRp;
     }
 
-    public JButton getBtnImprimir() {
-        return btnImprimir;
-    }
-
-    public void setBtnImprimir(JButton btnImprimir) {
-        this.btnImprimir = btnImprimir;
-    }
-
    
-
-    public JButton getBtnFotoRp() {
-        return btnFotoRp;
-    }
-
-    public void setBtnFotoRp(JButton btnFotoRp) {
-        this.btnFotoRp = btnFotoRp;
-    }
-
     public JButton getBtnGuardarRp() {
         return btnGuardarRp;
     }
@@ -235,13 +308,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.btnNuevoRp = btnNuevoRp;
     }
 
-    public JLabel getLblFotoRp() {
-        return lblFotoRp;
-    }
-
-    public void setLblFotoRp(JLabel lblFotoRp) {
-        this.lblFotoRp = lblFotoRp;
-    }
 
     public JPanel getPnlBotones() {
         return pnlBotones;
@@ -259,13 +325,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.pnlBuscar = pnlBuscar;
     }
 
-    public JPanel getPnlRegistro() {
-        return pnlRegistro;
-    }
-
-    public void setPnlRegistro(JPanel pnlRegistro) {
-        this.pnlRegistro = pnlRegistro;
-    }
 
     public JTable getTablaProductos() {
         return tablaProductos;
@@ -283,104 +342,37 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.txtBuscarRp = txtBuscarRp;
     }
 
-    public JTextField getTxtDescripcionRp() {
-        return txtDescripcionRp;
-    }
 
-    public void setTxtDescripcionRp(JTextField txtDescripcionRp) {
-        this.txtDescripcionRp = txtDescripcionRp;
-    }
-
-    public JTextField getTxtIdRp() {
-        return txtIdRp;
-    }
-
-    public void setTxtIdRp(JTextField txtIdRp) {
-        this.txtIdRp = txtIdRp;
-    }
-
-    public JTextField getTxtNombreRp() {
-        return txtNombreRp;
-    }
-
-    public void setTxtNombreRp(JTextField txtNombreRp) {
-        this.txtNombreRp = txtNombreRp;
-    }
-
-    public JTextField getTxtPrecioRp() {
-        return txtPrecioRp;
-    }
-
-    public void setTxtPrecioRp(JTextField txtPrecioRp) {
-        this.txtPrecioRp = txtPrecioRp;
-    }
-
-    public JTextField getTxtStockRp() {
-        return txtStockRp;
-    }
-
-    public void setTxtStockRp(JTextField txtStockRp) {
-        this.txtStockRp = txtStockRp;
-    }
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaRegistroProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaRegistroProductos().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDialog DialogoProducto;
+    private javax.swing.JTextArea areaDescripcion;
+    private javax.swing.JButton btnAceptar;
     private javax.swing.JButton btnBuscarRp;
+    private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditarRp;
     private javax.swing.JButton btnEliminarRp;
-    private javax.swing.JButton btnFotoRp;
+    private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnGuardarRp;
-    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnNuevoRp;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblFotoRp;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblFoto;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlBuscar;
-    private javax.swing.JPanel pnlRegistro;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JTextField txtBuscarRp;
-    private javax.swing.JTextField txtDescripcionRp;
-    private javax.swing.JTextField txtIdRp;
-    private javax.swing.JTextField txtNombreRp;
-    private javax.swing.JTextField txtPrecioRp;
-    private javax.swing.JTextField txtStockRp;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtnombreP;
+    private javax.swing.JTextField txtprecio;
     // End of variables declaration//GEN-END:variables
 }
