@@ -6,6 +6,7 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 
 /**
@@ -13,6 +14,14 @@ import javax.swing.JPanel;
  * @author Santiago
  */
 public class VistaMenuPrincipal extends javax.swing.JFrame {
+
+    public JDesktopPane getjDeskPanel() {
+        return jDeskPanel;
+    }
+
+    public void setjDeskPanel(JDesktopPane jDeskPanel) {
+        this.jDeskPanel = jDeskPanel;
+    }
 
     public JButton getBtnAdminPersonal() {
         return btnAdminPersonal;
@@ -54,13 +63,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.btnVentas = btnVentas;
     }
 
-    public JPanel getPnlPrincipal() {
-        return pnlPrincipal;
-    }
-
-    public void setPnlPrincipal(JPanel pnlPrincipal) {
-        this.pnlPrincipal = pnlPrincipal;
-    }
+   
     
     /**
      * Creates new form VistaMenuPrincipal
@@ -85,8 +88,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         btnAdminProductos = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        pnlPrincipal = new javax.swing.JPanel();
         btnRegistrarClientes = new javax.swing.JButton();
+        jDeskPanel = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -94,14 +97,19 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnReportes.setText("Reportes");
+        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 277, 131, 38));
 
         btnVentas.setText("Ventas");
+        jPanel1.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 209, 131, 38));
 
         btnAdminPersonal.setText("Administrar Personal");
+        jPanel1.add(btnAdminPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 144, -1, 38));
 
         btnAdminProductos.setText("Administrar Productos");
+        jPanel1.add(btnAdminProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 80, -1, 38));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -125,60 +133,23 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnlPrincipal.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
-        pnlPrincipal.setLayout(pnlPrincipalLayout);
-        pnlPrincipalLayout.setHorizontalGroup(
-            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 766, Short.MAX_VALUE)
-        );
-        pnlPrincipalLayout.setVerticalGroup(
-            pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
-        );
+        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 11, -1, -1));
 
         btnRegistrarClientes.setText("Registrar Clientes");
+        jPanel1.add(btnRegistrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 343, 131, 38));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAdminProductos)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnRegistrarClientes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnReportes, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnVentas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAdminPersonal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(74, 74, 74))
+        javax.swing.GroupLayout jDeskPanelLayout = new javax.swing.GroupLayout(jDeskPanel);
+        jDeskPanel.setLayout(jDeskPanelLayout);
+        jDeskPanelLayout.setHorizontalGroup(
+            jDeskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnAdminProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
-                        .addComponent(btnAdminPersonal, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnVentas, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnReportes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(28, 28, 28)
-                        .addComponent(btnRegistrarClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(pnlPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(114, 114, 114))
+        jDeskPanelLayout.setVerticalGroup(
+            jDeskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 498, Short.MAX_VALUE)
         );
+
+        jPanel1.add(jDeskPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -192,13 +163,11 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 586, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
         );
 
         pack();
@@ -245,12 +214,12 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarClientes;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVentas;
+    private javax.swing.JDesktopPane jDeskPanel;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,7 +1,13 @@
 package Vista;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /** @author Bryan Orellana */
-public class VistaRegistroProductos extends javax.swing.JFrame {
+public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
 
     public VistaRegistroProductos() {
         initComponents();
@@ -34,248 +40,288 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
         btnEditarRp = new javax.swing.JButton();
         btnNuevoRp = new javax.swing.JButton();
         btnEliminarRp = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRegistrosRp = new javax.swing.JTable();
+        tablaProductos = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(153, 255, 153));
+        setClosable(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnlBuscar.setBackground(new java.awt.Color(255, 255, 255));
         pnlBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtBuscarRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlBuscar.add(txtBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 18, 238, -1));
 
         btnBuscarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnBuscarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarRp.setText("Buscar");
+        pnlBuscar.add(btnBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 17, -1, -1));
 
-        javax.swing.GroupLayout pnlBuscarLayout = new javax.swing.GroupLayout(pnlBuscar);
-        pnlBuscar.setLayout(pnlBuscarLayout);
-        pnlBuscarLayout.setHorizontalGroup(
-            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBuscarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(txtBuscarRp, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnBuscarRp)
-                .addGap(28, 28, 28))
-        );
-        pnlBuscarLayout.setVerticalGroup(
-            pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBuscarLayout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(pnlBuscarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscarRp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarRp))
-                .addGap(15, 15, 15))
-        );
+        jPanel1.add(pnlBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(107, 11, 340, 60));
 
         pnlRegistro.setBackground(new java.awt.Color(255, 255, 255));
         pnlRegistro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlRegistro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Registro Producto");
+        pnlRegistro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 14, -1, -1));
 
         txtIdRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlRegistro.add(txtIdRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 34, 100, -1));
 
         jLabel2.setText("ID Producto");
+        pnlRegistro.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 37, -1, -1));
 
         txtNombreRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlRegistro.add(txtNombreRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 60, 100, -1));
 
         txtPrecioRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlRegistro.add(txtPrecioRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 86, 100, -1));
 
         txtStockRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlRegistro.add(txtStockRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 112, 100, -1));
 
         txtDescripcionRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlRegistro.add(txtDescripcionRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 136, 150, 64));
 
         jLabel3.setText("Nombre");
+        pnlRegistro.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 63, -1, -1));
 
         jLabel4.setText("Precio");
+        pnlRegistro.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 89, -1, -1));
 
         jLabel5.setText("Stock");
+        pnlRegistro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 115, -1, -1));
 
         jLabel6.setText("Desecripcion");
+        pnlRegistro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 161, -1, -1));
 
         lblFotoRp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblFotoRp.setText("Foto");
         lblFotoRp.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pnlRegistro.add(lblFotoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(335, 30, 111, 106));
 
         btnFotoRp.setBackground(new java.awt.Color(153, 153, 153));
         btnFotoRp.setForeground(new java.awt.Color(255, 255, 255));
         btnFotoRp.setText("Examinar");
+        pnlRegistro.add(btnFotoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(353, 143, -1, -1));
 
-        javax.swing.GroupLayout pnlRegistroLayout = new javax.swing.GroupLayout(pnlRegistro);
-        pnlRegistro.setLayout(pnlRegistroLayout);
-        pnlRegistroLayout.setHorizontalGroup(
-            pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6))
-                .addGap(28, 28, 28)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jLabel1)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtIdRp, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                            .addComponent(txtNombreRp)
-                            .addComponent(txtPrecioRp)
-                            .addComponent(txtStockRp)))
-                    .addComponent(txtDescripcionRp, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistroLayout.createSequentialGroup()
-                        .addComponent(lblFotoRp, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRegistroLayout.createSequentialGroup()
-                        .addComponent(btnFotoRp)
-                        .addGap(31, 31, 31))))
-        );
-        pnlRegistroLayout.setVerticalGroup(
-            pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRegistroLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtIdRp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtNombreRp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPrecioRp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtStockRp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)))
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(lblFotoRp, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlRegistroLayout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(btnFotoRp))
-                    .addGroup(pnlRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtDescripcionRp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        jPanel1.add(pnlRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 87, 460, 230));
 
         pnlBotones.setBackground(new java.awt.Color(255, 255, 255));
         pnlBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        pnlBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnGuardarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnGuardarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarRp.setText("Guardar");
+        pnlBotones.add(btnGuardarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
 
         btnEditarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnEditarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarRp.setText("Editar");
+        pnlBotones.add(btnEditarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 70, -1));
 
         btnNuevoRp.setBackground(new java.awt.Color(153, 153, 153));
         btnNuevoRp.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevoRp.setText("Nuevo");
+        pnlBotones.add(btnNuevoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 70, -1));
 
         btnEliminarRp.setBackground(new java.awt.Color(153, 153, 153));
         btnEliminarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarRp.setText("Eliminar");
+        pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
-        javax.swing.GroupLayout pnlBotonesLayout = new javax.swing.GroupLayout(pnlBotones);
-        pnlBotones.setLayout(pnlBotonesLayout);
-        pnlBotonesLayout.setHorizontalGroup(
-            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlBotonesLayout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addGroup(pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnEliminarRp)
-                    .addComponent(btnNuevoRp)
-                    .addComponent(btnEditarRp)
-                    .addComponent(btnGuardarRp))
-                .addGap(24, 24, 24))
-        );
-        pnlBotonesLayout.setVerticalGroup(
-            pnlBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlBotonesLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(btnGuardarRp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnEditarRp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnNuevoRp)
-                .addGap(16, 16, 16)
-                .addComponent(btnEliminarRp)
-                .addContainerGap(17, Short.MAX_VALUE))
-        );
+        btnImprimir.setBackground(new java.awt.Color(153, 153, 153));
+        btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
+        btnImprimir.setText("Imprimir");
+        pnlBotones.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, -1, -1));
 
-        tblRegistrosRp.setModel(new javax.swing.table.DefaultTableModel(
+        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(484, 87, 91, 179));
+
+        tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-
+                "ID Producto", "Nombre", "Precio", "Stock", "Foto"
             }
         ));
-        jScrollPane1.setViewportView(tblRegistrosRp);
+        jScrollPane1.setViewportView(tablaProductos);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(pnlRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(pnlBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 560, 150));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 589, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtnBuscarRp() {
+        return btnBuscarRp;
+    }
+
+    public void setBtnBuscarRp(JButton btnBuscarRp) {
+        this.btnBuscarRp = btnBuscarRp;
+    }
+
+    public JButton getBtnEditarRp() {
+        return btnEditarRp;
+    }
+
+    public void setBtnEditarRp(JButton btnEditarRp) {
+        this.btnEditarRp = btnEditarRp;
+    }
+
+    public JButton getBtnEliminarRp() {
+        return btnEliminarRp;
+    }
+
+    public void setBtnEliminarRp(JButton btnEliminarRp) {
+        this.btnEliminarRp = btnEliminarRp;
+    }
+
+    public JButton getBtnImprimir() {
+        return btnImprimir;
+    }
+
+    public void setBtnImprimir(JButton btnImprimir) {
+        this.btnImprimir = btnImprimir;
+    }
+
+   
+
+    public JButton getBtnFotoRp() {
+        return btnFotoRp;
+    }
+
+    public void setBtnFotoRp(JButton btnFotoRp) {
+        this.btnFotoRp = btnFotoRp;
+    }
+
+    public JButton getBtnGuardarRp() {
+        return btnGuardarRp;
+    }
+
+    public void setBtnGuardarRp(JButton btnGuardarRp) {
+        this.btnGuardarRp = btnGuardarRp;
+    }
+
+    public JButton getBtnNuevoRp() {
+        return btnNuevoRp;
+    }
+
+    public void setBtnNuevoRp(JButton btnNuevoRp) {
+        this.btnNuevoRp = btnNuevoRp;
+    }
+
+    public JLabel getLblFotoRp() {
+        return lblFotoRp;
+    }
+
+    public void setLblFotoRp(JLabel lblFotoRp) {
+        this.lblFotoRp = lblFotoRp;
+    }
+
+    public JPanel getPnlBotones() {
+        return pnlBotones;
+    }
+
+    public void setPnlBotones(JPanel pnlBotones) {
+        this.pnlBotones = pnlBotones;
+    }
+
+    public JPanel getPnlBuscar() {
+        return pnlBuscar;
+    }
+
+    public void setPnlBuscar(JPanel pnlBuscar) {
+        this.pnlBuscar = pnlBuscar;
+    }
+
+    public JPanel getPnlRegistro() {
+        return pnlRegistro;
+    }
+
+    public void setPnlRegistro(JPanel pnlRegistro) {
+        this.pnlRegistro = pnlRegistro;
+    }
+
+    public JTable getTablaProductos() {
+        return tablaProductos;
+    }
+
+    public void setTablaProductos(JTable tablaProductos) {
+        this.tablaProductos = tablaProductos;
+    }
+
+    public JTextField getTxtBuscarRp() {
+        return txtBuscarRp;
+    }
+
+    public void setTxtBuscarRp(JTextField txtBuscarRp) {
+        this.txtBuscarRp = txtBuscarRp;
+    }
+
+    public JTextField getTxtDescripcionRp() {
+        return txtDescripcionRp;
+    }
+
+    public void setTxtDescripcionRp(JTextField txtDescripcionRp) {
+        this.txtDescripcionRp = txtDescripcionRp;
+    }
+
+    public JTextField getTxtIdRp() {
+        return txtIdRp;
+    }
+
+    public void setTxtIdRp(JTextField txtIdRp) {
+        this.txtIdRp = txtIdRp;
+    }
+
+    public JTextField getTxtNombreRp() {
+        return txtNombreRp;
+    }
+
+    public void setTxtNombreRp(JTextField txtNombreRp) {
+        this.txtNombreRp = txtNombreRp;
+    }
+
+    public JTextField getTxtPrecioRp() {
+        return txtPrecioRp;
+    }
+
+    public void setTxtPrecioRp(JTextField txtPrecioRp) {
+        this.txtPrecioRp = txtPrecioRp;
+    }
+
+    public JTextField getTxtStockRp() {
+        return txtStockRp;
+    }
+
+    public void setTxtStockRp(JTextField txtStockRp) {
+        this.txtStockRp = txtStockRp;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -315,6 +361,7 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
     private javax.swing.JButton btnEliminarRp;
     private javax.swing.JButton btnFotoRp;
     private javax.swing.JButton btnGuardarRp;
+    private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnNuevoRp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -328,7 +375,7 @@ public class VistaRegistroProductos extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JPanel pnlBuscar;
     private javax.swing.JPanel pnlRegistro;
-    private javax.swing.JTable tblRegistrosRp;
+    private javax.swing.JTable tablaProductos;
     private javax.swing.JTextField txtBuscarRp;
     private javax.swing.JTextField txtDescripcionRp;
     private javax.swing.JTextField txtIdRp;
