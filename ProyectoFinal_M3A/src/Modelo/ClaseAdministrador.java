@@ -4,7 +4,7 @@ import java.awt.Image;
 import java.io.FileInputStream;
 
 
-public class ClaseGerente {
+public class ClaseAdministrador {
     private String cedulaGerente;
     private String nombreGerente;
     private String apellidoGerente;
@@ -16,7 +16,7 @@ public class ClaseGerente {
     private FileInputStream imagen;
     private int largo;
 
-    public ClaseGerente(String cedulaGerente, String nombreGerente, String apellidoGerente, String direccionGerente, String usuarioGerente, String contraseñaGerente, Double salarioGerente, Image foto, FileInputStream imagen, int largo) {
+    public ClaseAdministrador(String cedulaGerente, String nombreGerente, String apellidoGerente, String direccionGerente, String usuarioGerente, String contraseñaGerente, Double salarioGerente, Image foto, FileInputStream imagen, int largo) {
         this.cedulaGerente = cedulaGerente;
         this.nombreGerente = nombreGerente;
         this.apellidoGerente = apellidoGerente;
@@ -29,7 +29,7 @@ public class ClaseGerente {
         this.largo = largo;
     }
 
-    public ClaseGerente() {
+    public ClaseAdministrador() {
     }
 
     

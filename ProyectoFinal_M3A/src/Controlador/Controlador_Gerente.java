@@ -1,6 +1,6 @@
 package Controlador;
-import Modelo.ClaseGerente;
-import Modelo.Modelo_Gerente;
+import Modelo.ClaseAdministrador;
+import Modelo.Modelo_Administrador;
 import Vista.VistaRegistroEmpleados;
 import java.awt.Image;
 import java.util.List;
@@ -13,9 +13,9 @@ import javax.xml.ws.Holder;
 
 public class Controlador_Gerente {
      private VistaRegistroEmpleados vista_Empleado_Gerente;
-     private Modelo_Gerente modeloGerente;
+     private Modelo_Administrador modeloGerente;
 
- public Controlador_Gerente(VistaRegistroEmpleados vista_Empleado_Gerente, Modelo_Gerente modeloGerente) {
+ public Controlador_Gerente(VistaRegistroEmpleados vista_Empleado_Gerente, Modelo_Administrador modeloGerente) {
         this.vista_Empleado_Gerente = vista_Empleado_Gerente;
         this.modeloGerente = modeloGerente;
     }
@@ -38,7 +38,7 @@ public class Controlador_Gerente {
     tblModel=(DefaultTableModel)vista_Empleado_Gerente.getTablaEmpleados().getModel();
     tblModel.setNumRows(0);//limpiamos las filas de las tablas
 
-    List<ClaseGerente> listaGerente=modeloGerente.listaGerente();//Enlazo el modelo y obtengo los datos
+    List<ClaseAdministrador> listaGerente=modeloGerente.listaGerente();//Enlazo el modelo y obtengo los datos
     Holder<Integer> i = new Holder<>(0);//contador para el no. fila
         
     listaGerente.stream().forEach(pe->{

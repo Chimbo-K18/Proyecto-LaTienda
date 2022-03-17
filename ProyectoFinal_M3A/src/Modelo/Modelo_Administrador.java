@@ -16,28 +16,28 @@ import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 
-public class Modelo_Gerente extends ClaseGerente{
+public class Modelo_Administrador extends ClaseAdministrador{
    //Conexion
     ConectionBDD conexion = new ConectionBDD();
     //Constructor
-    public Modelo_Gerente(String cedulaGerente, String nombreGerente, String apellidoGerente, String direccionGerente, String usuarioGerente, String contraseñaGerente, Double salarioGerente, Image foto, FileInputStream imagen, int largo) {
+    public Modelo_Administrador(String cedulaGerente, String nombreGerente, String apellidoGerente, String direccionGerente, String usuarioGerente, String contraseñaGerente, Double salarioGerente, Image foto, FileInputStream imagen, int largo) {
         super(cedulaGerente, nombreGerente, apellidoGerente, direccionGerente, usuarioGerente, contraseñaGerente, salarioGerente, foto, imagen, largo);
     }
     
-    public Modelo_Gerente() {
+    public Modelo_Administrador() {
     }
        
     
     //Mostrar Datos Gerente
-      public List <ClaseGerente> listaGerente(){
-        List<ClaseGerente>listaGerente=new ArrayList<ClaseGerente>();
+      public List <ClaseAdministrador> listaGerente(){
+        List<ClaseAdministrador>listaGerente=new ArrayList<ClaseAdministrador>();
         try {
             
             String sql= "SELECT * from empleados";
             ResultSet Resultados= conexion.consulta(sql);
             byte[] bytea;
             while( Resultados.next()){
-               ClaseGerente gerente = new ClaseGerente ();
+               ClaseAdministrador gerente = new ClaseAdministrador ();
                gerente.setCedulaGerente( Resultados.getString("cedula"));
                gerente.setNombreGerente( Resultados.getString("nombre"));
               gerente.setApellidoGerente( Resultados.getString("apellido"));

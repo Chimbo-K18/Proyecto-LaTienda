@@ -38,11 +38,10 @@ public class Controlador_MenuPrincipal {
         private void crudProductos() {
 
         ModeloProductos modeloCrudProductos = new ModeloProductos();
-        VistaRegistroProductos vistaCrudProductos = new VistaRegistroProductos();
-     
-        vistaMenu.getjDeskPanel().add(vistaCrudProductos);
+        VistaRegistroProductos vistaProductos = new VistaRegistroProductos();
+        vistaMenu.getjDeskPanel().add(vistaProductos);
         
-        Controlador_Productos controladorCrudProductos = new Controlador_Productos(vistaCrudProductos, modeloCrudProductos);
+        Controlador_Productos controladorCrudProductos = new Controlador_Productos(vistaProductos, modeloCrudProductos);
         controladorCrudProductos.iniciaControl();
     }
         

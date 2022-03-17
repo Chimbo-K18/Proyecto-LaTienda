@@ -34,13 +34,11 @@ public class Controlador_Productos {
     private JFileChooser jfc;
     public static ArrayList<ClaseProductos> listaproductos = new ArrayList();
 
-    ModeloProductos dbp = new ModeloProductos(); //inicializar llamar al objeto de la clase
-
     public Controlador_Productos(VistaRegistroProductos vista, ModeloProductos modelo) {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
-
+        System.out.println("VistaREG.PRO");
     }
 
     public void iniciaControl() {
@@ -216,24 +214,26 @@ public class Controlador_Productos {
     }
 
     private void modificarProducto() {
-        vista.getTxtID().setVisible(false);
-        ClaseProductos pro = new ClaseProductos();
-        DefaultTableModel tblProductos = (DefaultTableModel) vista.getTablaProductos().getModel();
-        int fila = vista.getTablaProductos().getSelectedRow();
-        if (fila != -1) {
-
-            vista.getTxtID().setText(tblProductos.getValueAt(fila, 0).toString());
-            vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
-            vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
-
-            vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
-            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 4).toString());
-
-            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 5);
-            vista.getLblFoto().setIcon(lbl.getIcon());
-        } else {
-            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN PRODCUTO Y LUEGO EN EDITAR", "AVISO", 2);
-        }
+        
+        JOptionPane.showMessageDialog(null, "Modificar");
+//        vista.getTxtID().setVisible(false);
+//        ClaseProductos pro = new ClaseProductos();
+//        DefaultTableModel tblProductos = (DefaultTableModel) vista.getTablaProductos().getModel();
+//        int fila = vista.getTablaProductos().getSelectedRow();
+//        if (fila != -1) {
+//
+//            vista.getTxtID().setText(tblProductos.getValueAt(fila, 0).toString());
+//            vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
+//            vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
+//
+//            vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
+//            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 4).toString());
+//
+//            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 5);
+//            vista.getLblFoto().setIcon(lbl.getIcon());
+//        } else {
+//            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN PRODCUTO Y LUEGO EN EDITAR", "AVISO", 2);
+//        }
 
     }
 
