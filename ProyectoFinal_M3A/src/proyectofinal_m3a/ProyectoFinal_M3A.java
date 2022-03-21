@@ -22,10 +22,7 @@ public class ProyectoFinal_M3A {
         VistaLogin vista = new VistaLogin();
         Controlador_Login controlador = new Controlador_Login(vista);
         controlador.iniciaControl();
-        
-//        VistaMenuPrincipal vMenu = new VistaMenuPrincipal();
-//        Controlador_MenuPrincipal cMenu = new Controlador_MenuPrincipal(vMenu);
-//        cMenu.iniciaControl();
+       
     }
     
 }

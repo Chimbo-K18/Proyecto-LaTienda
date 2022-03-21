@@ -12,20 +12,13 @@ import javax.swing.JOptionPane;
  * @author Santiago
  */
 public class Controlador_Usuario {
-    
-    
-    
-    private Modelo_Usuario modelo;
+
     private VistaLogin vista;
 
-    VistaMenuPrincipal vistaMen = new VistaMenuPrincipal();
 
-    public Controlador_Usuario(Modelo_Usuario modelo, VistaLogin vista) {
-        this.modelo = modelo;
+    public Controlador_Usuario(VistaLogin vista, Modelo_Usuario modelo) {
         this.vista = vista;
     }
-
-
 
     public void iniciaControl() {
 
@@ -33,40 +26,18 @@ public class Controlador_Usuario {
 
     }
 
-    public void iniciarLogin() {
-
+    
+    public void iniciarLogin(){
         
-        Modelo_Usuario modUsuario = new Modelo_Usuario();
+        VistaLogin vista = new VistaLogin();
+        Modelo_Usuario modelo = new Modelo_Usuario();
+        Controlador_Login controla = new Controlador_Login(vista);
         
-        String contraseña = new String(vista.getTxtContraseña().getPassword());
- 
-        if(!vista.getTxtUsuario().getText().equals("") && !contraseña.equals("")){
-            
-            String nuevaContraseña = ClaseHash.sha1(contraseña);
-            
-            modelo.setUsuario(vista.getTxtUsuario().getText());
-            modelo.setContraseña(nuevaContraseña);
-            
-            if(modUsuario.login(modelo)){
-                
-                JOptionPane.showMessageDialog(null, "Acceso Correcto");
-                
-            }else{
-                
-                JOptionPane.showMessageDialog(null, "Datos Incorrectos");
-            }
-            
-        }else{
-            
-            JOptionPane.showMessageDialog(null, "Complete todos los campos. Intente nuevamente");
-        }
-               
-
     }
-
-    private void limpiarCampos() {
 
 
     }
 
-}
+
+
+

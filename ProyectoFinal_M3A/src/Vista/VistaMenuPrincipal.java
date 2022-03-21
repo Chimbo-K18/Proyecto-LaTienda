@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
+import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JPanel;
+import javax.swing.JMenu;
 
 /**
  *
@@ -15,12 +11,11 @@ import javax.swing.JPanel;
  */
 public class VistaMenuPrincipal extends javax.swing.JFrame {
 
-    public JDesktopPane getjDeskPanel() {
-        return jDeskPanel;
-    }
-
-    public void setjDeskPanel(JDesktopPane jDeskPanel) {
-        this.jDeskPanel = jDeskPanel;
+    /**
+     * Creates new form VistaMenu
+     */
+    public VistaMenuPrincipal() {
+        initComponents();
     }
 
     public JButton getBtnAdminPersonal() {
@@ -63,13 +58,44 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.btnVentas = btnVentas;
     }
 
-   
-    
-    /**
-     * Creates new form VistaMenuPrincipal
-     */
-    public VistaMenuPrincipal() {
-        initComponents();
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
+    public JDesktopPane getjDeskPanel() {
+        return jDeskPanel;
+    }
+
+    public void setjDeskPanel(JDesktopPane jDeskPanel) {
+        this.jDeskPanel = jDeskPanel;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public void setjMenu1(JMenu jMenu1) {
+        this.jMenu1 = jMenu1;
+    }
+
+    public JMenu getjMenu2() {
+        return jMenu2;
+    }
+
+    public void setjMenu2(JMenu jMenu2) {
+        this.jMenu2 = jMenu2;
+    }
+
+    public AccessibleContext getAccessibleContext() {
+        return accessibleContext;
+    }
+
+    public void setAccessibleContext(AccessibleContext accessibleContext) {
+        this.accessibleContext = accessibleContext;
     }
 
     /**
@@ -81,132 +107,106 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        btnReportes = new javax.swing.JButton();
-        btnVentas = new javax.swing.JButton();
-        btnAdminPersonal = new javax.swing.JButton();
+        jToolBar2 = new javax.swing.JToolBar();
+        jButton2 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         btnAdminProductos = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JToolBar.Separator();
+        btnAdminPersonal = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
+        btnVentas = new javax.swing.JButton();
+        jSeparator3 = new javax.swing.JToolBar.Separator();
+        btnReportes = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JToolBar.Separator();
         btnRegistrarClientes = new javax.swing.JButton();
         jDeskPanel = new javax.swing.JDesktopPane();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(17, 177, 124));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jToolBar2.setBackground(new java.awt.Color(0, 107, 179));
+        jToolBar2.setRollover(true);
 
-        btnReportes.setText("Reportes");
-        jPanel1.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 277, 131, 38));
+        jButton2.setText("B1");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton2);
+        jToolBar2.add(jSeparator1);
 
-        btnVentas.setText("Ventas");
-        jPanel1.add(btnVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 209, 131, 38));
+        btnAdminProductos.setText("APE");
+        btnAdminProductos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdminProductosActionPerformed(evt);
+            }
+        });
+        jToolBar2.add(btnAdminProductos);
+        jToolBar2.add(jSeparator4);
 
-        btnAdminPersonal.setText("Administrar Personal");
-        jPanel1.add(btnAdminPersonal, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 144, -1, 38));
+        btnAdminPersonal.setText("APR");
+        jToolBar2.add(btnAdminPersonal);
+        jToolBar2.add(jSeparator2);
 
-        btnAdminProductos.setText("Administrar Productos");
-        jPanel1.add(btnAdminProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 80, -1, 38));
+        btnVentas.setText("VN");
+        jToolBar2.add(btnVentas);
+        jToolBar2.add(jSeparator3);
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        btnReportes.setText("RP");
+        jToolBar2.add(btnReportes);
+        jToolBar2.add(jSeparator5);
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel13.setText("HELADERIA LA TIENDA");
+        btnRegistrarClientes.setText("RC");
+        jToolBar2.add(btnRegistrarClientes);
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(235, 235, 235)
-                .addComponent(jLabel13)
-                .addContainerGap(251, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel13)
-                .addContainerGap())
-        );
-
-        jPanel1.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 11, -1, -1));
-
-        btnRegistrarClientes.setText("Registrar Clientes");
-        jPanel1.add(btnRegistrarClientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 343, 131, 38));
+        jDeskPanel.setBackground(new java.awt.Color(230, 245, 254));
 
         javax.swing.GroupLayout jDeskPanelLayout = new javax.swing.GroupLayout(jDeskPanel);
         jDeskPanel.setLayout(jDeskPanelLayout);
         jDeskPanelLayout.setHorizontalGroup(
             jDeskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jDeskPanelLayout.setVerticalGroup(
             jDeskPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 498, Short.MAX_VALUE)
+            .addGap(0, 578, Short.MAX_VALUE)
         );
 
-        jPanel1.add(jDeskPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, -1));
-
         jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        jMenuBar.add(jMenu1);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuBar.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(jMenuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1050, Short.MAX_VALUE)
+            .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 1078, Short.MAX_VALUE)
+            .addComponent(jDeskPanel)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 586, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDeskPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAdminProductosActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VistaMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VistaMenuPrincipal().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdminPersonal;
@@ -214,12 +214,16 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrarClientes;
     private javax.swing.JButton btnReportes;
     private javax.swing.JButton btnVentas;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDeskPanel;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel5;
+    private javax.swing.JMenuBar jMenuBar;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
+    private javax.swing.JToolBar.Separator jSeparator3;
+    private javax.swing.JToolBar.Separator jSeparator4;
+    private javax.swing.JToolBar.Separator jSeparator5;
+    private javax.swing.JToolBar jToolBar2;
     // End of variables declaration//GEN-END:variables
 }
