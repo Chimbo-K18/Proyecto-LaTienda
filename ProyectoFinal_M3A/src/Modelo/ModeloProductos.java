@@ -124,5 +124,54 @@ public class ModeloProductos extends ClaseProductos {
         String sql = "UPDATE public.productos SET nombre='" + getNombre() + "', precio='" + getPrecio() + "', stock='" + getStock() + "', descripcion='" + getDescripcion() + "'WHERE id_producto = '" + identificador + "';";
         return cpg.accion(sql);
     }
+    public List<ClaseProductos> productitos(String Buscar) {
+        try {
+            List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
+            String sql = "SELECT id_producto, nombre, precio, stock, descripcion, foto  FROM public.productos where  lower(nombre) like lower('%" + Buscar + "%') ;";
+            ResultSet rs = cpg.consulta(sql);
+            byte[] bytea;
+            while (rs.next()) {
+                ClaseProductos producto = new ClaseProductos();
+                producto.setId(rs.getInt("id_producto"));
+                producto.setNombre(rs.getString("nombre"));      
+                producto.setPrecio(rs.getDouble("precio"));
+                producto.setStock(rs.getInt("stock"));
+                producto.setDescripcion(rs.getString("descripcion"));
+                
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    //Decodificando del formato de la base.(Base64)
 
+                    //bytea=Base64.decode(bytea,0,bytea.length);
+                    try {
+                        producto.setFoto(obtenerImagen(bytea));
+                    } catch (IOException ex) {
+                        Logger.getLogger(ModeloProductos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                
+                listaproductos.add(producto);
+
+            }
+            rs.close();
+            return listaproductos;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloProductos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
+    public int contar(){
+         try {
+             String sql = "select count(id_producto) as numero from productos;";
+             ResultSet rs=cpg.consulta(sql);
+             while(rs.next()){
+                 return rs.getInt("numero")+1;
+                 
+             }
+             return 0;
+         } catch (SQLException ex) {
+             Logger.getLogger(ModeloProductos.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0; 
+     }
 }
