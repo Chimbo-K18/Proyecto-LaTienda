@@ -42,9 +42,9 @@ public class Controlador_Login {
 
     private void iniciarSesion(){
         
-        Modelo_Usuario modUsuario = new Modelo_Usuario();
         VistaMenuPrincipal visLogin = new VistaMenuPrincipal();
-        
+        Controlador_MenuPrincipal controlador = new Controlador_MenuPrincipal(visLogin);
+        controlador.iniciaControl();
         visLogin.setVisible(true);
       
     }
