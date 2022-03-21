@@ -7,14 +7,12 @@ import java.io.FileInputStream;
 
 public class ClaseEmpleado {
    
-    private int id_empleado;
     private String cedula;
     private String nombre;
     private String apellido;
     private String direccion;
-    private String genero;
-    private int edad;
-    private int id_usuario;
+    private String usuario;
+    private String contraseña;
     private Double salario;
     private Image foto;
     private FileInputStream imagen;
@@ -23,28 +21,17 @@ public class ClaseEmpleado {
     public ClaseEmpleado() {
     }
 
-    public ClaseEmpleado(int id_empleado, String cedula, String nombre, String apellido, String direccion, String genero, int edad, int id_usuario, Double salario, Image foto, FileInputStream imagen, int largo) {
-        this.id_empleado = id_empleado;
+    public ClaseEmpleado(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña, Double salario, Image foto, FileInputStream imagen, int largo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
-        this.genero = genero;
-        this.edad = edad;
-        this.id_usuario = id_usuario;
+        this.usuario = usuario;
+        this.contraseña = contraseña;
         this.salario = salario;
         this.foto = foto;
         this.imagen = imagen;
         this.largo = largo;
-    }
-    
-
-    public int getId_empleado() {
-        return id_empleado;
-    }
-
-    public void setId_empleado(int id_empleado) {
-        this.id_empleado = id_empleado;
     }
 
     public String getCedula() {
@@ -78,29 +65,22 @@ public class ClaseEmpleado {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
 
-    public String getGenero() {
-        return genero;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
-    public int getEdad() {
-        return edad;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public Double getSalario() {
@@ -134,7 +114,5 @@ public class ClaseEmpleado {
     public void setLargo(int largo) {
         this.largo = largo;
     }
-
-    
 
 }
