@@ -67,29 +67,50 @@ public class Controlador_Cliente {
                     vista.getTxtTelefono().getText().equals("")||vista.getTxtEmail().getText().equals("")){ 
                 JOptionPane.showMessageDialog(vista, "HAY CAMPOS VACIOS");
                 
-            }else{        
-                String cedula=vista.getTxtCedula().getText();
-                String nombre=vista.getTxtNombre().getText();
-                String apellido=vista.getTxtApellido().getText();
-                String direccion=vista.getTxtDireccion().getText();
-                String telefono = vista.getTxtTelefono().getText();
-                String email =vista.getTxtEmail().getText();
+            }else{    
+                if(modelo.existeCliente(vista.getTxtCedula().getText())==0){
+                    if(modelo.validarDeCedula(vista.getTxtCedula().getText())){
+                        if(modelo.ValidarTelefono(vista.getTxtTelefono().getText())){
 
-                ModeloCliente cliente = new ModeloCliente();
+                            if(modelo.validarCorreo(vista.getTxtEmail().getText())){
 
-                cliente.setCedula(cedula);
-                cliente.setNombre(nombre);
-                cliente.setApellido(apellido);
-                cliente.setDireccion(direccion);
-                cliente.setTelefono(Integer.parseInt(String.valueOf(telefono)));
-                cliente.setEmail(email);
+                                String cedula = vista.getTxtCedula().getText();
+                                String nombre = vista.getTxtNombre().getText();
+                                String apellido = vista.getTxtApellido().getText();
+                                String direccion = vista.getTxtDireccion().getText();
+                                String telefono = vista.getTxtTelefono().getText();
+                                String email = vista.getTxtEmail().getText();
 
-                if(cliente.crearCliente()){
-                    JOptionPane.showMessageDialog(vista, "Creado exitosamente");
-                    vista.getDlgClientes().setVisible(false);
-                }else{
-                    JOptionPane.showMessageDialog(vista, "No se creo");
-                }
+                                ModeloCliente cliente = new ModeloCliente();
+
+                                cliente.setCedula(cedula);
+                                cliente.setNombre(nombre);
+                                cliente.setApellido(apellido);
+                                cliente.setDireccion(direccion);
+                                cliente.setTelefono(Integer.parseInt(String.valueOf(telefono)));
+                                cliente.setEmail(email);
+
+                                if (cliente.crearCliente()) {
+                                    JOptionPane.showMessageDialog(vista, "Creado exitosamente");
+                                    vista.getDlgClientes().setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(vista, "No se creo");
+                                }
+
+                            }else{
+                                JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                            }
+                       }else{
+                            JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
+                        }
+
+                    }else{
+                        JOptionPane.showMessageDialog(vista, "La cédula no es válida");
+                    }
+                    
+               }else{
+                        JOptionPane.showMessageDialog(vista, "La cédula ya esta registrada");
+                    } 
            }     
         }else if(vista.getDlgClientes().getName()=="editar"){
             if(vista.getTxtCedula().getText().equals("")||vista.getTxtNombre().getText().equals("")||
@@ -97,22 +118,40 @@ public class Controlador_Cliente {
                     vista.getTxtTelefono().getText().equals("")||vista.getTxtEmail().getText().equals("")){ 
                 JOptionPane.showMessageDialog(vista, "HAY CAMPOS VACIOS");
                 
-            }else{    
-                ModeloCliente ec = new ModeloCliente();
+            }else{ 
+                if(modelo.existeCliente(vista.getTxtCedula().getText())==0){
 
-                ec.setCedula(vista.getTxtCedula().getText());
-                ec.setNombre(vista.getTxtNombre().getText());
-                ec.setApellido(vista.getTxtApellido().getText());
-                ec.setDireccion(vista.getTxtDireccion().getText());
-                ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
-                ec.setEmail(vista.getTxtEmail().getText());
+                    if(modelo.validarDeCedula(vista.getTxtCedula().getText())){
+                        if(modelo.ValidarTelefono(vista.getTxtTelefono().getText())){
+                            if(modelo.validarCorreo(vista.getTxtEmail().getText())){
 
-                if(ec.editarCliente()){
-                    JOptionPane.showMessageDialog(vista, "Editado exitosamente");
-                    vista.getDlgClientes().setVisible(false);
+                                ModeloCliente ec = new ModeloCliente();
+
+                                ec.setCedula(vista.getTxtCedula().getText());
+                                ec.setNombre(vista.getTxtNombre().getText());
+                                ec.setApellido(vista.getTxtApellido().getText());
+                                ec.setDireccion(vista.getTxtDireccion().getText());
+                                ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
+                                ec.setEmail(vista.getTxtEmail().getText());
+
+                                if (ec.editarCliente()) {
+                                    JOptionPane.showMessageDialog(vista, "Editado exitosamente");
+                                    vista.getDlgClientes().setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(vista, "No se edito");
+                                }
+                           }else{
+                                JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                            }
+                       }else{
+                            JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
+                        }
+                   }else{
+                        JOptionPane.showMessageDialog(vista, "La cédula no es válida");
+                    }
                 }else{
-                    JOptionPane.showMessageDialog(vista, "No se edito");
-                }
+                        JOptionPane.showMessageDialog(vista, "La cédula ya esta registrada");
+                    }    
            }     
         }
         
