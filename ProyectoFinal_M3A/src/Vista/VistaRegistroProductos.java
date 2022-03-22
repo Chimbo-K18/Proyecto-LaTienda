@@ -37,14 +37,13 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        pnlBuscar = new javax.swing.JPanel();
-        txtBuscarRp = new javax.swing.JTextField();
-        btnBuscarRp = new javax.swing.JButton();
         pnlBotones = new javax.swing.JPanel();
         btnGuardarRp = new javax.swing.JButton();
         btnEditarRp = new javax.swing.JButton();
         btnNuevoRp = new javax.swing.JButton();
         btnEliminarRp = new javax.swing.JButton();
+        txtBuscarRp = new javax.swing.JTextField();
+        btnBuscarRp = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
@@ -108,48 +107,32 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel1.setBackground(new java.awt.Color(230, 245, 254));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        pnlBuscar.setBackground(new java.awt.Color(255, 255, 255));
-        pnlBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        pnlBuscar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        txtBuscarRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlBuscar.add(txtBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(13, 18, 238, -1));
-
-        btnBuscarRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnBuscarRp.setForeground(new java.awt.Color(255, 255, 255));
-        btnBuscarRp.setText("Buscar");
-        pnlBuscar.add(btnBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 17, -1, -1));
-
-        jPanel1.add(pnlBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 340, 60));
-
-        pnlBotones.setBackground(new java.awt.Color(255, 255, 255));
+        pnlBotones.setBackground(new java.awt.Color(0, 107, 179));
         pnlBotones.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         pnlBotones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnGuardarRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnGuardarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarRp.setText("Guardar");
-        pnlBotones.add(btnGuardarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
+        pnlBotones.add(btnGuardarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
-        btnEditarRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnEditarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEditarRp.setText("Editar");
-        pnlBotones.add(btnEditarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 70, -1));
+        pnlBotones.add(btnEditarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, 70, -1));
 
-        btnNuevoRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnNuevoRp.setForeground(new java.awt.Color(255, 255, 255));
         btnNuevoRp.setText("Nuevo");
         pnlBotones.add(btnNuevoRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 70, -1));
 
-        btnEliminarRp.setBackground(new java.awt.Color(153, 153, 153));
-        btnEliminarRp.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarRp.setText("Eliminar");
-        pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+        pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
-        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 100, 280));
+        txtBuscarRp.setForeground(new java.awt.Color(51, 51, 51));
+        pnlBotones.add(txtBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 160, -1));
+
+        btnBuscarRp.setText("Buscar");
+        pnlBotones.add(btnBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+
+        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 60));
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -167,7 +150,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         ));
         jScrollPane1.setViewportView(tablaProductos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 550, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 700, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,14 +304,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.pnlBotones = pnlBotones;
     }
 
-    public JPanel getPnlBuscar() {
-        return pnlBuscar;
-    }
-
-    public void setPnlBuscar(JPanel pnlBuscar) {
-        this.pnlBuscar = pnlBuscar;
-    }
-
 
     public JTable getTablaProductos() {
         return tablaProductos;
@@ -371,7 +346,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JPanel pnlBotones;
-    private javax.swing.JPanel pnlBuscar;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JTextField txtBuscarRp;
     private javax.swing.JTextField txtID;
