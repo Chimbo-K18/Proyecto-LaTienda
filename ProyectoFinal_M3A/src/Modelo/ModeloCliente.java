@@ -203,4 +203,33 @@ public class ModeloCliente extends ClaseCliente{
         }
         return cedulaCorrecta;
     }
+    
+    public List<ClaseCliente> buscar2(String aguja) {
+
+        try {
+            String sql = " select cedula,nombre,apellido,direccion,telefono,email from clientes WHERE";
+            sql += " UPPER(nombre) like UPPER('" + aguja + "%') or ";
+            sql += " UPPER(cedula) like UPPER('" + aguja + "%') ";
+           // sql += " UPPER(precio) like UPPER('" + aguja + "%')";
+            ResultSet rs = cpg.consulta(sql);
+            List<ClaseCliente> lp = new ArrayList<ClaseCliente>();
+            byte[] bytea;
+            while (rs.next()) {
+                ClaseCliente cli = new ClaseCliente();
+                cli.setCedula(rs.getString("cedula"));
+                cli.setNombre(rs.getString("nombre"));
+                cli.setApellido(rs.getString("apellido"));
+                cli.setDireccion(rs.getString("direccion"));
+                cli.setTelefono(rs.getInt("telefono"));
+                cli.setEmail(rs.getString("email"));
+                lp.add(cli);
+            }
+            rs.close();
+            return lp;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
 }
