@@ -10,35 +10,36 @@ public class Controlador_Pedido {
     public Controlador_Pedido(VistaRegistroVentas vistaVentas, Modelo_Pedidos modeloPedidos) {
         this.vistaVentas = vistaVentas;
         this.modeloPedidos = modeloPedidos;
+        vistaVentas.setVisible(true);
     }
 
     
      
        public void iniciaControl() {
-          vistaVentas.getBotonGuardar().addActionListener(l->CrearPedidos());
-      
+//          vistaVentas.getBotonGuardar().addActionListener(l->CrearPedidos());
+//      
         
      }
      //Método para Insertar datos Pedidos
      public void CrearPedidos(){
-     int idPedidos= GenerarSeriePedidos();
-     String  nombrProducto=vistaVentas.getTextNombreProduc().getText();
-     int cantidadProd=Integer.parseInt(vistaVentas.getTextCantidadPro().getText());
-     String cedulaCliente=vistaVentas.getTextIdCliente().getText();
-     
-      Modelo_Pedidos datosPedidos = new  Modelo_Pedidos();
-      datosPedidos.setIdPedidos(idPedidos);
-      datosPedidos.setNombrProducto(nombrProducto);
-      datosPedidos.setCantidadProd(cantidadProd);
-      datosPedidos.setCedulaCliente(cedulaCliente);
-      
-      if( datosPedidos.InsertarPedido()){
-           JOptionPane.showMessageDialog(  vistaVentas, "Datos guardados éxitosamente");
-      }else{
-         JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE); 
-      }
-      
-      
+//     int idPedidos= GenerarSeriePedidos();
+//     String  nombrProducto=vistaVentas.getTextNombreProduc().getText();
+//     int cantidadProd=Integer.parseInt(vistaVentas.getTextCantidadPro().getText());
+//     String cedulaCliente=vistaVentas.getTextIdCliente().getText();
+//     
+//      Modelo_Pedidos datosPedidos = new  Modelo_Pedidos();
+//      datosPedidos.setIdPedidos(idPedidos);
+//      datosPedidos.setNombrProducto(nombrProducto);
+//      datosPedidos.setCantidadProd(cantidadProd);
+//      datosPedidos.setCedulaCliente(cedulaCliente);
+//      
+//      if( datosPedidos.InsertarPedido()){
+//           JOptionPane.showMessageDialog(  vistaVentas, "Datos guardados éxitosamente");
+//      }else{
+//         JOptionPane.showMessageDialog(null, "Error al guardar", "Error", JOptionPane.ERROR_MESSAGE); 
+//      }
+//      
+//      
      }
      
      

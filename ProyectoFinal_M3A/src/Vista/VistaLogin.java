@@ -107,6 +107,8 @@ public class VistaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(230, 245, 254));
+
         jLabel1.setFont(new java.awt.Font("Yu Gothic", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Inicio de Sesión");
@@ -126,7 +128,7 @@ public class VistaLogin extends javax.swing.JFrame {
         btnGroup.add(cbxEmpleado);
         cbxEmpleado.setText("Empleado");
 
-        jPanel2.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel2.setBackground(new java.awt.Color(0, 107, 179));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);

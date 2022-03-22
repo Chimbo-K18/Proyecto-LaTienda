@@ -376,6 +376,8 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     /**
      * @param args the command line arguments
      */
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
