@@ -6,6 +6,7 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -152,12 +153,12 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.txtEdad = txtEdad;
     }
 
-    public JTextField getTxtGenero() {
-        return txtGenero;
+    public JComboBox<String> getCbSexo() {
+        return cbSexo;
     }
 
-    public void setTxtGenero(JTextField txtGenero) {
-        this.txtGenero = txtGenero;
+    public void setCbSexo(JComboBox<String> cbSexo) {
+        this.cbSexo = cbSexo;
     }
 
     public JTextField getTxtIdEmpleado() {
@@ -217,7 +218,6 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
-        txtGenero = new javax.swing.JTextField();
         txtEdad = new javax.swing.JTextField();
         txtSalario = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
@@ -227,6 +227,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         txtId_Usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        cbSexo = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
@@ -272,7 +273,6 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jPanel5.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
         jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
         jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
-        jPanel5.add(txtGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
         jPanel5.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
         jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 140, -1));
 
@@ -293,6 +293,9 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
         btnGuardar.setText("Guardar");
         jPanel5.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 430, -1, -1));
+
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        jPanel5.add(cbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
 
         javax.swing.GroupLayout dlgEmpleadosLayout = new javax.swing.GroupLayout(dlgEmpleados.getContentPane());
         dlgEmpleados.getContentPane().setLayout(dlgEmpleadosLayout);
@@ -416,6 +419,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JDialog dlgEmpleados;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -441,7 +445,6 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtEdad;
-    private javax.swing.JTextField txtGenero;
     private javax.swing.JTextField txtIdEmpleado;
     private javax.swing.JTextField txtId_Usuario;
     private javax.swing.JTextField txtNombre;
