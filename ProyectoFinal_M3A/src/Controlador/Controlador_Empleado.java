@@ -41,7 +41,7 @@ public class Controlador_Empleado {
         this.vistaE = vistaE;
         vistaE.setVisible(true);
         vistaE.setSize(1100,750);
-        //cargarEmpleados();
+        cargarEmpleados();
     }
     
     public void iniciarControl(){
@@ -50,6 +50,7 @@ public class Controlador_Empleado {
         vistaE.getBtnEliminar().addActionListener(l->abrirDialogoEmpleados(1));
         vistaE.getBtnActualizar().addActionListener(l->cargarEmpleados());
         vistaE.getBtnExaminar().addActionListener(l->examinaFoto());
+        vistaE.getBtnGuardar().addActionListener(l->crearEditarEmpleado());
     }
     
     private void abrirDialogoEmpleados(int ce){
@@ -76,27 +77,30 @@ public class Controlador_Empleado {
         
         if(vistaE.getDlgEmpleados().getName()=="crear"){
             //crear
-            if(vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
-                    vistaE.getTxtUsuario().getText().equals("")||vistaE.getTxtUsuarioE().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
+            if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
+                    vistaE.getTxtGenero().getText().equals("")||vistaE.getTxtEdad().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
                 JOptionPane.showMessageDialog(vistaE, "HAY CAMPOS VACIOS");
                 
-            }else{        
+            }else{
+                String id_empleado=vistaE.getTxtIdEmpleado().getText();
                 String cedula=vistaE.getTxtCedulaEmpleado().getText();
                 String nombre=vistaE.getTxtNombre().getText();
                 String apellido=vistaE.getTxtApellido().getText();
                 String direccion=vistaE.getTxtDireccion().getText();
-                String usuario=vistaE.getTxtUsuario().getText();
-                String contra = vistaE.getTxtUsuarioE().getText();
+                String genero=vistaE.getTxtGenero().getText();
+                String edad = vistaE.getTxtEdad().getText();
+                String id_usuario= vistaE.getTxtId_Usuario().getText();
                 String salario =vistaE.getTxtSalario().getText();
 
                 ModeloEmpleado empleado = new ModeloEmpleado();
-
+                empleado.setId_empleado(Integer.parseInt(String.valueOf(id_empleado)));
                 empleado.setCedula(cedula);
                 empleado.setNombre(nombre);
                 empleado.setApellido(apellido);
                 empleado.setDireccion(direccion);
-                empleado.setUsuario(usuario);
-                empleado.setContraseña(contra);
+                empleado.setGenero(genero);
+                empleado.setEdad(Integer.parseInt(String.valueOf(edad)));
+                empleado.setId_usuario(Integer.parseInt(String.valueOf(id_usuario)));
                 empleado.setSalario(Double.parseDouble(String.valueOf(salario)));
                 try {
                     FileInputStream img = new FileInputStream(jfc.getSelectedFile());
@@ -114,34 +118,35 @@ public class Controlador_Empleado {
                 }
            }     
         }else if(vistaE.getDlgEmpleados().getName()=="editar"){
-           if(vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
-                    vistaE.getTxtUsuario().getText().equals("")||vistaE.getTxtUsuarioE().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
+           if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
+                    vistaE.getTxtGenero().getText().equals("")||vistaE.getTxtEdad().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
                 JOptionPane.showMessageDialog(vistaE, "HAY CAMPOS VACIOS");
                 
             }else{ 
                 ModeloEmpleado emp = new ModeloEmpleado();
-
+                emp.setId_empleado(Integer.parseInt(String.valueOf(vistaE.getTxtIdEmpleado().getText())));
                 emp.setCedula(vistaE.getTxtCedulaEmpleado().getText());
                 emp.setNombre(vistaE.getTxtNombre().getText());
                 emp.setApellido(vistaE.getTxtApellido().getText());
                 emp.setDireccion(vistaE.getTxtDireccion().getText());
-                emp.setUsuario(vistaE.getTxtUsuario().getText());
-                emp.setContraseña(vistaE.getTxtUsuarioE().getText());
+                emp.setGenero(vistaE.getTxtGenero().getText());
+                emp.setEdad(Integer.parseInt(String.valueOf(vistaE.getTxtEdad().getText())));
+                emp.setId_usuario(Integer.parseInt(String.valueOf(vistaE.getTxtIdEmpleado().getText())));
                 emp.setSalario(Double.parseDouble(String.valueOf(vistaE.getTxtSalario().getText())));
                 //ep.setFoto((Image) vista.getLblFoto().getIcon());
 
-                if(emp.editarEmpleado()){
-                    JOptionPane.showMessageDialog(vistaE, "Editado exitosamente");
-                    vistaE.getDlgEmpleados().setVisible(false);
-                }else{
-                    JOptionPane.showMessageDialog(vistaE, "No se edito");
-                }
+                //if(emp.editarEmpleado()){
+                    //JOptionPane.showMessageDialog(vistaE, "Editado exitosamente");
+                   // vistaE.getDlgEmpleados().setVisible(false);
+                //}else{
+                   // JOptionPane.showMessageDialog(vistaE, "No se edito");
+                //}
             }
         }
         
     }
     
-    public void modificarEmpleado(){
+    /*public void modificarEmpleado(){
         int select = vistaE.getTablaEmpleados().getSelectedRow();
         
         if(select!=-1){
@@ -165,7 +170,7 @@ public class Controlador_Empleado {
         else{
             JOptionPane.showMessageDialog(vistaE, "NO SE SELECCIONO NINGUNA FILA");
         }
-    }
+    }*/
     
     public void eliminarEmpleado(){
         ModeloEmpleado elEm = new ModeloEmpleado();
@@ -179,8 +184,8 @@ public class Controlador_Empleado {
             //cargarPersonas();
             
             if(rsp==0){
-                String cedula=vistaE.getTablaEmpleados().getValueAt(fila, 0).toString();
-                elEm.eliminarEmpleado(cedula);
+                String id_empleado=vistaE.getTablaEmpleados().getValueAt(fila, 0).toString();
+                elEm.eliminarEmpleado(id_empleado);
                 cargarEmpleados();
             }else{
                JOptionPane.showConfirmDialog(vistaE, "NO SE ELIMINO"); 
@@ -225,14 +230,16 @@ public class Controlador_Empleado {
         
         listap.stream().forEach(pe->{
 
-            tblModel.addRow(new Object[8]);//Creo una fila vacia/
-            vistaE.getTablaEmpleados().setValueAt(pe.getCedula(), i.value, 0);
-            vistaE.getTablaEmpleados().setValueAt(pe.getNombre(), i.value, 1);
-            vistaE.getTablaEmpleados().setValueAt(pe.getApellido(), i.value, 2);
-            vistaE.getTablaEmpleados().setValueAt(pe.getDireccion(), i.value, 3);
-            vistaE.getTablaEmpleados().setValueAt(pe.getUsuario(), i.value, 4);
-            vistaE.getTablaEmpleados().setValueAt(pe.getContraseña(), i.value, 5);
-            vistaE.getTablaEmpleados().setValueAt(pe.getSalario(), i.value, 6);
+            tblModel.addRow(new Object[10]);//Creo una fila vacia/
+            vistaE.getTablaEmpleados().setValueAt(pe.getId_empleado(), i.value, 0);
+            vistaE.getTablaEmpleados().setValueAt(pe.getCedula(), i.value, 1);
+            vistaE.getTablaEmpleados().setValueAt(pe.getNombre(), i.value, 2);
+            vistaE.getTablaEmpleados().setValueAt(pe.getApellido(), i.value, 3);
+            vistaE.getTablaEmpleados().setValueAt(pe.getDireccion(), i.value, 4);
+            vistaE.getTablaEmpleados().setValueAt(pe.getGenero(), i.value, 5);
+            vistaE.getTablaEmpleados().setValueAt(pe.getEdad(), i.value, 6);
+            vistaE.getTablaEmpleados().setValueAt(pe.getId_usuario(), i.value, 7);
+            vistaE.getTablaEmpleados().setValueAt(pe.getSalario(), i.value, 8);
 
             Image foto=pe.getFoto();
             if(foto!=null){
@@ -241,10 +248,10 @@ public class Controlador_Empleado {
                 ImageIcon icono=new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer= new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vistaE.getTablaEmpleados().setValueAt(new JLabel(icono), i.value, 7);
+                vistaE.getTablaEmpleados().setValueAt(new JLabel(icono), i.value, 9);
                 
             }else{
-                 vistaE.getTablaEmpleados().setValueAt(null, i.value, 8);
+                 vistaE.getTablaEmpleados().setValueAt(null, i.value, 9);
             }
             i.value++;
         });
@@ -255,9 +262,11 @@ public class Controlador_Empleado {
         vistaE.getTxtNombre().setText("");
         vistaE.getTxtApellido().setText("");
         vistaE.getTxtDireccion().setText("");
-        vistaE.getTxtUsuario().setText("");
-        vistaE.getTxtUsuarioE().setText("");
+        vistaE.getTxtGenero().setText("");
+        vistaE.getTxtEdad().setText("");
         vistaE.getTxtSalario().setText("");
+        vistaE.getTxtIdEmpleado().setText("");
+        vistaE.getTxtId_Usuario().setText("");
         vistaE.getLblFoto().setText("");
     }
 }

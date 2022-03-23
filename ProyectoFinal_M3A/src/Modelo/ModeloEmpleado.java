@@ -29,10 +29,10 @@ public class ModeloEmpleado extends ClaseEmpleado{
     public ModeloEmpleado() {
     }
 
-    public ModeloEmpleado(String cedula, String nombre, String apellido, String direccion, String usuario, String contraseña, Double salario, Image foto, FileInputStream imagen, int largo) {
-        super(cedula, nombre, apellido, direccion, usuario, contraseña, salario, foto, imagen, largo);
+    public ModeloEmpleado(int id_empleado, String cedula, String nombre, String apellido, String direccion, String genero, int edad, int id_usuario, Double salario, Image foto, FileInputStream imagen, int largo) {
+        super(id_empleado, cedula, nombre, apellido, direccion, genero, edad, id_usuario, salario, foto, imagen, largo);
     }
-    
+
     public List <ClaseEmpleado> listaEmpleados(){
         List<ClaseEmpleado>lista=new ArrayList<ClaseEmpleado>();
         try {
@@ -42,12 +42,14 @@ public class ModeloEmpleado extends ClaseEmpleado{
             byte[] bytea;
             while(rs.next()){
                 ClaseEmpleado empleado = new ClaseEmpleado();
+                empleado.setId_empleado(rs.getInt("id_empleado"));
                 empleado.setCedula(rs.getString("cedula"));
                 empleado.setNombre(rs.getString("nombre"));
                 empleado.setApellido(rs.getString("apellido"));
                 empleado.setDireccion(rs.getString("direccion"));
-                empleado.setUsuario(rs.getString("usuario"));
-                empleado.setContraseña(rs.getString("contraseña"));
+                empleado.setGenero(rs.getString("genero"));
+                empleado.setEdad(rs.getInt("edad"));
+                empleado.setId_usuario(rs.getInt("id_usuario"));
                 empleado.setSalario(rs.getDouble("salario"));
                //bytea> Bytes Array
                 bytea=rs.getBytes("foto");
@@ -87,17 +89,19 @@ public class ModeloEmpleado extends ClaseEmpleado{
     public boolean crearEmpleado(){
         try {
             String sql;
-            sql="INSERT INTO empleados(cedula,nombre,apellido,direccion,usuario,contraseña,salario,foto)";
-            sql+="VALUES(?,?,?,?,?,?,?,?)";
+            sql="INSERT INTO empleados(id_empleado,cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto)";
+            sql+="VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setString(1, getCedula());
-            ps.setString(2, getNombre());
-            ps.setString(3, getApellido());
-            ps.setString(4, getDireccion());
-            ps.setString(5, getUsuario());
-            ps.setString(6, getContraseña());
-            ps.setDouble(7, getSalario());
-            ps.setBinaryStream(8,getImagen(),getLargo() );
+            ps.setInt(1, getId_empleado());
+            ps.setString(2, getCedula());
+            ps.setString(3, getNombre());
+            ps.setString(4, getApellido());
+            ps.setString(5, getDireccion());
+            ps.setString(6, getGenero());
+            ps.setInt(7, getEdad());
+            ps.setInt(8, getId_usuario());
+            ps.setDouble(9, getSalario());
+            ps.setBinaryStream(10,getImagen(),getLargo() );
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -106,17 +110,17 @@ public class ModeloEmpleado extends ClaseEmpleado{
         }
     }
     
-    public boolean editarEmpleado(){
+    /*public boolean editarEmpleado(){
         
         String sql="UPDATE empleados SET \n"+
                 "cedula='"+getCedula()+"',nombre='"+getNombre()+"',apellido='"+getApellido()+"',direccion='"+getDireccion()+
                 "',usuario='"+getUsuario()+"',contraseña='"+getContraseña()+"',salario='"+getSalario()+"'"+
                 "WHERE cedula='"+getCedula()+"';";
         return cpg.accion(sql);
-    }
+    }*/
     
-    public boolean eliminarEmpleado(String cedula){
-        String sql="DELETE FROM empleados where cedula='"+cedula+"'";
+    public boolean eliminarEmpleado(String id_empleado){
+        String sql="DELETE FROM empleados where cedula='"+id_empleado+"'";
         return cpg.accion(sql);
     }
 }
