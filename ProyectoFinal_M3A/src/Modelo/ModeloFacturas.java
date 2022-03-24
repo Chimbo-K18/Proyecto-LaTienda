@@ -43,7 +43,7 @@ public class ModeloFacturas extends ClaseFactura{
                 fac.setIdFactura(rs.getInt("id_factura"));
                 fac.setIdCliente(rs.getInt("id_cliente"));
                 fac.setIdEmpleado(rs.getInt("id_empleado"));
-                fac.setFecha(rs.getDate("fecha"));
+                fac.setFecha(rs.getString("fecha"));
 
                 listaFac.add(fac);
             }

@@ -15,12 +15,12 @@ public class ClaseFactura {
     private int idFactura;
     private int idCliente;
     private int idEmpleado;
-    private Date fecha;
+    private String fecha;
 
     public ClaseFactura() {
     }
 
-    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, Date fecha) {
+    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, String fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
         this.idEmpleado = idEmpleado;
@@ -53,11 +53,11 @@ public class ClaseFactura {
 
 
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     
