@@ -43,7 +43,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         btnNuevoRp = new javax.swing.JButton();
         btnEliminarRp = new javax.swing.JButton();
         txtBuscarRp = new javax.swing.JTextField();
-        btnBuscarRp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
@@ -127,12 +127,13 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         pnlBotones.add(btnEliminarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         txtBuscarRp.setForeground(new java.awt.Color(51, 51, 51));
-        pnlBotones.add(txtBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 20, 160, -1));
+        pnlBotones.add(txtBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 20, 200, -1));
 
-        btnBuscarRp.setText("Buscar");
-        pnlBotones.add(btnBuscarRp, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 20, -1, -1));
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Buscar:");
+        pnlBotones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 20, 50, 20));
 
-        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 60));
+        jPanel1.add(pnlBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 730, 60));
 
         tablaProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,21 +151,17 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         ));
         jScrollPane1.setViewportView(tablaProductos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 700, 300));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 710, 300));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1071, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 571, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -254,14 +251,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         this.DialogoProducto = DialogoProducto;
     }
 
-    public JButton getBtnBuscarRp() {
-        return btnBuscarRp;
-    }
-
-    public void setBtnBuscarRp(JButton btnBuscarRp) {
-        this.btnBuscarRp = btnBuscarRp;
-    }
-
     public JButton getBtnEditarRp() {
         return btnEditarRp;
     }
@@ -328,13 +317,13 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
     private javax.swing.JDialog DialogoProducto;
     private javax.swing.JTextArea areaDescripcion;
     private javax.swing.JButton btnAceptar;
-    private javax.swing.JButton btnBuscarRp;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnEditarRp;
     private javax.swing.JButton btnEliminarRp;
     private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnGuardarRp;
     private javax.swing.JButton btnNuevoRp;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel7;
