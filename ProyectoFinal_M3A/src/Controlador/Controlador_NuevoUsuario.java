@@ -19,7 +19,6 @@ public class Controlador_NuevoUsuario {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
-
     }
 
     public void iniciaControl() {

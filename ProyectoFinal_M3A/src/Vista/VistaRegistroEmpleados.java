@@ -6,6 +6,7 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JTable;
@@ -22,6 +23,14 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
      */
     public VistaRegistroEmpleados() {
         initComponents();
+    }
+
+    public JButton getBtnGuardar() {
+        return btnGuardar;
+    }
+
+    public void setBtnGuardar(JButton btnGuardar) {
+        this.btnGuardar = btnGuardar;
     }
 
     public JButton getBtnActualizar() {
@@ -64,6 +73,14 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.btnEliminar = btnEliminar;
     }
 
+    public JButton getBtnExaminar() {
+        return btnExaminar;
+    }
+
+    public void setBtnExaminar(JButton btnExaminar) {
+        this.btnExaminar = btnExaminar;
+    }
+
     public JButton getBtnImprimir() {
         return btnImprimir;
     }
@@ -72,12 +89,12 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.btnImprimir = btnImprimir;
     }
 
-    public JButton getBtnNuevo() {
-        return btnActualizar;
+    public JComboBox<String> getCbSexo() {
+        return cbSexo;
     }
 
-    public void setBtnNuevo(JButton btnNuevo) {
-        this.btnActualizar = btnNuevo;
+    public void setCbSexo(JComboBox<String> cbSexo) {
+        this.cbSexo = cbSexo;
     }
 
     public JDialog getDlgEmpleados() {
@@ -86,6 +103,14 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
     public void setDlgEmpleados(JDialog dlgEmpleados) {
         this.dlgEmpleados = dlgEmpleados;
+    }
+
+    public JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public void setLblFoto(JLabel lblFoto) {
+        this.lblFoto = lblFoto;
     }
 
     public JTable getTablaEmpleados() {
@@ -128,12 +153,28 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.txtDireccion = txtDireccion;
     }
 
-    public JButton getTxtExaminar1() {
-        return btnExaminar;
+    public JTextField getTxtEdad() {
+        return txtEdad;
     }
 
-    public void setTxtExaminar1(JButton txtExaminar1) {
-        this.btnExaminar = txtExaminar1;
+    public void setTxtEdad(JTextField txtEdad) {
+        this.txtEdad = txtEdad;
+    }
+
+    public JTextField getTxtIdEmpleado() {
+        return txtIdEmpleado;
+    }
+
+    public void setTxtIdEmpleado(JTextField txtIdEmpleado) {
+        this.txtIdEmpleado = txtIdEmpleado;
+    }
+
+    public JTextField getTxtId_Usuario() {
+        return txtId_Usuario;
+    }
+
+    public void setTxtId_Usuario(JTextField txtId_Usuario) {
+        this.txtId_Usuario = txtId_Usuario;
     }
 
     public JTextField getTxtNombre() {
@@ -152,37 +193,6 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.txtSalario = txtSalario;
     }
 
-    public JTextField getTxtUsuario() {
-        return txtUsuario;
-    }
-
-    public void setTxtUsuario(JTextField txtUsuario) {
-        this.txtUsuario = txtUsuario;
-    }
-
-    public JTextField getTxtUsuarioE() {
-        return txtUsuarioE;
-    }
-
-    public void setTxtUsuarioE(JTextField txtUsuarioE) {
-        this.txtUsuarioE = txtUsuarioE;
-    }
-
-    public JLabel getLblFoto() {
-        return lblFoto;
-    }
-
-    public void setLblFoto(JLabel lblFoto) {
-        this.lblFoto = lblFoto;
-    }
-
-    public JButton getBtnExaminar() {
-        return btnExaminar;
-    }
-
-    public void setBtnExaminar(JButton btnExaminar) {
-        this.btnExaminar = btnExaminar;
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -203,15 +213,20 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtCedulaEmpleado = new javax.swing.JTextField();
         txtNombre = new javax.swing.JTextField();
         txtApellido = new javax.swing.JTextField();
         txtDireccion = new javax.swing.JTextField();
-        txtUsuario = new javax.swing.JTextField();
-        txtUsuarioE = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtId_Usuario = new javax.swing.JTextField();
         txtSalario = new javax.swing.JTextField();
         lblFoto = new javax.swing.JLabel();
         btnExaminar = new javax.swing.JButton();
+        txtIdEmpleado = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtCedulaEmpleado = new javax.swing.JTextField();
+        cbSexo = new javax.swing.JComboBox<>();
+        jLabel19 = new javax.swing.JLabel();
+        btnGuardar = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
@@ -237,44 +252,55 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 55, -1, -1));
 
         jLabel13.setText("NOMBRE:");
-        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel5.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
         jLabel14.setText("APELLIDO:");
-        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jPanel5.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
         jLabel15.setText("DIRECCION:");
-        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel5.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
-        jLabel16.setText("USUARIO:");
-        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jLabel16.setText("GÉNERO");
+        jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 60, -1));
 
-        jLabel17.setText("CONTRASEÑA:");
-        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
+        jLabel17.setText("ID USUARIO");
+        jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
 
         jLabel18.setText("SALARIO");
-        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
-        jPanel5.add(txtCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 52, 140, -1));
-        jPanel5.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
-        jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
-        jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
-        jPanel5.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
-        jPanel5.add(txtUsuarioE, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
-        jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
+        jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, -1, -1));
+        jPanel5.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
+        jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
+        jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
+        jPanel5.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
+        jPanel5.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 140, -1));
+        jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 140, -1));
 
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblFoto.setOpaque(true);
-        jPanel5.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, 160, 140));
+        jPanel5.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 160, 140));
 
         btnExaminar.setText("Examinar");
         jPanel5.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
+        jPanel5.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 140, -1));
+
+        jLabel1.setText("CÉDULA");
+        jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, -1, -1));
+        jPanel5.add(txtCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
+
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        jPanel5.add(cbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
+
+        jLabel19.setText("EDAD");
+        jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, -1));
+
+        btnGuardar.setText("Guardar");
+        jPanel5.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, -1));
 
         javax.swing.GroupLayout dlgEmpleadosLayout = new javax.swing.GroupLayout(dlgEmpleados.getContentPane());
         dlgEmpleados.getContentPane().setLayout(dlgEmpleadosLayout);
         dlgEmpleadosLayout.setHorizontalGroup(
             dlgEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dlgEmpleadosLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
         );
         dlgEmpleadosLayout.setVerticalGroup(
             dlgEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -325,16 +351,15 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 740, 50));
 
-        tablaEmpleados.setForeground(new java.awt.Color(255, 255, 255));
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Cédula", "Nombre", "Apellido", "Dirección", "Usuario", "Contraseña", "Salario", "Foto"
+                "ID Empleado", "Cédula", "Nombre", "Apellido", "Dirección", "Genero", "Edad", "Id Usuario", "Salario", "Foto"
             }
         ));
         jScrollPane1.setViewportView(tablaEmpleados);
@@ -386,8 +411,11 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnExaminar;
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JComboBox<String> cbSexo;
     private javax.swing.JDialog dlgEmpleados;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -396,6 +424,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -409,9 +438,10 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtBuscar;
     private javax.swing.JTextField txtCedulaEmpleado;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtIdEmpleado;
+    private javax.swing.JTextField txtId_Usuario;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
-    private javax.swing.JTextField txtUsuario;
-    private javax.swing.JTextField txtUsuarioE;
     // End of variables declaration//GEN-END:variables
 }
