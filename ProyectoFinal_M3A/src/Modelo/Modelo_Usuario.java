@@ -161,53 +161,7 @@ public class Modelo_Usuario extends ClaseUsuario {
 //        }
 
     }
-  
-//    public boolean login01(Modelo_Usuario usua) {
-
-//            String sql;
-//            sql = "SELECT u.id_usuario, u.usuario, u.contraseña, u.nombre, u.id_tipo, t.nombre FROM usuarios AS u "
-//                    + "INNER JOIN tipousuario AS t ON u.id_tipo = t.id WHERE usuario = ?";
-//            ResultSet rs = null;
-//            
-//        try {
-//            
-//            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-//            
-//            ps.setString(1, getUsuario());
-//            rs = ps.executeQuery();
-//
-//            if (rs.next()) {
-//
-//                if (getContraseña().equals(rs.getString(3))) {
-//
-////                    String sqlUpdate = "UPDATE usuarios SET ultima_sesion = ? where id_usuario = ?";
-////            
-////                    ps = cpg.getCon().prepareStatement(sqlUpdate);
-////                    ps.setString(1, getUltima_sesion());
-////                    ps.setInt(2, rs.getInt(1));
-////                    ps.execute();
-//                    
-//                    setId(rs.getInt(1));
-//                    setNombre(rs.getString(4));
-//                    setId_tipo(rs.getInt(5));
-//                    setNombre_tipo(rs.getString(6));
-//
-//                    return true;
-//
-//                } else {
-//                    return false;
-//
-//                }
-//            }
-//
-//            return false;
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Modelo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-//            return false;
-//        }
-//   }
-    
+   
     public boolean eliminarUsuario(String usuario) {
         String sql;
 

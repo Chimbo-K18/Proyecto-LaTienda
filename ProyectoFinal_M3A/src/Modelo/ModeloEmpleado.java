@@ -176,7 +176,7 @@ public class ModeloEmpleado extends ClaseEmpleado{
     }
     
     public boolean validarEdad(String edad){
-        if(Integer.parseInt(edad)>18){
+        if(Integer.parseInt(edad) >= 18){
             return true;
         }else{
             return false;

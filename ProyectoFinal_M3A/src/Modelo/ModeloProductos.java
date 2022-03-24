@@ -124,6 +124,7 @@ public class ModeloProductos extends ClaseProductos {
         String sql = "UPDATE public.productos SET nombre='" + getNombre() + "', precio='" + getPrecio() + "', stock='" + getStock() + "', descripcion='" + getDescripcion() + "'WHERE id_producto = '" + identificador + "';";
         return cpg.accion(sql);
     }
+    
     public List<ClaseProductos> productitos(String Buscar) {
         try {
             List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
@@ -160,6 +161,7 @@ public class ModeloProductos extends ClaseProductos {
         }
         return null;
     }
+    
     public int contar(){
          try {
              String sql = "select count(id_producto) as numero from productos;";

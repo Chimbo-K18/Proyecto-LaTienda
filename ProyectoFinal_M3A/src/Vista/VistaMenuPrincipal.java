@@ -75,14 +75,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.btnVentas = btnVentas;
     }
 
-    public JButton getjButton2() {
-        return jButton2;
-    }
-
-    public void setjButton2(JButton jButton2) {
-        this.jButton2 = jButton2;
-    }
-
     public JDesktopPane getjDeskPanel() {
         return jDeskPanel;
     }
@@ -133,7 +125,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar2 = new javax.swing.JToolBar();
-        jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnAdminProductos = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -174,15 +165,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jToolBar2.setBackground(new java.awt.Color(0, 107, 179));
         jToolBar2.setRollover(true);
-
-        jButton2.setText("B1");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar2.add(jButton2);
         jToolBar2.add(jSeparator1);
 
-        btnAdminProductos.setText("APE");
+        btnAdminProductos.setText("APR");
         btnAdminProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminProductosActionPerformed(evt);
@@ -191,19 +176,19 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jToolBar2.add(btnAdminProductos);
         jToolBar2.add(jSeparator4);
 
-        btnAdminPersonal.setText("APR");
+        btnAdminPersonal.setText("APE");
         jToolBar2.add(btnAdminPersonal);
         jToolBar2.add(jSeparator2);
 
-        btnVentas.setText("VN");
+        btnVentas.setText("VNT");
         jToolBar2.add(btnVentas);
         jToolBar2.add(jSeparator3);
 
-        btnReportes.setText("RP");
+        btnReportes.setText("RPT");
         jToolBar2.add(btnReportes);
         jToolBar2.add(jSeparator5);
 
-        btnRegistrarClientes.setText("RC");
+        btnRegistrarClientes.setText("RCL");
         jToolBar2.add(btnRegistrarClientes);
 
         jDeskPanel.setBackground(new java.awt.Color(230, 245, 254));
@@ -222,10 +207,10 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("APE");
+        jButton1.setText("PR");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 57));
 
-        jButton3.setText("PR");
+        jButton3.setText("PE");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 51, 57));
 
         jButton4.setText("VN");
@@ -236,17 +221,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jButton6.setText("RC");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 51, 57));
-
-        jButton7.setText("jButton7");
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 50, 57));
-
-        jButton8.setText("jButton8");
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 51, 57));
-
-        jButton9.setText("jButton9");
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 51, 57));
-
-        jButton10.setText("jButton10");
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, 57));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -370,6 +347,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
@@ -386,7 +364,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
