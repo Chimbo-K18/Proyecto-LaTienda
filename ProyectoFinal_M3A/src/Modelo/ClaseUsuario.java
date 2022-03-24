@@ -13,7 +13,6 @@ public class ClaseUsuario {
     private String correo;
     private String ultima_sesion;
     private int id_tipo;
-    private String nombre_tipo;
 
     public ClaseUsuario() {
     }
@@ -27,19 +26,6 @@ public class ClaseUsuario {
         this.ultima_sesion = ultima_sesion;
         this.id_tipo = id_tipo;
     }
-
-    //ESTE CONSTRUCTOR ESTA CON LA VARIABLE nombre_tipo
-    
-//    public ClaseUsuario(int id, String usuario, String contraseña, String nombre, String correo, String ultima_sesion, int id_tipo, String nombre_tipo) {
-//        this.id = id;
-//        this.usuario = usuario;
-//        this.contraseña = contraseña;
-//        this.nombre = nombre;
-//        this.correo = correo;
-//        this.ultima_sesion = ultima_sesion;
-//        this.id_tipo = id_tipo;
-//        this.nombre_tipo = nombre_tipo;
-//    }
 
     public int getId() {
         return id;
@@ -67,14 +53,6 @@ public class ClaseUsuario {
 
     public String getNombre() {
         return nombre;
-    }
-
-    public String getNombre_tipo() {
-        return nombre_tipo;
-    }
-
-    public void setNombre_tipo(String nombre_tipo) {
-        this.nombre_tipo = nombre_tipo;
     }
 
     public void setNombre(String nombre) {

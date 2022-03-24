@@ -25,9 +25,12 @@ import javax.imageio.stream.ImageInputStream;
 public class ModeloCliente extends ClaseCliente{
     
     
-        ConectionBDD cpg = new ConectionBDD();
+        ConectionBDD cpg = new ConectionBDD(); //INVOCA A LA CONEXION DE LA BASE DE DATOS
         PreparedStatement ps;
         ResultSet rs;
+//    public ModeloCliente(String idPersona, String nombres, String apellidos, String edad, String direccion, String genero) {
+//        super(idPersona, nombres, apellidos, edad, direccion, genero);
+//    }
 
     public ModeloCliente() {
     }
@@ -56,6 +59,21 @@ public class ModeloCliente extends ClaseCliente{
         }
     }
 
+    //**********************OBTENER IMAGEN******************************************************
+    /*private Image obtenerImagen(byte[] bytes) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        Iterator it = ImageIO.getImageReadersByFormatName("png");
+        ImageReader reader = (ImageReader) it.next();
+        Object source = bis;
+        ImageInputStream iis = ImageIO.createImageInputStream(source);
+        reader.setInput(iis, true);
+        ImageReadParam param = reader.getDefaultReadParam();
+        param.setSourceSubsampling(1, 1, 0, 0);
+        return reader.read(0, param);
+
+    }*/
+
+    //**********************CREAR PERSONA******************************************************
     public boolean crearCliente() {
         String sql;
         sql="INSERT INTO clientes(cedula,nombre,apellido,direccion,telefono,email)";
@@ -64,6 +82,7 @@ public class ModeloCliente extends ClaseCliente{
         return cpg.accion(sql);
     }
 
+    //**********************ELIMINAR PERSONA******************************************************
     public boolean eliminar(String cedula) { //eliminar
         String sql="DELETE FROM persona where clientes='"+cedula+"'";
         return cpg.accion(sql);
@@ -77,7 +96,9 @@ public class ModeloCliente extends ClaseCliente{
                 "WHERE cedula='"+getCedula()+"';";
         return cpg.accion(sql);
     }
-    
+
+
+    //**********************CREAR PERSONA BYTE******************************************************
     public boolean crearPersonaByte() {
         try {
             String sql;
@@ -181,34 +202,5 @@ public class ModeloCliente extends ClaseCliente{
             System.out.println("La Cédula ingresada es Incorrecta");
         }
         return cedulaCorrecta;
-    }
-    
-    public List<ClaseCliente> buscar2(String aguja) {
-
-        try {
-            String sql = " select cedula,nombre,apellido,direccion,telefono,email from clientes WHERE";
-            sql += " UPPER(nombre) like UPPER('" + aguja + "%') or ";
-            sql += " UPPER(cedula) like UPPER('" + aguja + "%') ";
-           // sql += " UPPER(precio) like UPPER('" + aguja + "%')";
-            ResultSet rs = cpg.consulta(sql);
-            List<ClaseCliente> lp = new ArrayList<ClaseCliente>();
-            byte[] bytea;
-            while (rs.next()) {
-                ClaseCliente cli = new ClaseCliente();
-                cli.setCedula(rs.getString("cedula"));
-                cli.setNombre(rs.getString("nombre"));
-                cli.setApellido(rs.getString("apellido"));
-                cli.setDireccion(rs.getString("direccion"));
-                cli.setTelefono(rs.getInt("telefono"));
-                cli.setEmail(rs.getString("email"));
-                lp.add(cli);
-            }
-            rs.close();
-            return lp;
-        } catch (SQLException ex) {
-            Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
-            return null;
-        }
-
     }
 }

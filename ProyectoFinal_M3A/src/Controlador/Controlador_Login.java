@@ -1,16 +1,12 @@
 package Controlador;
 
 import Modelo.ClaseHash;
-import Modelo.ClaseUsuario;
 import Modelo.ModeloProductos;
 import Modelo.Modelo_Usuario;
 import Vista.VistaLogin;
 import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroUsuarios;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,8 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Controlador_Login {
 
-    private VistaLogin vistaInicio;
-    private Modelo_Usuario modelo;
+    VistaLogin vistaInicio;
+    Modelo_Usuario modelo;
 
     public Controlador_Login(VistaLogin vistaInicio) {
         this.vistaInicio = vistaInicio;
@@ -30,7 +26,7 @@ public class Controlador_Login {
     public void iniciaControl() {
 
         vistaInicio.getBtnRegistrarse().addActionListener(l -> registrarUsuario());
-        vistaInicio.getBtnIniciarSesion().addActionListener(l -> iniciarSistema());
+        vistaInicio.getBtnIniciarSesion().addActionListener(l -> iniciarSesion());
 
     }
 
@@ -43,43 +39,34 @@ public class Controlador_Login {
         controladorRegUsuarios.iniciaControl();
     }
 
+
+    private void iniciarSesion(){
+        
+        VistaMenuPrincipal visLogin = new VistaMenuPrincipal();
+        Controlador_MenuPrincipal controlador = new Controlador_MenuPrincipal(visLogin);
+        controlador.iniciaControl();
+        visLogin.setVisible(true);
+      
+    }
     
-    private void iniciarSistema() {
+    
+    private void abrirMenuPrincipal() {
         
-
         Modelo_Usuario modUsuario = new Modelo_Usuario();
-        ClaseUsuario mod = new ClaseUsuario();
 
-        //Date date = new Date();
-        //DateFormat fechaHora = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        
         String contraseña = new String(vistaInicio.getTxtContraseña().getPassword());
 
         if (!vistaInicio.getTxtUsuario().getText().equals("") && !contraseña.equals("")) {
 
             String nuevaContraseña = ClaseHash.sha1(contraseña);
 
-            modUsuario.setUsuario(vistaInicio.getTxtUsuario().getText());
-            modUsuario.setContraseña(nuevaContraseña);
-            //modUsuario.setUltima_sesion(fechaHora.format(date));
+            modelo.setUsuario(vistaInicio.getTxtUsuario().getText());
+            modelo.setContraseña(nuevaContraseña);
 
             if (modUsuario.login(modelo)) {
 
-                //JOptionPane.showMessageDialog(null, "Acceso Correcto");
-                VistaMenuPrincipal vista = new VistaMenuPrincipal();
-                Controlador_MenuPrincipal controla = new Controlador_MenuPrincipal(vista);
+                JOptionPane.showMessageDialog(null, "Acceso Correcto");
                 
-                controla.iniciaControl();
-                
-                vista.getLblNombre().setText(modUsuario.getNombre());
-                vista.getLblTipoUsuario().setText(modUsuario.getNombre_tipo());
-                
-                if(modUsuario.getId_tipo() == 1){
-                    
-                }else if(modUsuario.getId_tipo() == 2){
-                    
-                    vista.getMenuCrearUsuarios().setVisible(false);
-                }
 
             } else {
 

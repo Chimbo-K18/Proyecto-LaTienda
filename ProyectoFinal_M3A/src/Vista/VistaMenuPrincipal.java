@@ -3,7 +3,6 @@ package Vista;
 import javax.accessibility.AccessibleContext;
 import javax.swing.JButton;
 import javax.swing.JDesktopPane;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 
 /**
@@ -17,22 +16,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
      */
     public VistaMenuPrincipal() {
         initComponents();
-    }
-
-    public JLabel getLblNombre() {
-        return lblNombre;
-    }
-
-    public void setLblNombre(JLabel lblNombre) {
-        this.lblNombre = lblNombre;
-    }
-
-    public JLabel getLblTipoUsuario() {
-        return lblTipoUsuario;
-    }
-
-    public void setLblTipoUsuario(JLabel lblTipoUsuario) {
-        this.lblTipoUsuario = lblTipoUsuario;
     }
 
     public JButton getBtnAdminPersonal() {
@@ -75,6 +58,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         this.btnVentas = btnVentas;
     }
 
+    public JButton getjButton2() {
+        return jButton2;
+    }
+
+    public void setjButton2(JButton jButton2) {
+        this.jButton2 = jButton2;
+    }
+
     public JDesktopPane getjDeskPanel() {
         return jDeskPanel;
     }
@@ -92,11 +83,11 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     }
 
     public JMenu getjMenu2() {
-        return menuCrearUsuarios;
+        return jMenu2;
     }
 
     public void setjMenu2(JMenu jMenu2) {
-        this.menuCrearUsuarios = jMenu2;
+        this.jMenu2 = jMenu2;
     }
 
     public AccessibleContext getAccessibleContext() {
@@ -105,14 +96,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
-    }
-
-    public JMenu getMenuCrearUsuarios() {
-        return menuCrearUsuarios;
-    }
-
-    public void setMenuCrearUsuarios(JMenu menuCrearUsuarios) {
-        this.menuCrearUsuarios = menuCrearUsuarios;
     }
 
     /**
@@ -125,6 +108,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar2 = new javax.swing.JToolBar();
+        jButton2 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JToolBar.Separator();
         btnAdminProductos = new javax.swing.JButton();
         jSeparator4 = new javax.swing.JToolBar.Separator();
@@ -150,24 +134,30 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        lblTipoUsuario = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        menuCrearUsuarios = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jToolBar2.setBackground(new java.awt.Color(0, 107, 179));
         jToolBar2.setRollover(true);
+
+        jButton2.setText("B1");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(jButton2);
         jToolBar2.add(jSeparator1);
 
-        btnAdminProductos.setText("APR");
+        btnAdminProductos.setText("APE");
         btnAdminProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdminProductosActionPerformed(evt);
@@ -176,19 +166,19 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jToolBar2.add(btnAdminProductos);
         jToolBar2.add(jSeparator4);
 
-        btnAdminPersonal.setText("APE");
+        btnAdminPersonal.setText("APR");
         jToolBar2.add(btnAdminPersonal);
         jToolBar2.add(jSeparator2);
 
-        btnVentas.setText("VNT");
+        btnVentas.setText("VN");
         jToolBar2.add(btnVentas);
         jToolBar2.add(jSeparator3);
 
-        btnReportes.setText("RPT");
+        btnReportes.setText("RP");
         jToolBar2.add(btnReportes);
         jToolBar2.add(jSeparator5);
 
-        btnRegistrarClientes.setText("RCL");
+        btnRegistrarClientes.setText("RC");
         jToolBar2.add(btnRegistrarClientes);
 
         jDeskPanel.setBackground(new java.awt.Color(230, 245, 254));
@@ -207,10 +197,10 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setText("PR");
+        jButton1.setText("APE");
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 57));
 
-        jButton3.setText("PE");
+        jButton3.setText("PR");
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, 51, 57));
 
         jButton4.setText("VN");
@@ -221,9 +211,17 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
 
         jButton6.setText("RC");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 51, 57));
+
+        jButton7.setText("jButton7");
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 50, 57));
+
+        jButton8.setText("jButton8");
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 51, 57));
+
+        jButton9.setText("jButton9");
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 51, 57));
+
+        jButton10.setText("jButton10");
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, 57));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -235,13 +233,13 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jLabel3.setText("Usuario Registrado:");
         jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblTipoUsuario.setText("Admin");
+        jLabel4.setText("Admin");
 
         jLabel5.setText("Dirección:");
         jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        lblNombre.setText("Joaquin Ortega");
-        lblNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jLabel6.setText("Joaquin Ortega");
+        jLabel6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel7.setText("Av. Don Bosco y Av. Loja");
 
@@ -266,7 +264,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                                 .addComponent(jLabel2))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(60, 60, 60)
-                                .addComponent(lblNombre)))
+                                .addComponent(jLabel6)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
@@ -274,7 +272,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lblTipoUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -294,9 +292,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lblTipoUsuario))
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombre)
+                .addComponent(jLabel6)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -312,11 +310,11 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jMenu1.setText("Productos");
+        jMenu1.setText("File");
         jMenuBar.add(jMenu1);
 
-        menuCrearUsuarios.setText("Crear Usuario");
-        jMenuBar.add(menuCrearUsuarios);
+        jMenu2.setText("Edit");
+        jMenuBar.add(jMenu2);
 
         setJMenuBar(jMenuBar);
 
@@ -347,7 +345,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         );
 
         pack();
-        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdminProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminProductosActionPerformed
@@ -364,6 +361,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -375,11 +373,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -390,8 +391,5 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JToolBar.Separator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JToolBar jToolBar2;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblTipoUsuario;
-    private javax.swing.JMenu menuCrearUsuarios;
     // End of variables declaration//GEN-END:variables
 }

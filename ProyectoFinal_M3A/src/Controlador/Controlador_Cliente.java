@@ -6,9 +6,6 @@ package Controlador;
 import Modelo.ClaseCliente;
 import Modelo.ModeloCliente;
 import Vista.VistaRegistroClientes;
-import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
@@ -18,11 +15,8 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.xml.ws.Holder;
 
 
 public class Controlador_Cliente {
@@ -33,28 +27,11 @@ public class Controlador_Cliente {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
-        //vista.setSize(1100,700);
+        vista.setSize(1100,750);
         cargarClientes();
     }
     
     public void iniciarControl(){
-        KeyListener k1 = new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-//                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-                buscarCliente(vista.getTxtBuscar().getText());
-            }
-        };
-        vista.getTxtBuscar().addKeyListener(k1);
         vista.getBtnActualizar().addActionListener(l->cargarClientes());
         vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
         vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
@@ -66,12 +43,10 @@ public class Controlador_Cliente {
         String title;
         if(ce==1){
             title="CREAR CLIENTE";
-            vista.getTxtCedula().setEnabled(true);
             vista.getDlgClientes().setName("crear");
             limpiarCampos();
         }else{
             title="EDITAR CLIENTE";
-            vista.getTxtCedula().setEnabled(false);
             vista.getDlgClientes().setName("editar");
             modificar();
             //cargarPersonas();
@@ -144,32 +119,39 @@ public class Controlador_Cliente {
                 JOptionPane.showMessageDialog(vista, "HAY CAMPOS VACIOS");
                 
             }else{ 
-                
-                if (modelo.ValidarTelefono(vista.getTxtTelefono().getText())) {
-                    if (modelo.validarCorreo(vista.getTxtEmail().getText())) {
+                if(modelo.existeCliente(vista.getTxtCedula().getText())==0){
 
-                        ModeloCliente ec = new ModeloCliente();
+                    if(modelo.validarDeCedula(vista.getTxtCedula().getText())){
+                        if(modelo.ValidarTelefono(vista.getTxtTelefono().getText())){
+                            if(modelo.validarCorreo(vista.getTxtEmail().getText())){
 
-                        ec.setCedula(vista.getTxtCedula().getText());
-                        ec.setNombre(vista.getTxtNombre().getText());
-                        ec.setApellido(vista.getTxtApellido().getText());
-                        ec.setDireccion(vista.getTxtDireccion().getText());
-                        ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
-                        ec.setEmail(vista.getTxtEmail().getText());
+                                ModeloCliente ec = new ModeloCliente();
 
-                        if (ec.editarCliente()) {
-                            JOptionPane.showMessageDialog(vista, "Editado exitosamente");
-                            vista.getDlgClientes().setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(vista, "No se edito");
+                                ec.setCedula(vista.getTxtCedula().getText());
+                                ec.setNombre(vista.getTxtNombre().getText());
+                                ec.setApellido(vista.getTxtApellido().getText());
+                                ec.setDireccion(vista.getTxtDireccion().getText());
+                                ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
+                                ec.setEmail(vista.getTxtEmail().getText());
+
+                                if (ec.editarCliente()) {
+                                    JOptionPane.showMessageDialog(vista, "Editado exitosamente");
+                                    vista.getDlgClientes().setVisible(false);
+                                } else {
+                                    JOptionPane.showMessageDialog(vista, "No se edito");
+                                }
+                           }else{
+                                JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                            }
+                       }else{
+                            JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
                         }
-                    } else {
-                        JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                   }else{
+                        JOptionPane.showMessageDialog(vista, "La cédula no es válida");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
-                }
-                    
+                }else{
+                        JOptionPane.showMessageDialog(vista, "La cédula ya esta registrada");
+                    }    
            }     
         }
         
@@ -233,22 +215,6 @@ public class Controlador_Cliente {
             }
         }
         
-    }
-    
-    private void buscarCliente(String aguja) {
-        DefaultTableModel tblModel;
-        tblModel=(DefaultTableModel)vista.getTblClientes().getModel();
-        tblModel.setNumRows(0); //Limpia filas de la tabla
-        
-        List<ClaseCliente>listap = modelo.buscar2(aguja);
-        listap.stream().forEach(pe->{
-
-            String[] filap={pe.getCedula(),pe.getNombre(),pe.getApellido(),
-                pe.getDireccion(),String.valueOf(pe.getTelefono()),
-                pe.getEmail()};
-            tblModel.addRow(filap);
-        });
-    
     }
     
     public void limpiarCampos(){
