@@ -85,7 +85,7 @@ public class Controlador_Empleado {
             //cargarEmpleados();
         }
         vistaE.getDlgEmpleados().setLocationRelativeTo(vistaE);
-        vistaE.getDlgEmpleados().setSize(600,600);
+        vistaE.getDlgEmpleados().setSize(550,600);
         vistaE.getDlgEmpleados().setTitle(title);
         vistaE.getDlgEmpleados().setVisible(true);
         vistaE.getDlgEmpleados().setLocationRelativeTo(vistaE);

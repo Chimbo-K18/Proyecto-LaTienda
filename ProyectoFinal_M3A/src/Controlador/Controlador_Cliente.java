@@ -77,7 +77,7 @@ public class Controlador_Cliente {
             //cargarPersonas();
         }
         vista.getDlgClientes().setLocationRelativeTo(vista);
-        vista.getDlgClientes().setSize(600,600);
+        vista.getDlgClientes().setSize(447,500);
         vista.getDlgClientes().setTitle(title);
         vista.getDlgClientes().setVisible(true);
         vista.getDlgClientes().setLocationRelativeTo(vista);
