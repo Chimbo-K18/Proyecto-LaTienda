@@ -176,4 +176,19 @@ public class ModeloProductos extends ClaseProductos {
          }
          return 0; 
      }
+    
+    public boolean ValidarNum(String num){
+        if(num.matches("[0-9]{1,5}") == true){ 
+            return true; 
+        } else { 
+            return false; 
+        } 
+    }
+    public boolean validaletras(String letra){
+        if(letra.matches("[a-zA-Z\\s]{1,50}") == true){ 
+            return true; 
+        }else{
+            return false;
+        }
+    }
 }
