@@ -332,3 +332,4 @@ public class Controlador_Venta {
         vistaVenta.setVisible(false);
     };
 }
+//
