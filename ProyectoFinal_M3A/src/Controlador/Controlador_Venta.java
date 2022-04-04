@@ -1,7 +1,6 @@
 package Controlador;
 
 /**
- *
  * @author bryan
  */
 import Modelo.ClaseCliente;
@@ -28,12 +27,10 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.util.JRLoader;
 import net.sf.jasperreports.view.JasperViewer;
 
-import Vista.VistaRegistroClientes;
 import Vista.VistaRegistroVentas;
 import Modelo.ModeloFacturas;
 import Modelo.ModeloDetalleFactura;
 import Modelo.ClaseDetalleFactura;
-import Modelo.ClasePersona;
 import Modelo.ClaseProductos;
 import Modelo.ConectionBDD;
 
@@ -55,61 +52,66 @@ public class Controlador_Venta {
     }
 
     public void iniciaControl() throws IOException {
-    
-    KeyListener kl = new KeyListener() {
-        @Override
-        public void keyTyped(KeyEvent e) {
-        }
-        @Override
-        public void keyPressed(KeyEvent e) {
-        }
-        @Override
-        public void keyReleased(KeyEvent e) {
-            CargarDisponibilidad(vistaVenta.getTxtBuscarPro().getText());
-            llenarCuadrosDialogoPersona(vistaVenta.getTxtCedula().getText());
-        }
-    };
-    
-    vistaVenta.getTxtBuscarPro().addKeyListener(kl);
-    vistaVenta.getTxtCedula().addKeyListener(kl);
-    CargaImagenenes();
-    suma();
 
-    MouseListener ml = new MouseListener() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            Contar(e);
-        }
-        @Override
-        public void mousePressed(MouseEvent e) {   
-        }
-        @Override
-        public void mouseReleased(MouseEvent e) { 
-        }
-        @Override
-        public void mouseEntered(MouseEvent e) {
-        }
-        @Override
-        public void mouseExited(MouseEvent e) {
-        }
-    };
-    
-    //vista.getBtnRemover().addActionListener(l -> eliminar());
-    vistaVenta.getBtnProducto01().addActionListener(l -> Botones(1));
-    vistaVenta.getBtnProducto02().addActionListener(l -> Botones(2));
-    vistaVenta.getBtnProducto03().addActionListener(l -> Botones(3));
-    vistaVenta.getBtnProducto04().addActionListener(l -> Botones(4));
-    vistaVenta.getBtnProducto05().addActionListener(l -> Botones(5));
-    vistaVenta.getBtnProducto06().addActionListener(l -> Botones(6));
-    vistaVenta.getBtnProducto07().addActionListener(l -> Botones(7));
-    vistaVenta.getBtnProducto08().addActionListener(l -> Botones(8));
-    vistaVenta.getBtnProducto09().addActionListener(l -> Botones(9));
-    vistaVenta.getBtnSalir().addActionListener(l -> salir());
-    vistaVenta.getBtnGenerarFactura().addActionListener(l -> GenerarVenta());
-    vistaVenta.getBtnNuevo().addActionListener(l -> crearnuevaventa());
-    vistaVenta.getBtnRecibo().addActionListener(l -> ImprimirListaVentas());
-}
-    
+        KeyListener kl = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                CargarDisponibilidad(vistaVenta.getTxtBuscarPro().getText());
+                llenarCuadrosDialogoPersona(vistaVenta.getTxtCedula().getText());
+            }
+        };
+
+        vistaVenta.getTxtBuscarPro().addKeyListener(kl);
+        vistaVenta.getTxtCedula().addKeyListener(kl);
+        CargaImagenenes();
+        suma();
+
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                Contar(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        };
+
+        //vista.getBtnRemover().addActionListener(l -> eliminar());
+        vistaVenta.getBtnProducto01().addActionListener(l -> Botones(1));
+        vistaVenta.getBtnProducto02().addActionListener(l -> Botones(2));
+        vistaVenta.getBtnProducto03().addActionListener(l -> Botones(3));
+        vistaVenta.getBtnProducto04().addActionListener(l -> Botones(4));
+        vistaVenta.getBtnProducto05().addActionListener(l -> Botones(5));
+        vistaVenta.getBtnProducto06().addActionListener(l -> Botones(6));
+        vistaVenta.getBtnProducto07().addActionListener(l -> Botones(7));
+        vistaVenta.getBtnProducto08().addActionListener(l -> Botones(8));
+        vistaVenta.getBtnProducto09().addActionListener(l -> Botones(9));
+        vistaVenta.getBtnSalir().addActionListener(l -> salir());
+        vistaVenta.getBtnGenerarFactura().addActionListener(l -> GenerarVenta());
+        vistaVenta.getBtnNuevo().addActionListener(l -> crearnuevaventa());
+    }
+
     private void ImprimirListaVentas() {
         ConectionBDD connection = new ConectionBDD();
         try {
@@ -121,7 +123,7 @@ public class Controlador_Venta {
             Logger.getLogger(Controlador_Venta.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void suma() {
         int contar = vistaVenta.getTblFactura().getRowCount();
         double suma = 0;
@@ -129,16 +131,14 @@ public class Controlador_Venta {
             suma = suma + Double.parseDouble(vistaVenta.getTblFactura().getValueAt(i, 5).toString());
         }
         vistaVenta.getTxtSubtotal().setText(Double.toString(suma));
-
         double iva = (suma * 0.12);
         vistaVenta.getTxtIva().setText(Double.toString(iva));
-
         vistaVenta.getTxtTotalPagar().setText("" + (suma + iva));
-
     }
+
     int contador = 1;
     boolean a = false;
-    
+
     public void Botones(int numero) {
 
         DefaultTableModel tblModel = (DefaultTableModel) vistaVenta.getTblFactura().getModel();
@@ -167,20 +167,21 @@ public class Controlador_Venta {
 
         suma();
     }
-    
+
     private int conteo_clicks = 0;
+
     public void Contar(MouseEvent mouseEvent) {
         conteo_clicks++;
 
     }
-    
-     public Icon imagenDBB(int numero) throws IOException {//aparezca la imagen de la bd
+
+    public Icon imagenDBB(int numero) throws IOException {//aparezca la imagen de la bd
         Image imagen = modeloDetalle.obtenerImagen(modeloDetalle.imagenDeSql(numero));
         Icon icon = new ImageIcon(imagen.getScaledInstance(150, 150, Image.SCALE_SMOOTH));//aki cambias tamano 
         return icon;
     }
-     
-     public void CargaImagenenes() throws IOException {
+
+    public void CargaImagenenes() throws IOException {
 
         vistaVenta.getBtnProducto01().setIcon(imagenDBB(1));
         vistaVenta.getBtnProducto02().setIcon(imagenDBB(2));
@@ -191,10 +192,10 @@ public class Controlador_Venta {
         vistaVenta.getBtnProducto07().setIcon(imagenDBB(7));
         vistaVenta.getBtnProducto08().setIcon(imagenDBB(8));
         vistaVenta.getBtnProducto09().setIcon(imagenDBB(9));
-        
+
     }
-     
-     public void CargarDisponibilidad(String busqueda) {//buscarProductos
+
+    public void CargarDisponibilidad(String busqueda) {//buscarProductos
         DefaultTableModel tblModel = (DefaultTableModel) vistaVenta.getTblPro().getModel();
         tblModel.setNumRows(0);//limpiar campos
         List<ClaseProductos> listapro = modeloDetalle.productitos(busqueda);
@@ -204,7 +205,7 @@ public class Controlador_Venta {
 
         });
     }
-    
+
     private boolean RevisaCodigo(String codigo, DefaultTableModel modelo) {
         if (codigo != null && modelo != null) {
             for (int renglon = 0; renglon < modelo.getRowCount(); renglon++) {
@@ -217,13 +218,13 @@ public class Controlador_Venta {
         }
         return true;
     }
-    
+
     private int codigo() {
         int codigoproducto = Integer.parseInt(vistaVenta.getTblFactura().getValueAt(vistaVenta.getTblFactura().getRowCount() - 1, 0).toString());
         System.out.println(codigoproducto);
         return codigoproducto;
     }
-    
+
     private int buscaUltimaCantidad(String codigo, DefaultTableModel modelo) {
         int cuentame = 1;
         if (codigo != null && modelo != null) {
@@ -236,7 +237,7 @@ public class Controlador_Venta {
         }
         return cuentame++;
     }
-    
+
     private void llenarCuadrosDialogoPersona(String cadenaBusqueda) {//Buscar Persona
         List<ClaseCliente> listaPersona = modeloDetalle.buscarcliente(cadenaBusqueda);
 
@@ -249,15 +250,15 @@ public class Controlador_Venta {
 
         });
     }
-    
+
     private void llenaridfactura() {
         vistaVenta.getLblFactura().setText(modeloDetalle.contar() + "");
     }
-    
+
     private void crearFactura() {
         modeloFactura.setIdFactura(Integer.parseInt(vistaVenta.getLblFactura().getText()));
-        modeloFactura.setFecha(((JTextField) vistaVenta.getDateFecha().getDateEditor().getUiComponent()).getText());
-        modeloFactura.setIdCliente(Integer.parseInt (vistaVenta.getTxtCedula().getText()));
+        modeloFactura.setFecha(((JTextField) vistaVenta.getDateFacturas().getDateEditor().getUiComponent()).getText());
+        modeloFactura.setIdCliente(Integer.parseInt(vistaVenta.getTxtCedula().getText()));
         if (modeloFactura.crearFactura()) {
             crear();
             JOptionPane.showMessageDialog(vistaVenta, "Factura Creada Con Satisfaccion");
@@ -266,7 +267,7 @@ public class Controlador_Venta {
         }
 
     }
-    
+
     public void crear() {//crearDetalleFactura
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
         DefaultTableModel tblModel = (DefaultTableModel) vistaVenta.getTblFactura().getModel();
@@ -286,7 +287,7 @@ public class Controlador_Venta {
             }
         }
     }
-        
+
     private void stock() {
         DefaultTableModel tblModel = (DefaultTableModel) vistaVenta.getTblFactura().getModel();
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
@@ -315,11 +316,11 @@ public class Controlador_Venta {
         llenaridfactura();
         limpiarCampos();
     }
-    
+
     private void limpiarCampos() {
         vistaVenta.getTxtNombre().setText(null);
         vistaVenta.getTxtApellido().setText(null);
-        vistaVenta.getDateFecha().setDate(null);
+        vistaVenta.getDateFacturas().setDate(null);
         vistaVenta.getTxtCedula().setText(null);
         vistaVenta.getTxtIva().setText(null);
         vistaVenta.getTxtSubtotal().setText(null);
@@ -327,9 +328,10 @@ public class Controlador_Venta {
         DefaultTableModel tblModel = (DefaultTableModel) vistaVenta.getTblFactura().getModel();
         tblModel.setNumRows(0);//limpiar campos
     }
-    
-    private void salir(){
+
+    private void salir() {
         vistaVenta.setVisible(false);
-    };
+    }
+;
 }
 //
