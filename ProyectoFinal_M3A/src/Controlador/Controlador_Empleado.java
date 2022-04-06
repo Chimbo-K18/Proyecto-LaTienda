@@ -37,7 +37,7 @@ public class Controlador_Empleado {
         this.modeloE = modeloE;
         this.vistaE = vistaE;
         vistaE.setVisible(true);
-        vistaE.setSize(1100,750);
+        //vistaE.setSize(1100,750);
         cargarEmpleados();
     }
     
