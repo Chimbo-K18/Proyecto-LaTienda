@@ -1,5 +1,9 @@
 package Vista;
 
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Bryan Orellana
@@ -12,6 +16,64 @@ public class VistaRegistroVentas3 extends javax.swing.JInternalFrame {
     public VistaRegistroVentas3() {
         initComponents();
     }
+
+    public JLabel getLblFactura() {
+        return lblFactura;
+    }
+
+    public void setLblFactura(JLabel lblFactura) {
+        this.lblFactura = lblFactura;
+    }
+
+    public JTable getTblFactura() {
+        return tblFactura;
+    }
+
+    public void setTblFactura(JTable tblFactura) {
+        this.tblFactura = tblFactura;
+    }
+
+    public JTextField getTxtCambio() {
+        return txtCambio;
+    }
+
+    public void setTxtCambio(JTextField txtCambio) {
+        this.txtCambio = txtCambio;
+    }
+
+    public JTextField getTxtEfectivo() {
+        return txtEfectivo;
+    }
+
+    public void setTxtEfectivo(JTextField txtEfectivo) {
+        this.txtEfectivo = txtEfectivo;
+    }
+
+    public JTextField getTxtIva() {
+        return txtIva;
+    }
+
+    public void setTxtIva(JTextField txtIva) {
+        this.txtIva = txtIva;
+    }
+
+    public JTextField getTxtSubtotal() {
+        return txtSubtotal;
+    }
+
+    public void setTxtSubtotal(JTextField txtSubtotal) {
+        this.txtSubtotal = txtSubtotal;
+    }
+
+    public JTextField getTxtTotal() {
+        return txtTotal;
+    }
+
+    public void setTxtTotal(JTextField txtTotal) {
+        this.txtTotal = txtTotal;
+    }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,7 +91,7 @@ public class VistaRegistroVentas3 extends javax.swing.JInternalFrame {
         btnBuscarFacturas = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblFacturas = new javax.swing.JTable();
+        tblFactura = new javax.swing.JTable();
         lblFactura = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -54,7 +116,7 @@ public class VistaRegistroVentas3 extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Factura Nº:");
 
-        tblFacturas.setModel(new javax.swing.table.DefaultTableModel(
+        tblFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -65,7 +127,7 @@ public class VistaRegistroVentas3 extends javax.swing.JInternalFrame {
                 "Factura", "Cliente", "Empleado", "Fecha"
             }
         ));
-        jScrollPane3.setViewportView(tblFacturas);
+        jScrollPane3.setViewportView(tblFactura);
 
         lblFactura.setText(" ");
 
@@ -257,7 +319,7 @@ public class VistaRegistroVentas3 extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblFactura;
-    private javax.swing.JTable tblFacturas;
+    private javax.swing.JTable tblFactura;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtEfectivo;
     private javax.swing.JTextField txtIva;

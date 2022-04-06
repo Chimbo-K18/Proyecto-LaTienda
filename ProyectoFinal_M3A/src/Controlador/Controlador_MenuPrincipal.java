@@ -12,6 +12,9 @@ import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroEmpleados;
 import Vista.VistaRegistroVentas;
 import Vista.VistaVentas2;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -34,7 +37,13 @@ public class Controlador_MenuPrincipal {
         vistaMenu.getBtnAdminPersonal().addActionListener(l-> crudEmpleados());
         vistaMenu.getBtnRegistrarClientes().addActionListener(l->crudClientes());
         vistaMenu.getBtnVentas().addActionListener(l->Ventas());
-        vistaMenu.getBtnV2().addActionListener(l-> abrirVentas2());
+        vistaMenu.getBtnV2().addActionListener(l-> {
+            try {
+                abrirVentas2();
+            } catch (IOException ex) {
+                Logger.getLogger(Controlador_MenuPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
     }
     
     
@@ -79,7 +88,7 @@ public class Controlador_MenuPrincipal {
          cPedido.iniciaControl();
     }
     
-    public void abrirVentas2(){
+    public void abrirVentas2() throws IOException{
         
         ModeloDetalleFactura modeloV = new ModeloDetalleFactura();
         VistaVentas2 vistaVentas = new VistaVentas2();

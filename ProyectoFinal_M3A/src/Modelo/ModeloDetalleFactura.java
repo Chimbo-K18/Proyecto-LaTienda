@@ -112,8 +112,8 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
     public byte[] imagenDeSql(int numero) {
         try {
             String sql = "SELECT  foto "
-                    + "FROM public.producto  "
-                    + "WHERE id = '" + numero + "';";
+                    + "FROM public.productos "
+                    + "WHERE id_producto = '" + numero + "';";
             ResultSet rs = cpg.consulta(sql);
             byte[] bytea = null;
             while (rs.next()) {
