@@ -37,9 +37,7 @@ public class Controlador_Productos {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
-        vista.getLblsololetras().setVisible(false);
-        vista.getLblsolonumeros().setVisible(false);
-        vista.getLblsolonum().setVisible(false);
+       
     }
 
     public void iniciaControl() {
@@ -109,7 +107,7 @@ public class Controlador_Productos {
             vista.getDialogoProducto().setName("editar");
         }
         vista.getDialogoProducto().setLocationRelativeTo(vista);
-        vista.getDialogoProducto().setSize(549, 495);
+        vista.getDialogoProducto().setSize(549, 399);
         vista.getDialogoProducto().setTitle(title);
         vista.getDialogoProducto().setVisible(true);
         vista.getDialogoProducto().setResizable(false);
@@ -128,30 +126,31 @@ public class Controlador_Productos {
     public void Crear() {
 
         //int id = Integer.parseInt(vista.getTxtID().getText());
-        if (!vista.getTxtnombreP().getText().isEmpty() && !vista.getTxtStock().getText().isEmpty() && !vista.getTxtprecio().getText().isEmpty() && !vista.getAreaDescripcion().getText().isEmpty()) {
+        if (vista.getTxtnombreP().getText().isEmpty() && vista.getTxtStock().getText().isEmpty() && vista.getTxtprecio().getText().isEmpty() && vista.getAreaDescripcion().getText().isEmpty()) {
+            JOptionPane.showMessageDialog(vista, "Todos los campos deben ser llenados", "Campos Vacios", 2);
+        } else {
             if (modelo.ValidarNum(vista.getTxtStock().getText())) {
                 if (modelo.validaletras(vista.getTxtnombreP().getText())) {
-
                     String nombre = vista.getTxtnombreP().getText();
                     double precio = Double.valueOf(vista.getTxtprecio().getText());
                     int stock = Integer.parseInt(vista.getTxtStock().getText());
                     String descripcion = vista.getAreaDescripcion().getText();
-
+                    String categoria= vista.getComboCategoria().getSelectedItem().toString();
                     ModeloProductos producto = new ModeloProductos();
                     //producto.setId(id);
                     producto.setId(producto.contar());
                     producto.setNombre(nombre);
                     producto.setPrecio(precio);
                     producto.setStock(stock);
-                    producto.setDescripcion(descripcion);
-
+                    producto.setCategoria(categoria);
+                    producto.setDescripcion(descripcion);              
                     producto.setFoto(foto);
 
                     if (foto == null) {
-                        int devuelve = JOptionPane.showConfirmDialog(vista, "¿Seguro que?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        int devuelve = JOptionPane.showConfirmDialog(vista, "¿Seguro que desea guardar sin cargar la imagen?", "Confirmar", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
                         if (devuelve == JOptionPane.YES_OPTION) {
-                       
+
                             try {
                                 //Foto
                                 FileInputStream img = new FileInputStream(jfc.getSelectedFile());
@@ -170,30 +169,26 @@ public class Controlador_Productos {
                             } else {
                                 JOptionPane.showMessageDialog(vista, "No se pudo crear el producto");
                             }
-                          }
-                        
-                        } else {
-
-                            JOptionPane.showMessageDialog(vista, "Necesita cargar la imagen del producto");
                         }
-                    
+
                     } else {
 
-                        vista.getLblsololetras().setVisible(true);
-                        //JOptionPane.showMessageDialog(vista, "En el campo de nombre ingrese solo letras");
+                        JOptionPane.showMessageDialog(vista, "Necesita cargar la imagen del producto");
                     }
+
                 } else {
-                    vista.getLblsolonum().setVisible(true);
 
+                  
+                    JOptionPane.showMessageDialog(vista, "En el campo de nombre ingrese solo letras");
                 }
-
             } else {
-                JOptionPane.showMessageDialog(vista, "Todos los campos deben ser llenados", "Campos Vacios", 2);
-            }
+                
+                JOptionPane.showMessageDialog(vista, "En el campo de stock ingrese solo numeros");
 
+            }
         }
 
-    
+    }
 
     public void Modificar() {
         int id = Integer.parseInt(vista.getTxtID().getText());
@@ -201,12 +196,13 @@ public class Controlador_Productos {
         double precio = Double.valueOf(vista.getTxtprecio().getText());
         int stock = Integer.parseInt(vista.getTxtStock().getText());
         String descripcion = vista.getAreaDescripcion().getText();
-
+        String categoria= vista.getComboCategoria().getSelectedItem().toString();
         ModeloProductos producto = new ModeloProductos();
         producto.setId(id);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
         producto.setStock(stock);
+        producto.setCategoria(categoria);
         producto.setDescripcion(descripcion);
         ImageIcon ic = (ImageIcon) vista.getLblFoto().getIcon();
         producto.setFoto(ic.getImage());
@@ -258,7 +254,8 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
 
             Image foto = pe.getFoto();
             if (foto != null) {
@@ -267,10 +264,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 5);
+                vista.getTablaProductos().setValueAt(null, i.value, 6);
             }
             i.value++;
 
@@ -294,7 +291,8 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
 
             Image foto = pe.getFoto();
             if (foto != null) {
@@ -303,10 +301,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 5);
+                vista.getTablaProductos().setValueAt(null, i.value, 6);
             }
             i.value++;
 
@@ -325,11 +323,11 @@ public class Controlador_Productos {
             vista.getTxtID().setText(tblProductos.getValueAt(fila, 0).toString());
             vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
             vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
-
             vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
-            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 4).toString());
+            vista.getComboCategoria().setSelectedItem(tblProductos.getValueAt(fila, 4).toString());
+            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 5).toString());
 
-            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 5);
+            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 6);
             vista.getLblFoto().setIcon(lbl.getIcon());
         } else {
             JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN PRODUCTO Y LUEGO EN EDITAR", "AVISO", 2);
@@ -354,7 +352,8 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
 
             Image foto = pe.getFoto();
             if (foto != null) {
@@ -363,10 +362,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 5);
+                vista.getTablaProductos().setValueAt(null, i.value, 6);
             }
             i.value++;
 
@@ -382,6 +381,7 @@ public class Controlador_Productos {
         vista.getTxtnombreP().setText(null);
         vista.getTxtprecio().setText(null);
         vista.getTxtStock().setText(null);
+        vista.getComboCategoria().setSelectedIndex(0);
 
     }
 

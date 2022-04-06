@@ -50,6 +50,7 @@ public class ModeloProductos extends ClaseProductos {
                 pro.setNombre(rs.getString("nombre"));
                 pro.setPrecio(rs.getDouble("precio"));
                 pro.setStock(rs.getInt("stock"));
+                pro.setCategoria(rs.getString("categoria"));
                 pro.setDescripcion(rs.getString("descripcion"));
                 //Proceso de conversion del formato de la base (Base64) a el formato Image
                 //bytea> Bytes Array
@@ -90,8 +91,8 @@ public class ModeloProductos extends ClaseProductos {
 
     public boolean crearProducto() {
         String sql;
-        sql = "INSERT INTO productos (id_producto,nombre,precio,stock,descripcion)";
-        sql += "VALUES('" + getId() + "',' " + getNombre() + "','" + getPrecio() + "','" + getStock() + "',' " + getDescripcion() + "');";
+        sql = "INSERT INTO productos (id_producto,nombre,precio,stock,categoria,descripcion)";
+        sql += "VALUES('" + getId() + "',' " + getNombre() + "','" + getPrecio() + "','" + getStock() + "','" + getCategoria()+ "',' " + getDescripcion() + "');";
 
         return cpg.accion(sql);
     }
@@ -99,15 +100,16 @@ public class ModeloProductos extends ClaseProductos {
     public boolean crearProductoByte() {
         try {
             String sql;
-            sql = "INSERT INTO productos (id_producto,nombre,precio,stock,descripcion, foto)";
-            sql += "VALUES(?,?,?,?,?,?)";
+            sql = "INSERT INTO productos (id_producto,nombre,precio,stock,categoria,descripcion, foto)";
+            sql += "VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId());
             ps.setString(2, getNombre());
             ps.setDouble(3, getPrecio());
             ps.setInt(4, getStock());
-            ps.setString(5, getDescripcion());
-            ps.setBinaryStream(6, getImagen(), getLargo());
+            ps.setString(5, getCategoria());
+            ps.setString(6, getDescripcion());
+            ps.setBinaryStream(7, getImagen(), getLargo());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -122,14 +124,14 @@ public class ModeloProductos extends ClaseProductos {
     }
 
     public boolean modificar(String identificador) { //modificar identificador es la llave primaria UPDATE= MODIFICAR
-        String sql = "UPDATE public.productos SET nombre='" + getNombre() + "', precio='" + getPrecio() + "', stock='" + getStock() + "', descripcion='" + getDescripcion() + "'WHERE id_producto = '" + identificador + "';";
+        String sql = "UPDATE public.productos SET nombre='" + getNombre() + "', precio='" + getPrecio() + "', stock='" + getStock() + "', categoria='" + getCategoria() + "', descripcion='" + getDescripcion() + "'WHERE id_producto = '" + identificador + "';";
         return cpg.accion(sql);
     }
     
     public List<ClaseProductos> productitos(String Buscar) {
         try {
             List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
-            String sql = "SELECT id_producto, nombre, precio, stock, descripcion, foto  FROM public.productos where  lower(nombre) like lower('%" + Buscar + "%') ;";
+            String sql = "SELECT id_producto, nombre, precio, stock, categoria, descripcion, foto  FROM public.productos where  lower(nombre) like lower('%" + Buscar + "%') ;";
             ResultSet rs = cpg.consulta(sql);
             byte[] bytea;
             while (rs.next()) {
@@ -138,6 +140,7 @@ public class ModeloProductos extends ClaseProductos {
                 producto.setNombre(rs.getString("nombre"));      
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
+                producto.setCategoria(rs.getString("categoria"));
                 producto.setDescripcion(rs.getString("descripcion"));
                 
                 bytea = rs.getBytes("foto");

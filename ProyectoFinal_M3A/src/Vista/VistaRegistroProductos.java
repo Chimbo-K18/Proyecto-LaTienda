@@ -1,6 +1,7 @@
 package Vista;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -36,11 +37,10 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         btnExaminar = new javax.swing.JButton();
         btnAceptar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        lblsolonum = new javax.swing.JLabel();
-        lblsololetras = new javax.swing.JLabel();
-        lblsolonumeros = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        comboCategoria = new javax.swing.JComboBox<>();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         pnlBotones = new javax.swing.JPanel();
         btnGuardarRp = new javax.swing.JButton();
@@ -52,46 +52,44 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaProductos = new javax.swing.JTable();
 
-        DialogoProducto.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("ID:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
 
         jLabel8.setText("Precio:");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         jLabel9.setText("Descripcion:");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
-        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 160, -1));
-        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 160, -1));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        jPanel2.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 160, -1));
+        jPanel2.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 160, -1));
 
         areaDescripcion.setColumns(20);
         areaDescripcion.setRows(5);
         jScrollPane2.setViewportView(areaDescripcion);
 
-        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, -1, 60));
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, 60));
 
         jLabel10.setText("Nombre:");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
 
         jLabel11.setText("Stock:");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
-        jPanel2.add(txtnombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 160, -1));
-        jPanel2.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 160, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 150, -1, -1));
+        jPanel2.add(txtnombreP, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 160, -1));
+        jPanel2.add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 150, 160, -1));
 
         lblFoto.setBackground(new java.awt.Color(255, 255, 255));
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         lblFoto.setOpaque(true);
-        jPanel2.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 150, 120));
+        jPanel2.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 60, 150, 120));
 
         btnExaminar.setText("Examinar");
-        jPanel2.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, -1, -1));
+        jPanel2.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, -1, -1));
 
         btnAceptar.setText("Aceptar");
-        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 400, -1, -1));
+        jPanel2.add(btnAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, -1, -1));
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -99,32 +97,49 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
                 btnCancelarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 400, -1, -1));
+        jPanel2.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, -1, -1));
 
-        lblsolonum.setForeground(new java.awt.Color(255, 0, 0));
-        lblsolonum.setText("*Ingrese solo numeros");
-        jPanel2.add(lblsolonum, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        jLabel2.setText("Categoria");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 190, -1, -1));
 
-        lblsololetras.setForeground(new java.awt.Color(255, 0, 0));
-        lblsololetras.setText("*Ingrese solo letras");
-        jPanel2.add(lblsololetras, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 170, -1, -1));
-
-        lblsolonumeros.setForeground(new java.awt.Color(255, 0, 0));
-        lblsolonumeros.setText("*Ingrese solo numeros");
-        jPanel2.add(lblsolonumeros, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, -1, -1));
+        comboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Helados", "Bebidas", "Postres" }));
+        jPanel2.add(comboCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 160, -1));
 
         jPanel3.setBackground(new java.awt.Color(0, 107, 179));
-        jPanel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("PRODUCTOS");
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("PRODUCTOS");
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 70));
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(215, 215, 215)
+                .addComponent(jLabel3)
+                .addContainerGap(236, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
+        );
 
-        DialogoProducto.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 470));
+        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 50));
+
+        javax.swing.GroupLayout DialogoProductoLayout = new javax.swing.GroupLayout(DialogoProducto.getContentPane());
+        DialogoProducto.getContentPane().setLayout(DialogoProductoLayout);
+        DialogoProductoLayout.setHorizontalGroup(
+            DialogoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        DialogoProductoLayout.setVerticalGroup(
+            DialogoProductoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+        );
 
         setBackground(new java.awt.Color(153, 255, 153));
         setClosable(true);
@@ -163,7 +178,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
 
             },
             new String [] {
-                "ID Producto", "Nombre", "Precio", "Stock", "Descripcion", "Foto"
+                "ID Producto", "Nombre", "Precio", "Stock", "Categoria", "Descripcion", "Foto"
             }
         ));
         jScrollPane1.setViewportView(tablaProductos);
@@ -184,29 +199,14 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public JLabel getLblsololetras() {
-        return lblsololetras;
+    public JComboBox<String> getComboCategoria() {
+        return comboCategoria;
     }
 
-    public void setLblsololetras(JLabel lblsololetras) {
-        this.lblsololetras = lblsololetras;
+    public void setComboCategoria(JComboBox<String> comboCategoria) {
+        this.comboCategoria = comboCategoria;
     }
 
-    public JLabel getLblsolonum() {
-        return lblsolonum;
-    }
-
-    public void setLblsolonum(JLabel lblsolonum) {
-        this.lblsolonum = lblsolonum;
-    }
-
-    public JLabel getLblsolonumeros() {
-        return lblsolonumeros;
-    }
-
-    public void setLblsolonumeros(JLabel lblsolonumeros) {
-        this.lblsolonumeros = lblsolonumeros;
-    }
 
     public JButton getBtnAceptar() {
         return btnAceptar;
@@ -364,10 +364,12 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
     private javax.swing.JButton btnExaminar;
     private javax.swing.JButton btnGuardarRp;
     private javax.swing.JButton btnNuevoRp;
+    private javax.swing.JComboBox<String> comboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -377,9 +379,6 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFoto;
-    private javax.swing.JLabel lblsololetras;
-    private javax.swing.JLabel lblsolonum;
-    private javax.swing.JLabel lblsolonumeros;
     private javax.swing.JPanel pnlBotones;
     private javax.swing.JTable tablaProductos;
     private javax.swing.JTextField txtBuscarRp;
