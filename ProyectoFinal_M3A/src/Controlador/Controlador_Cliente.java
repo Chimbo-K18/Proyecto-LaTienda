@@ -95,40 +95,47 @@ public class Controlador_Cliente {
             }else{    
                 if(modelo.existeCliente(vista.getTxtCedula().getText())==0){
                     if(modelo.validarDeCedula(vista.getTxtCedula().getText())){
-                        if(modelo.ValidarTelefono(vista.getTxtTelefono().getText())){
+                        if(modelo.validaOtrosCampoc(vista.getTxtNombre().getText())){
+                            if(modelo.validaOtrosCampoc(vista.getTxtApellido().getText())){
+                                if(modelo.ValidarTelefono(vista.getTxtTelefono().getText())){
 
-                            if(modelo.validarCorreo(vista.getTxtEmail().getText())){
+                                    if(modelo.validarCorreo(vista.getTxtEmail().getText())){
 
-                                String cedula = vista.getTxtCedula().getText();
-                                String nombre = vista.getTxtNombre().getText();
-                                String apellido = vista.getTxtApellido().getText();
-                                String direccion = vista.getTxtDireccion().getText();
-                                String telefono = vista.getTxtTelefono().getText();
-                                String email = vista.getTxtEmail().getText();
+                                        String cedula = vista.getTxtCedula().getText();
+                                        String nombre = vista.getTxtNombre().getText();
+                                        String apellido = vista.getTxtApellido().getText();
+                                        String direccion = vista.getTxtDireccion().getText();
+                                        String telefono = vista.getTxtTelefono().getText();
+                                        String email = vista.getTxtEmail().getText();
 
-                                ModeloCliente cliente = new ModeloCliente();
+                                        ModeloCliente cliente = new ModeloCliente();
 
-                                cliente.setCedula(cedula);
-                                cliente.setNombre(nombre);
-                                cliente.setApellido(apellido);
-                                cliente.setDireccion(direccion);
-                                cliente.setTelefono(Integer.parseInt(String.valueOf(telefono)));
-                                cliente.setEmail(email);
+                                        cliente.setCedula(cedula);
+                                        cliente.setNombre(nombre);
+                                        cliente.setApellido(apellido);
+                                        cliente.setDireccion(direccion);
+                                        cliente.setTelefono(Integer.parseInt(String.valueOf(telefono)));
+                                        cliente.setEmail(email);
 
-                                if (cliente.crearCliente()) {
-                                    JOptionPane.showMessageDialog(vista, "Creado exitosamente");
-                                    vista.getDlgClientes().setVisible(false);
-                                } else {
-                                    JOptionPane.showMessageDialog(vista, "No se creo");
+                                        if (cliente.crearCliente()) {
+                                            JOptionPane.showMessageDialog(vista, "Creado exitosamente");
+                                            vista.getDlgClientes().setVisible(false);
+                                        } else {
+                                            JOptionPane.showMessageDialog(vista, "No se creo");
+                                        }
+
+                                    }else{
+                                        JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                                    }
+                               }else{
+                                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
                                 }
-
                             }else{
-                                JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
+                                }    
+                        }else{
+                                JOptionPane.showMessageDialog(vista, "El campo del nombre debe contener solo letras");
                             }
-                       }else{
-                            JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
-                        }
-
                     }else{
                         JOptionPane.showMessageDialog(vista, "La cédula no es válida");
                     }
@@ -169,6 +176,7 @@ public class Controlador_Cliente {
                 } else {
                     JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
                 }
+                cargarClientes();
                     
            }     
         }

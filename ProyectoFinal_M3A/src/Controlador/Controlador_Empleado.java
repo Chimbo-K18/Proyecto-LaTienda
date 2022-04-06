@@ -220,6 +220,7 @@ public class Controlador_Empleado {
                    
                
             }
+           cargarEmpleados();
         }
         
     }

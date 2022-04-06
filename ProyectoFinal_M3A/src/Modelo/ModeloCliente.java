@@ -65,7 +65,7 @@ public class ModeloCliente extends ClaseCliente{
     }
 
     public boolean eliminar(String cedula) { //eliminar
-        String sql="DELETE FROM persona where clientes='"+cedula+"'";
+        String sql="DELETE FROM clientes where cedula='"+cedula+"'";
         return cpg.accion(sql);
     }
     
@@ -210,5 +210,13 @@ public class ModeloCliente extends ClaseCliente{
             return null;
         }
 
+    }
+    
+    public boolean validaOtrosCampoc(String campo){
+        if(campo.matches("[a-zA-Z\\s]{1,50}") == true){ 
+            return true; 
+        }else{
+            return false;
+        }
     }
 }
