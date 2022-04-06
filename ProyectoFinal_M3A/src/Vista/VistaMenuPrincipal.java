@@ -23,6 +23,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         return lblNombre;
     }
 
+    public JButton getBtnV2() {
+        return btnV2;
+    }
+
+    public void setBtnV2(JButton btnV2) {
+        this.btnV2 = btnV2;
+    }
+
     public void setLblNombre(JLabel lblNombre) {
         this.lblNombre = lblNombre;
     }
@@ -143,7 +151,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnV2 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
@@ -222,7 +230,9 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jButton6.setText("RC");
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, 51, 57));
         jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 50, 57));
-        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 51, 57));
+
+        btnV2.setText("V2");
+        jPanel1.add(btnV2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 51, 57));
         jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, 51, 57));
         jPanel1.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 50, 57));
 
@@ -361,6 +371,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton btnAdminProductos;
     private javax.swing.JButton btnRegistrarClientes;
     private javax.swing.JButton btnReportes;
+    private javax.swing.JButton btnV2;
     private javax.swing.JButton btnVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -369,7 +380,6 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JDesktopPane jDeskPanel;
     private javax.swing.JLabel jLabel1;

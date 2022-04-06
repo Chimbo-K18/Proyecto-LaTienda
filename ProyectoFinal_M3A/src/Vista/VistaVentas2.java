@@ -232,12 +232,6 @@ public class VistaVentas2 extends javax.swing.JFrame {
         jLabel8.setText(" $");
         jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        txtCantidadProducto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCantidadProductoActionPerformed(evt);
-            }
-        });
-
         jLabel9.setText("CN");
         jLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -302,7 +296,7 @@ public class VistaVentas2 extends javax.swing.JFrame {
                     .addComponent(txtBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCrearCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombreCliente))
+                    .addComponent(lblNombreCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(jLabel2)
                 .addGap(18, 18, 18)
@@ -523,10 +517,6 @@ public class VistaVentas2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtCantidadProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantidadProductoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCantidadProductoActionPerformed
 
 
 
