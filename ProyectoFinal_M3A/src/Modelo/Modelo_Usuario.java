@@ -1,5 +1,6 @@
 package Modelo;
 
+import Clases.ClaseUsuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

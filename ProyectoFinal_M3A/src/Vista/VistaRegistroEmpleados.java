@@ -330,11 +330,11 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         setMaximizable(true);
         setTitle("EMPLEADOS");
 
-        jPanel1.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel1.setBackground(new java.awt.Color(230, 245, 254));
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -350,7 +350,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 460, 40));
 
-        jPanel4.setBackground(new java.awt.Color(17, 177, 124));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnCrear.setText("Crear");

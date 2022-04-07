@@ -1,21 +1,26 @@
 /**  @author Bryan Orellana */
 
-package Modelo;
+package Clases;
 
-public class ClasePersona {
+public class ClaseCliente {
+    
     private String cedula;
     private String nombre;
     private String apellido;
     private String direccion;
+    private int telefono;
+    private String email;
 
-    public ClasePersona() {
+    public ClaseCliente() {
     }
 
-    public ClasePersona(String cedula, String nombre, String apellido, String direccion) {
+    public ClaseCliente(String cedula, String nombre, String apellido, String direccion, int telefono, String email) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
     }
 
     public String getCedula() {
@@ -49,7 +54,21 @@ public class ClasePersona {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
+    
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
 }
-
-

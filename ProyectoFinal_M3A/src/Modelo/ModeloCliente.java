@@ -1,5 +1,6 @@
 package Modelo;
 
+import Clases.ClaseCliente;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

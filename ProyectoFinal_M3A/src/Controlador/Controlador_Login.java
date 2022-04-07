@@ -1,7 +1,7 @@
 package Controlador;
 
-import Modelo.ClaseHash;
-import Modelo.ClaseUsuario;
+import Clases.ClaseHash;
+import Clases.ClaseUsuario;
 import Modelo.ModeloProductos;
 import Modelo.Modelo_Usuario;
 import Vista.VistaLogin;

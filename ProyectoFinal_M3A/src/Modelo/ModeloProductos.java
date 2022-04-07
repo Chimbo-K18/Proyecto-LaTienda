@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Clases.ClaseProductos;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;

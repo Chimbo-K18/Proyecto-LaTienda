@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.ModeloProductos;
-import Modelo.ClaseProductos;
+import Clases.ClaseProductos;
 import Vista.VistaRegistroProductos;
 import java.awt.Image;
 import java.awt.event.KeyEvent;

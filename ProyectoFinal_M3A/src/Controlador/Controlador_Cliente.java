@@ -3,7 +3,7 @@
 
 package Controlador;
 
-import Modelo.ClaseCliente;
+import Clases.ClaseCliente;
 import Modelo.ModeloCliente;
 import Vista.VistaRegistroClientes;
 import java.awt.Image;

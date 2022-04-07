@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ClaseHash;
+import Clases.ClaseHash;
 import Modelo.Modelo_Usuario;
 import Vista.VistaLogin;
 import Vista.VistaRegistroUsuarios;
@@ -53,7 +53,19 @@ public class Controlador_NuevoUsuario {
                         usuario.setContraseña(nuevaContraseña);
                         usuario.setNombre(vista.getTxtNombre().getText());
                         usuario.setCorreo(vista.getTxtCorreo().getText());
-                        usuario.setId_tipo(1);
+                        
+                        if(vista.getCmbTipoUsuarios().getSelectedItem().toString().equals("Administrador")){
+                            
+                            usuario.setId_tipo(1);
+                            
+                        }else if(vista.getCmbTipoUsuarios().getSelectedItem().toString().equals("Empleado")){
+                            
+                            usuario.setId_tipo(2);
+                            
+                        }else{
+                            JOptionPane.showMessageDialog(vista, "Error al Seleccionar el Tipo de Usuario");
+                        }
+                        
 
                         if (modelo.registrarUsuario(usuario)) {
 

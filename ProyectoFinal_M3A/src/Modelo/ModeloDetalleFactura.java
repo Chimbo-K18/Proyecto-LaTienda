@@ -1,5 +1,8 @@
 package Modelo;
 
+import Clases.ClaseDetalleFactura;
+import Clases.ClaseCliente;
+import Clases.ClaseProductos;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -60,7 +63,7 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
 
     public List<ClaseDetalleFactura> listarProductos() {
         List<ClaseDetalleFactura> listapr = new ArrayList<ClaseDetalleFactura>();
-        String sql = " SELECT * FROM producto";
+        String sql = " SELECT * FROM productos";
         ResultSet rs = cpg.consulta(sql);
 
         try {
@@ -94,6 +97,10 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return reader.read(0, param);
     }
 
+    
+    
+    
+    
     public boolean modificarDetalleFactura() {
         String sql = "UPDATE  detallefactura "
                 + "SET factura= '" + getIdFactura() + "',producto= '" + getIdProducto() + "', cantidad= '" + getCantidad()
@@ -129,15 +136,14 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
     public List<ClaseProductos> productitos(int numero) {
         try {
             List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
-            String sql = "SELECT id_producto, nombre, descripcion, precio  "
-                    + "FROM public.producto "
+            String sql = "SELECT id_producto, nombre, precio  "
+                    + "FROM productos "
                     + "WHERE id_producto = '" + numero + "';";
             ResultSet rs = cpg.consulta(sql);
             while (rs.next()) {
                 ClaseProductos producto = new ClaseProductos();
                 producto.setId(rs.getInt("id_producto"));
                 producto.setNombre(rs.getString("nombre"));
-                producto.setDescripcion(rs.getString("descripcion"));
                 producto.setPrecio(rs.getDouble("precio"));
                 listaproductos.add(producto);
 
@@ -150,29 +156,29 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return null;
     }
 
-    public List<ClaseProductos> productitos(String Buscar) {
-        try {
-            List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
-            String sql = "SELECT id_producto, nombre, stock  "
-                    + "FROM public.producto "
-                    + "WHERE lower (nombre) like lower ('%" + Buscar + "%') ;";
-            ResultSet rs = cpg.consulta(sql);
-            while (rs.next()) {
-                ClaseProductos producto = new ClaseProductos();
-                producto.setId(rs.getInt("id_producto"));
-                producto.setNombre(rs.getString("nombre"));
-                producto.setStock(rs.getInt("stock"));
-
-                listaproductos.add(producto);
-
-            }
-            rs.close();
-            return listaproductos;
-        } catch (SQLException ex) {
-            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return null;
-    }
+//    public List<ClaseProductos> productitossdf(String Buscar) {
+//        try {
+//            List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
+//            String sql = "SELECT id_producto, nombre, stock  "
+//                    + "FROM public.producto "
+//                    + "WHERE lower (nombre) like lower ('%" + Buscar + "%') ;";
+//            ResultSet rs = cpg.consulta(sql);
+//            while (rs.next()) {
+//                ClaseProductos producto = new ClaseProductos();
+//                producto.setId(rs.getInt("id_producto"));
+//                producto.setNombre(rs.getString("nombre"));
+//                producto.setStock(rs.getInt("stock"));
+//
+//                listaproductos.add(producto);
+//
+//            }
+//            rs.close();
+//            return listaproductos;
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return null;
+//    }
 
     public List<ClaseCliente> buscarcliente(String Buscar) {
 
@@ -199,10 +205,10 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return null;
     }
 
-    public int contar() {//Cuenta numFactura
+    public int contar() {
         try {
-            String sql = "SELECT count(id) AS numero "
-                    + "FROM factura;";
+            String sql = "SELECT count(id_factura) AS numero "
+                    + "FROM facturas;";
             ResultSet rs = cpg.consulta(sql);
             while (rs.next()) {
                 return rs.getInt("numero") + 1;
@@ -210,14 +216,16 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
             }
             return 0;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloProductos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }
+    
+    
 
     public boolean creardetallefactura() {
         try {
-            String sql = "INSERT INTO public.detallefactura (detalle, factura, producto, cantidad, precio, total)"
+            String sql = "INSERT INTO detalle_factura (detalle, factura, producto, cantidad, precio, total)"
                     + "VALUES (?, ?, ?, ?, ?, ?);";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getIdFactura());
@@ -235,11 +243,11 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return false;
     }
 
-    public boolean restame() {
+    public boolean controlStock() {
         try {
-            String sql = "UPDATE public.producto "
-                    + "SET cantidad= ? "
-                    + "WHERE id=? ;";
+            String sql = "UPDATE productos "
+                    + "SET stock= ? "
+                    + "WHERE id_producto=? ;";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getCantidad());
             ps.setInt(2, getIdProducto());
@@ -251,19 +259,20 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return false;
     }
 
-    public int buscameid(int numero) {
+    
+    public int numeroStock(int numero) {
         try {
-            String sql = "SELECT cantidad "
-                    + "FROM producto }"
+            String sql = "SELECT stock "
+                    + "FROM productos }"
                     + "WHERE id='" + numero + "';";
             ResultSet rs = cpg.consulta(sql);
             while (rs.next()) {
-                return rs.getInt("cantidad");
+                return rs.getInt("stock");
 
             }
             return 0;
         } catch (SQLException ex) {
-            Logger.getLogger(ModeloProductos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return 0;
     }

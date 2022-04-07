@@ -1,5 +1,5 @@
 package Controlador;
-import Modelo.ClaseAdministrador;
+import Clases.ClaseAdministrador;
 import Modelo.Modelo_Administrador;
 import Vista.VistaRegistroEmpleados;
 import java.awt.Image;

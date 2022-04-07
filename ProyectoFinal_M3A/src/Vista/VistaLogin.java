@@ -47,22 +47,6 @@ public class VistaLogin extends javax.swing.JFrame {
         this.btnIniciarSesion = btnIniciarSesion;
     }
 
-    public JCheckBox getCbxAdministrador() {
-        return cbxAdministrador;
-    }
-
-    public void setCbxAdministrador(JCheckBox cbxAdministrador) {
-        this.cbxAdministrador = cbxAdministrador;
-    }
-
-    public JCheckBox getCbxEmpleado() {
-        return cbxEmpleado;
-    }
-
-    public void setCbxEmpleado(JCheckBox cbxEmpleado) {
-        this.cbxEmpleado = cbxEmpleado;
-    }
-
     public JPasswordField getTxtContraseña() {
         return txtContraseña;
     }
@@ -99,8 +83,6 @@ public class VistaLogin extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         btnIniciarSesion = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        cbxAdministrador = new javax.swing.JCheckBox();
-        cbxEmpleado = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         txtContraseña = new javax.swing.JPasswordField();
         btnRegistrarse = new javax.swing.JButton();
@@ -121,12 +103,6 @@ public class VistaLogin extends javax.swing.JFrame {
         btnIniciarSesion.setText("Iniciar Sesion");
 
         btnCancelar.setText("Cancelar");
-
-        btnGroup.add(cbxAdministrador);
-        cbxAdministrador.setText("Administrador");
-
-        btnGroup.add(cbxEmpleado);
-        cbxEmpleado.setText("Empleado");
 
         jPanel2.setBackground(new java.awt.Color(0, 107, 179));
 
@@ -161,19 +137,13 @@ public class VistaLogin extends javax.swing.JFrame {
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtContraseña)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(92, 92, 92)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(cbxEmpleado)
-                                    .addComponent(cbxAdministrador)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(29, 29, 29)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnRegistrarse)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(btnIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 92, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnRegistrarse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnIniciarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 94, Short.MAX_VALUE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -192,17 +162,13 @@ public class VistaLogin extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
-                        .addComponent(cbxAdministrador)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbxEmpleado)
-                        .addGap(18, 18, 18)
+                        .addGap(41, 41, 41)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnIniciarSesion)
                             .addComponent(btnCancelar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnRegistrarse)
-                        .addContainerGap(29, Short.MAX_VALUE))
+                        .addContainerGap(60, Short.MAX_VALUE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
@@ -230,8 +196,6 @@ public class VistaLogin extends javax.swing.JFrame {
     private javax.swing.ButtonGroup btnGroup;
     private javax.swing.JButton btnIniciarSesion;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JCheckBox cbxAdministrador;
-    private javax.swing.JCheckBox cbxEmpleado;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

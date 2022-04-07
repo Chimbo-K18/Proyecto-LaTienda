@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelo.ClaseEmpleado;
+import Clases.ClaseEmpleado;
 import Modelo.ModeloEmpleado;
 import Vista.VistaRegistroEmpleados;
 import java.awt.Image;

@@ -1,12 +1,13 @@
 package Controlador;
 
-import Modelo.ClaseCliente;
-import Modelo.ClaseDetalleFactura;
-import Modelo.ClaseProductos;
+import Clases.ClaseCliente;
+import Clases.ClaseDetalleFactura;
+import Clases.ClaseProductos;
 import Modelo.ModeloDetalleFactura;
 import Modelo.ModeloFacturas;
-import Vista.VistaRegistroVentas3;
-import Vista.VistaVentas2;
+import Vista.VistaRegistroProductos;
+import Vista.VistaRegistroFacturas;
+import Vista.VistaRegistroVentas;
 import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -24,13 +25,13 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Controlador_Ventas2 {
 
-    private VistaVentas2 vista;
-    private VistaRegistroVentas3 vista3;
+    private VistaRegistroVentas vista;
     private ModeloDetalleFactura modelo;
+    private VistaRegistroProductos vistaPro;
     private ModeloFacturas modeloFactura = new ModeloFacturas();
     public static ArrayList<ClaseDetalleFactura> listaDetalleFactura = new ArrayList();
 
-    public Controlador_Ventas2(VistaVentas2 vista, ModeloDetalleFactura modelo) {
+    public Controlador_Ventas2(VistaRegistroVentas vista, ModeloDetalleFactura modelo) {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
@@ -38,10 +39,14 @@ public class Controlador_Ventas2 {
 
     public void iniciaControl() throws IOException {
         vista.getBtnProducto01().addActionListener(l -> Botones(1));
+        vista.getBtnProducto02().addActionListener(l -> Botones(2));
         vista.getBtnBuscarCliente().addActionListener(l -> buscarPersona(vista.getTxtBuscarCliente().getText()));
         vista.getBtnBuscarProducto().addActionListener(l -> buscarProducto(vista.getTxtBuscarProducto().getText()));
+        vista.getBtnGenerarVenta().addActionListener(l-> abrirVentana3());
         CargaImagenenes();
         suma();
+        numeroVentas();
+        
     }
 
     public void buscarPersona(String busqueda) {
@@ -91,22 +96,23 @@ public class Controlador_Ventas2 {
     
     public void Botones(int numero) {
 
-        DefaultTableModel tblModel = (DefaultTableModel) vista3.getTblFactura().getModel();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
         List<ClaseProductos> listapro = modelo.productitos(numero);
         listapro.stream().forEach(lp -> {
             if (RevisaCodigo(String.valueOf(lp.getId()), tblModel)) {
-                tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), lp.getDescripcion(), "1", lp.getPrecio(), lp.getPrecio()});
+                tblModel.addRow(new Object[]{lp.getId() + "", lp.getNombre(), "1", lp.getPrecio(), lp.getPrecio()});
             } else {
                 for (int i = 0; i < tblModel.getRowCount(); i++) {
                     String codigo = tblModel.getValueAt(i, 0).toString();
                     if (String.valueOf(lp.getId()).equals(codigo)) {
-                        double precio = Double.parseDouble(tblModel.getValueAt(i, 4).toString());
-                        int numerito = Integer.parseInt(tblModel.getValueAt(i, 3).toString());
+                        double precio = Double.parseDouble(tblModel.getValueAt(i, 3).toString());
+                        int numerito = Integer.parseInt(tblModel.getValueAt(i, 2).toString());
                         numerito++;
                         double total = numerito * precio;
-                        tblModel.setValueAt(numerito, i, 3);
-                        tblModel.setValueAt(total, i, 5);
+                        tblModel.setValueAt(numerito, i, 2);
+                        tblModel.setValueAt(total, i, 4);
                         tblModel.fireTableRowsUpdated(i, i);
+
                     }
                 }
             }
@@ -126,15 +132,14 @@ public class Controlador_Ventas2 {
     }
     
     public void suma() {
-        int contar = vista3.getTblFactura().getRowCount();
+        int contar = vista.getTblPedido().getRowCount();
         double suma = 0;
         for (int i = 0; i < contar; i++) {
-            suma = suma + Double.parseDouble(vista3.getTblFactura().getValueAt(i, 5).toString());
+            suma = suma + Double.parseDouble(vista.getTblPedido().getValueAt(i, 4).toString());
+   
         }
-        vista3.getTxtSubtotal().setText(Double.toString(suma));
-        double iva = (suma * 0.12);
-        vista3.getTxtIva().setText(Double.toString(iva));
-        vista3.getTxtTotal().setText("" + (suma + iva));
+     
+        vista.getTxtTotal().setText(Double.toString(suma));
     }
 
     public Icon imagenDBB(int numero) throws IOException {//aparezca la imagen de la bd
@@ -145,6 +150,7 @@ public class Controlador_Ventas2 {
 
     public void CargaImagenenes() throws IOException {
         vista.getBtnProducto01().setIcon(imagenDBB(1));
+        vista.getBtnProducto02().setIcon(imagenDBB(2));
     }
 
     private int conteo_clicks = 0;
@@ -153,4 +159,41 @@ public class Controlador_Ventas2 {
 
     }
 
+        private void numeroVentas() {
+            
+        vista.getLblFactura().setText(modelo.contar() + "");
+    }
+        
+        
+        private void stock() {
+        
+        DefaultTableModel tblModel = (DefaultTableModel) vistaPro.getTablaProductos().getModel();
+        ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
+
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+            int count = modelodeta.numeroStock(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            int cantidad = Integer.parseInt(tblModel.getValueAt(i, 3).toString());
+            int resta = count - cantidad;
+            //System.out.println("La cantidad es: "+count+"  La cantidad comprada es: " +cantidad+" y me voy a guardar como: "+resta);
+            modelodeta.setCantidad(resta);
+            vista.getTxtStockProducto().setText(vistaPro.getTablaProductos().getValueAt(i, 4).toString());
+            if (modelodeta.controlStock()) {
+
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error");
+            }
+
+        }
+
+    }
+        
+        
+    private void abrirVentana3(){
+        
+        ModeloDetalleFactura modeloV = new ModeloDetalleFactura();
+        VistaRegistroFacturas vistaVentas = new VistaRegistroFacturas();
+        Controlador_Ventas3 controla = new Controlador_Ventas3(vistaVentas, modeloV);
+        vistaVentas.setVisible(true);
+        controla.iniciaControl();
+    }
 }
