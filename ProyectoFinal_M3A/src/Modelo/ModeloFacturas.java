@@ -13,10 +13,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author byron
- */
+
 public class ModeloFacturas extends ClaseFactura{
 
     ConectionBDD cpg = new ConectionBDD();
@@ -26,8 +23,8 @@ public class ModeloFacturas extends ClaseFactura{
     
     public boolean crearFactura() {
         String sql;
-        sql="INSERT INTO facturas(id_factura,id_cliente,id_empleado,fecha)";
-        sql+="VALUES ('" +getIdFactura()+ "' , '" +getIdCliente()+ "' , '" +getIdEmpleado()+ "' ,'" +getFecha()+"')";
+        sql="INSERT INTO facturas (id_cliente, id_empleado, fecha, total)";
+        sql+="VALUES ('" +getIdCliente()+ "' , '" +getIdEmpleado()+ "' ,'" +getFecha()+"' , '"+ getTotal()+"')";
         return cpg.accion(sql);
 
     }
@@ -45,6 +42,7 @@ public class ModeloFacturas extends ClaseFactura{
                 fac.setIdCliente(rs.getInt("id_cliente"));
                 fac.setIdEmpleado(rs.getInt("id_empleado"));
                 fac.setFecha(rs.getString("fecha"));
+                fac.setTotal(rs.getDouble("total"));
 
                 listaFac.add(fac);
             }

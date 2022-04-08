@@ -15,16 +15,26 @@ public class ClaseFactura {
     private int idFactura;
     private int idCliente;
     private int idEmpleado;
+    private double total;
     private String fecha;
 
     public ClaseFactura() {
     }
 
-    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, String fecha) {
+    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, double total, String fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
         this.idEmpleado = idEmpleado;
+        this.total = total;
         this.fecha = fecha;
+    }
+
+    public int getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     public int getIdFactura() {
@@ -43,14 +53,13 @@ public class ClaseFactura {
         this.idCliente = idCliente;
     }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public double getTotal() {
+        return total;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setTotal(double total) {
+        this.total = total;
     }
-
 
 
     public String getFecha() {

@@ -83,6 +83,7 @@ public class Controlador_MenuPrincipal {
         VistaRegistroVentas vistaVentas = new VistaRegistroVentas();
         Controlador_Ventas2 controla = new Controlador_Ventas2(vistaVentas, modeloV);
         controla.iniciaControl();
+       
     }
     
 }

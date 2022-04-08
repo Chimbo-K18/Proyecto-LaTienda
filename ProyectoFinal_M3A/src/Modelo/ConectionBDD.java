@@ -17,7 +17,7 @@ public class ConectionBDD {
 
     String cadConexion = "jdbc:postgresql://localhost:5432/LaTiendaDB";
     String pgUser = "postgres";
-    String pgPass = "1";
+    String pgPass = "Chimbo-K18";
  
     
     public ConectionBDD() {

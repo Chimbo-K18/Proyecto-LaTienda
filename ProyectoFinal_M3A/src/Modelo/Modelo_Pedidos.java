@@ -1,34 +1,47 @@
 package Modelo;
 
 import Clases.Clase_Pedido;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author diana
- */
+
 public class Modelo_Pedidos extends Clase_Pedido {
 //Constructor
 
-    ConectionBDD conexion = new ConectionBDD();
+    ConectionBDD cpg = new ConectionBDD();
 
+    
+    public Modelo_Pedidos() {
+    }
+    
     public Modelo_Pedidos(int idPedidos, String nombrProducto, int cantidadProd, String cedulaCliente) {
         super(idPedidos, nombrProducto, cantidadProd, cedulaCliente);
     }
 
-    public Modelo_Pedidos() {
-    }
-
     public boolean InsertarPedido() {
 
+        try {
         String sql;
-        sql = "INSERT INTO pedidos(\n"
-                + "            orden, producto, cantidad, cliente)\n"
-                + "    VALUES ('" + getIdPedidos() + "', '" + getNombrProducto() + "', '" + getCantidadProd() + "', '" + getCedulaCliente() + "');";
-        return conexion.accion(sql);
+        sql = "INSERT INTO pedidos (producto, cantidad, id_cliente)";
+        sql += "VALUES (?,?,?);";
+    
+        
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            
+            ps.setString(1, getNombrProducto());
+            ps.setInt(2, getCantidadProd());
+            ps.setString(3, getCedulaCliente());
+            
+            ps.executeUpdate();
+            return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Pedidos.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
 
     }
 
@@ -39,7 +52,7 @@ public class Modelo_Pedidos extends Clase_Pedido {
 
             String nsql = "SELECT MAX(orden)\n"
                     + "  FROM  pedidos;";
-            ResultSet Resultados = conexion.consulta(nsql);
+            ResultSet Resultados = cpg.consulta(nsql);
 
             while (Resultados.next()) {
                 serie = Resultados.getString(1);

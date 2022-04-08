@@ -4,7 +4,10 @@ import Clases.ClaseCliente;
 import Clases.ClaseDetalleFactura;
 import Clases.ClaseProductos;
 import Modelo.ModeloDetalleFactura;
+import Modelo.ModeloEmpleado;
 import Modelo.ModeloFacturas;
+import Modelo.Modelo_Pedidos;
+import Modelo.Modelo_Usuario;
 import Vista.VistaRegistroProductos;
 import Vista.VistaRegistroFacturas;
 import Vista.VistaRegistroVentas;
@@ -17,6 +20,7 @@ import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,7 +32,7 @@ public class Controlador_Ventas2 {
     private VistaRegistroVentas vista;
     private ModeloDetalleFactura modelo;
     private VistaRegistroProductos vistaPro;
-    private ModeloFacturas modeloFactura = new ModeloFacturas();
+    private int conteo_clicks = 0;
     public static ArrayList<ClaseDetalleFactura> listaDetalleFactura = new ArrayList();
 
     public Controlador_Ventas2(VistaRegistroVentas vista, ModeloDetalleFactura modelo) {
@@ -42,11 +46,13 @@ public class Controlador_Ventas2 {
         vista.getBtnProducto02().addActionListener(l -> Botones(2));
         vista.getBtnBuscarCliente().addActionListener(l -> buscarPersona(vista.getTxtBuscarCliente().getText()));
         vista.getBtnBuscarProducto().addActionListener(l -> buscarProducto(vista.getTxtBuscarProducto().getText()));
-        vista.getBtnGenerarVenta().addActionListener(l-> abrirVentana3());
+        vista.getBtnGenerarVenta().addActionListener(l -> abrirVentana3());
+         
         CargaImagenenes();
+        cargarDatosUsuario();
         suma();
         numeroVentas();
-        
+
     }
 
     public void buscarPersona(String busqueda) {
@@ -93,7 +99,7 @@ public class Controlador_Ventas2 {
 //                JOptionPane.showMessageDialog(vista, "Cliente No Encontrado en el Registro");
 //                }
     }
-    
+
     public void Botones(int numero) {
 
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
@@ -118,7 +124,8 @@ public class Controlador_Ventas2 {
             }
         });
         suma();
-    }    
+    }
+
     private boolean RevisaCodigo(String codigo, DefaultTableModel modelo) {
         if (codigo != null && modelo != null) {
             for (int renglon = 0; renglon < modelo.getRowCount(); renglon++) {
@@ -130,15 +137,15 @@ public class Controlador_Ventas2 {
         }
         return true;
     }
-    
+
     public void suma() {
         int contar = vista.getTblPedido().getRowCount();
         double suma = 0;
         for (int i = 0; i < contar; i++) {
             suma = suma + Double.parseDouble(vista.getTblPedido().getValueAt(i, 4).toString());
-   
+
         }
-     
+
         vista.getTxtTotal().setText(Double.toString(suma));
     }
 
@@ -153,20 +160,18 @@ public class Controlador_Ventas2 {
         vista.getBtnProducto02().setIcon(imagenDBB(2));
     }
 
-    private int conteo_clicks = 0;
     public void Contar(MouseEvent mouseEvent) {
         conteo_clicks++;
 
     }
 
-        private void numeroVentas() {
-            
+    private void numeroVentas() {
+
         vista.getLblFactura().setText(modelo.contar() + "");
     }
-        
-        
-        private void stock() {
-        
+
+    private void stock() {
+
         DefaultTableModel tblModel = (DefaultTableModel) vistaPro.getTablaProductos().getModel();
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
 
@@ -186,14 +191,90 @@ public class Controlador_Ventas2 {
         }
 
     }
-        
-        
-    private void abrirVentana3(){
-        
+
+    private void abrirVentana3() {
+
         ModeloDetalleFactura modeloV = new ModeloDetalleFactura();
         VistaRegistroFacturas vistaVentas = new VistaRegistroFacturas();
         Controlador_Ventas3 controla = new Controlador_Ventas3(vistaVentas, modeloV);
         vistaVentas.setVisible(true);
+        crearPedidos();
+        crearFactura();
         controla.iniciaControl();
+
+    }
+
+    public void crearPedidos() {
+
+        Modelo_Pedidos pedido = new Modelo_Pedidos();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
+
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+
+            pedido.setNombrProducto(vista.getTblPedido().getValueAt(i, 1).toString());
+            pedido.setCantidadProd(Integer.valueOf(vista.getTblPedido().getValueAt(i, 2).toString()));
+            pedido.setCedulaCliente(vista.getTxtBuscarCliente().getText());
+
+            if (pedido.InsertarPedido()) {
+                System.out.println("Creacion Fresh");
+
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error en el proceso de registro");
+            }
+
+        }
+    }
+
+    public void crear() {
+        ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
+
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+
+            modelodeta.setIdFactura(Integer.parseInt(vista.getLblFactura().getText()));
+            modelodeta.setIdProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            modelodeta.setCantidad(Integer.parseInt(tblModel.getValueAt(i, 2).toString()));
+            modelodeta.setCosto_unitario(Double.parseDouble(tblModel.getValueAt(i, 3).toString()));
+            modelodeta.setTotal(Double.parseDouble(tblModel.getValueAt(i, 4).toString()));
+
+            if (modelodeta.crearDetalleFactura()) {
+                System.out.println("Creacion Fresh X2");
+            } else {
+                JOptionPane.showMessageDialog(vista, "Error");
+            }
+
+        }
+    }
+
+    private void crearFactura() {
+
+        ModeloFacturas modeloFactura = new ModeloFacturas();
+        
+        Modelo_Pedidos pedido = new Modelo_Pedidos();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
+
+        for (int i = 0; i < tblModel.getRowCount(); i++) {
+ 
+        modeloFactura.setFecha(((JTextField) vista.getDtFecha().getDateEditor().getUiComponent()).getText());
+        modeloFactura.setTotal(Double.parseDouble(vista.getTblPedido().getValueAt(i, 4).toString()));
+        modeloFactura.setIdCliente(Integer.parseInt(vista.getTxtBuscarCliente().getText()));
+        modeloFactura.setIdEmpleado(10);
+
+        if (modeloFactura.crearFactura()) {
+            crear();
+
+            System.out.println("Creacion Fresh X3");
+        } else {
+            JOptionPane.showMessageDialog(vista, "Error");
+        }
+
+    }
+}
+    
+    private void cargarDatosUsuario(){
+        ModeloEmpleado modUsuario = new ModeloEmpleado();
+        
+        vista.getLblUsuarioRegistrado().setText(String.valueOf(modUsuario.getId_empleado()));
+        
     }
 }

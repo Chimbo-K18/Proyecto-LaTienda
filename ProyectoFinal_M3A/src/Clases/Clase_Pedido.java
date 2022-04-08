@@ -6,19 +6,14 @@ package Clases;
 
 public class Clase_Pedido {
     
-    
-   //Variables
+
    private int idPedidos;
    private String  nombrProducto;
    private int cantidadProd;
    private String cedulaCliente;
 
    
-  
-   
-//Constructor
-   
-    
+ 
     public Clase_Pedido(int idPedidos, String nombrProducto, int cantidadProd, String cedulaCliente) {
         this.idPedidos = idPedidos;
         this.nombrProducto = nombrProducto;

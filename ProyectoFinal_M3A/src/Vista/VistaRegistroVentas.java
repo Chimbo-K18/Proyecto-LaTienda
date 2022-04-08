@@ -41,6 +41,14 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         return lblFactura;
     }
 
+    public JLabel getLblUsuarioRegistrado() {
+        return lblUsuarioRegistrado;
+    }
+
+    public void setLblUsuarioRegistrado(JLabel lblUsuarioRegistrado) {
+        this.lblUsuarioRegistrado = lblUsuarioRegistrado;
+    }
+
     public void setLblFactura(JLabel lblFactura) {
         this.lblFactura = lblFactura;
     }
@@ -273,6 +281,8 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
         txtTotal = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         dtFecha = new com.toedter.calendar.JDateChooser();
+        jLabel5 = new javax.swing.JLabel();
+        lblUsuarioRegistrado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -483,6 +493,8 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
 
         jLabel12.setText("TOTAL:");
 
+        dtFecha.setDateFormatString("yyyy-MM-dd");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -526,6 +538,10 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                     .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        jLabel5.setText("Usuario:");
+
+        lblUsuarioRegistrado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -533,7 +549,13 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblUsuarioRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -553,7 +575,11 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblUsuarioRegistrado, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -589,6 +615,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -599,6 +626,7 @@ public class VistaRegistroVentas extends javax.swing.JFrame {
     private javax.swing.JLabel lblFactura;
     private javax.swing.JLabel lblNombreCliente;
     private javax.swing.JLabel lblNombreProducto;
+    private javax.swing.JLabel lblUsuarioRegistrado;
     private javax.swing.JTable tblPedido;
     private javax.swing.JTextField txtBuscarCliente;
     private javax.swing.JTextField txtBuscarProducto;

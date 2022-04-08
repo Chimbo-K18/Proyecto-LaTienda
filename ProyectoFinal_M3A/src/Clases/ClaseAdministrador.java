@@ -16,6 +16,7 @@ public class ClaseAdministrador {
     private FileInputStream imagen;
     private int largo;
 
+    
     public ClaseAdministrador(String cedulaGerente, String nombreGerente, String apellidoGerente, String direccionGerente, String usuarioGerente, String contraseñaGerente, Double salarioGerente, Image foto, FileInputStream imagen, int largo) {
         this.cedulaGerente = cedulaGerente;
         this.nombreGerente = nombreGerente;
@@ -29,6 +30,7 @@ public class ClaseAdministrador {
         this.largo = largo;
     }
 
+    
     public ClaseAdministrador() {
     }
 
@@ -112,16 +114,7 @@ public class ClaseAdministrador {
     public void setLargo(int largo) {
         this.largo = largo;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+      
     
     
 }
