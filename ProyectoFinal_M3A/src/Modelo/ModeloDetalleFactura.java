@@ -2,6 +2,7 @@ package Modelo;
 
 import Clases.ClaseDetalleFactura;
 import Clases.ClaseCliente;
+import Clases.ClaseEmpleado;
 import Clases.ClaseProductos;
 import java.awt.Image;
 import java.io.ByteArrayInputStream;
@@ -34,7 +35,6 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         super(idDetalle, idFactura, idProducto, cantidad, costo_unitario, total);
     }
 
-    
     public List<ClaseDetalleFactura> listarDetalleFactura() {
         List<ClaseDetalleFactura> listaDetalleFactura = new ArrayList<ClaseDetalleFactura>();
         try {
@@ -59,7 +59,7 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         }
 
     }
-    
+
     public boolean crearDetalleFactura() {
 
         try {
@@ -121,7 +121,7 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         param.setSourceSubsampling(1, 1, 0, 0);
         return reader.read(0, param);
     }
-    
+
     public boolean modificarDetalleFactura() {
         String sql = "UPDATE  detallefactura "
                 + "SET factura= '" + getIdFactura() + "',producto= '" + getIdProducto() + "', cantidad= '" + getCantidad()
@@ -176,31 +176,32 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         }
         return null;
     }
-
-    public List<ClaseCliente> buscarcliente(String Buscar) {
-
+    
+    
+    
+    public List<ClaseProductos> productitos(String Buscar) {
         try {
-            List<ClaseCliente> listacliente = new ArrayList<ClaseCliente>();
-
-            String sql = "SELECT nombres, apellidos, telefono "
-                    + "FROM clientes"
-                    + "WHERE cedula = '" + Buscar + "';";
-
+            List<ClaseProductos> listaproductos = new ArrayList<ClaseProductos>();
+            String sql = "SELECT id_producto, nombre, stock  FROM productos where  lower(nombre) like lower('%" + Buscar + "%') ;";
             ResultSet rs = cpg.consulta(sql);
             while (rs.next()) {
-                ClaseCliente persona = new ClaseCliente();
-                persona.setNombre(rs.getString("nombres"));
+                ClaseProductos producto = new ClaseProductos();
+                producto.setId(rs.getInt("id_producto"));
+                producto.setNombre(rs.getString("nombre"));
+                producto.setStock(rs.getInt("stock"));
 
-                listacliente.add(persona);
+                listaproductos.add(producto);
 
             }
             rs.close();
-            return listacliente;
+            return listaproductos;
         } catch (SQLException ex) {
             Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
     }
+
+
 
     public int contar() {
         try {
@@ -217,7 +218,6 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         }
         return 0;
     }
-    
 
     public boolean controlStock() {
         try {
@@ -237,10 +237,9 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
 
     public int numeroStock(int numero) {
         try {
-            String sql = "SELECT stock "
-                    + "FROM productos }"
-                    + "WHERE id='" + numero + "';";
+            String sql = "SELECT stock FROM productos WHERE id_producto ='" + numero + "';";
             ResultSet rs = cpg.consulta(sql);
+            
             while (rs.next()) {
                 return rs.getInt("stock");
 
@@ -280,20 +279,46 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
 
     public List<ClaseProductos> BuscarProducto(String texto) {
         List<ClaseProductos> listaVenta = new ArrayList<ClaseProductos>();
-        
+
         String sql = "select nombre, precio, stock from productos where CAST(id_producto AS TEXT) LIKE '" + texto + "%' ";
-        
+
         ResultSet rs = cpg.consulta(sql);
         byte[] bytea;
         try {
             while (rs.next()) {
                 ClaseProductos producto = new ClaseProductos();
-                
+
                 producto.setNombre(rs.getString("nombre"));
                 producto.setPrecio(rs.getDouble("precio"));
                 producto.setStock(rs.getInt("stock"));
 
                 listaVenta.add(producto);
+
+            }
+            rs.close();
+            return listaVenta;
+        } catch (SQLException ex) {
+            Logger.getLogger(ModeloDetalleFactura.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    
+        public List<ClaseEmpleado> BuscarEmpleado(String texto) {
+        List<ClaseEmpleado> listaVenta = new ArrayList<ClaseEmpleado>();
+
+        String sql = "select id_empleado, nombre from empleados where CAST(cedula AS TEXT) LIKE '" + texto + "%' ";
+
+        ResultSet rs = cpg.consulta(sql);
+        byte[] bytea;
+        try {
+            while (rs.next()) {
+                ClaseEmpleado empleado = new ClaseEmpleado();
+
+                empleado.setId_empleado(rs.getInt("id_empleado"));
+                empleado.setNombre(rs.getString("nombre"));
+
+                listaVenta.add(empleado);
 
             }
             rs.close();

@@ -33,6 +33,14 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         this.btnGuardar = btnGuardar;
     }
 
+    public JButton getBtnCrearUsuario() {
+        return btnCrearUsuario;
+    }
+
+    public void setBtnCrearUsuario(JButton btnCrearUsuario) {
+        this.btnCrearUsuario = btnCrearUsuario;
+    }
+
     public JButton getBtnActualizar() {
         return btnActualizar;
     }
@@ -219,6 +227,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         cbSexo = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
+        btnCrearUsuario = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -254,7 +263,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jLabel16.setText("GÉNERO:");
         jPanel5.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 60, -1));
 
-        jLabel17.setText("ID USUARIO:");
+        jLabel17.setText("Asignar ID Usuario:");
         jPanel5.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel18.setText("SALARIO:");
@@ -263,7 +272,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
         jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
         jPanel5.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
-        jPanel5.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 140, -1));
+        jPanel5.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 40, -1));
         jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 140, -1));
 
         lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -286,6 +295,9 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
         btnGuardar.setText("Guardar");
         jPanel5.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, -1));
+
+        btnCrearUsuario.setText("Crear Usuario");
+        jPanel5.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(17, 177, 124));
 
@@ -429,6 +441,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnCrear;
+    private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnExaminar;

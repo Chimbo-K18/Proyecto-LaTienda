@@ -2,6 +2,7 @@ package Controlador;
 
 import Clases.ClaseCliente;
 import Clases.ClaseDetalleFactura;
+import Clases.ClaseEmpleado;
 import Clases.ClaseProductos;
 import Modelo.ModeloDetalleFactura;
 import Modelo.ModeloEmpleado;
@@ -31,6 +32,7 @@ public class Controlador_Ventas2 {
 
     private VistaRegistroVentas vista;
     private ModeloDetalleFactura modelo;
+    private Modelo_Usuario modeloUsu;
     private VistaRegistroProductos vistaPro;
     private int conteo_clicks = 0;
     public static ArrayList<ClaseDetalleFactura> listaDetalleFactura = new ArrayList();
@@ -44,15 +46,19 @@ public class Controlador_Ventas2 {
     public void iniciaControl() throws IOException {
         vista.getBtnProducto01().addActionListener(l -> Botones(1));
         vista.getBtnProducto02().addActionListener(l -> Botones(2));
+        vista.getBtnProducto03().addActionListener(l -> Botones(3));
+        vista.getBtnProducto04().addActionListener(l -> Botones(4));
+        vista.getBtnProducto05().addActionListener(l -> Botones(5));
+        vista.getBtnProducto06().addActionListener(l -> Botones(6));
         vista.getBtnBuscarCliente().addActionListener(l -> buscarPersona(vista.getTxtBuscarCliente().getText()));
+        vista.getBtnBuscarEmpleado().addActionListener(l -> buscarEmpleado(vista.getTxtBuscarEmpleado().getText()));
         vista.getBtnBuscarProducto().addActionListener(l -> buscarProducto(vista.getTxtBuscarProducto().getText()));
         vista.getBtnGenerarVenta().addActionListener(l -> abrirVentana3());
          
         CargaImagenenes();
-        cargarDatosUsuario();
         suma();
         numeroVentas();
-
+        CargarDisponibilidad("");
     }
 
     public void buscarPersona(String busqueda) {
@@ -99,6 +105,28 @@ public class Controlador_Ventas2 {
 //                JOptionPane.showMessageDialog(vista, "Cliente No Encontrado en el Registro");
 //                }
     }
+    
+    public void buscarEmpleado(String busqueda) {
+
+        List<ClaseEmpleado> lista = modelo.BuscarEmpleado(busqueda);
+
+//        if(vista.getTxtBuscarCliente().equals(busqueda)){
+//             
+        for (int i = 0; i < lista.size(); i++) {
+
+            String nombre = lista.get(i).getNombre();
+            String codigo = String.valueOf(lista.get(i).getId_empleado());
+
+            //vista.getTxtCedula().setText(cedula);
+            vista.getLblIdEmpleado().setText(codigo);
+            vista.getLblNombreEmpleado().setText(nombre);
+
+        }
+
+//         }else{
+//                JOptionPane.showMessageDialog(vista, "Cliente No Encontrado en el Registro");
+//                }
+    }
 
     public void Botones(int numero) {
 
@@ -137,7 +165,28 @@ public class Controlador_Ventas2 {
         }
         return true;
     }
+    
+    private int codigo() {
 
+        int codigoproducto = Integer.parseInt(vista.getTblPedido().getValueAt(vista.getTblPedido().getRowCount() - 1, 0).toString());
+        System.out.println(codigoproducto);
+
+        return codigoproducto;
+    }
+
+    private int buscaUltimaCantidad(String codigo, DefaultTableModel modelo) {
+        int cuentame = 1;
+        if (codigo != null && modelo != null) {
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                String codigoEnRenglon = (String) modelo.getValueAt(i, 0);
+                if (codigo.equals(codigoEnRenglon)) {
+                    return cuentame++;
+                }
+            }
+        }
+        return cuentame++;
+    }
+    
     public void suma() {
         int contar = vista.getTblPedido().getRowCount();
         double suma = 0;
@@ -158,6 +207,10 @@ public class Controlador_Ventas2 {
     public void CargaImagenenes() throws IOException {
         vista.getBtnProducto01().setIcon(imagenDBB(1));
         vista.getBtnProducto02().setIcon(imagenDBB(2));
+        vista.getBtnProducto03().setIcon(imagenDBB(3));
+        vista.getBtnProducto04().setIcon(imagenDBB(4));
+        vista.getBtnProducto05().setIcon(imagenDBB(5));
+        vista.getBtnProducto06().setIcon(imagenDBB(6));
     }
 
     public void Contar(MouseEvent mouseEvent) {
@@ -172,18 +225,19 @@ public class Controlador_Ventas2 {
 
     private void stock() {
 
-        DefaultTableModel tblModel = (DefaultTableModel) vistaPro.getTablaProductos().getModel();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablapro().getModel();
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
 
         for (int i = 0; i < tblModel.getRowCount(); i++) {
             int count = modelodeta.numeroStock(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
-            int cantidad = Integer.parseInt(tblModel.getValueAt(i, 3).toString());
+            int cantidad = Integer.parseInt(tblModel.getValueAt(i, 2).toString());
             int resta = count - cantidad;
             //System.out.println("La cantidad es: "+count+"  La cantidad comprada es: " +cantidad+" y me voy a guardar como: "+resta);
             modelodeta.setCantidad(resta);
-            vista.getTxtStockProducto().setText(vistaPro.getTablaProductos().getValueAt(i, 4).toString());
+            vista.getTxtStockProducto().setText(vista.getTablapro().getValueAt(i, 2).toString());
             if (modelodeta.controlStock()) {
 
+                System.out.println("Conexion Fresh X4");
             } else {
                 JOptionPane.showMessageDialog(vista, "Error");
             }
@@ -200,6 +254,7 @@ public class Controlador_Ventas2 {
         vistaVentas.setVisible(true);
         crearPedidos();
         crearFactura();
+        stock();
         controla.iniciaControl();
 
     }
@@ -226,6 +281,7 @@ public class Controlador_Ventas2 {
     }
 
     public void crear() {
+        
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
 
@@ -258,7 +314,7 @@ public class Controlador_Ventas2 {
         modeloFactura.setFecha(((JTextField) vista.getDtFecha().getDateEditor().getUiComponent()).getText());
         modeloFactura.setTotal(Double.parseDouble(vista.getTblPedido().getValueAt(i, 4).toString()));
         modeloFactura.setIdCliente(Integer.parseInt(vista.getTxtBuscarCliente().getText()));
-        modeloFactura.setIdEmpleado(10);
+        modeloFactura.setIdEmpleado(Integer.parseInt(vista.getLblIdEmpleado().getText()));
 
         if (modeloFactura.crearFactura()) {
             crear();
@@ -271,10 +327,15 @@ public class Controlador_Ventas2 {
     }
 }
     
-    private void cargarDatosUsuario(){
-        ModeloEmpleado modUsuario = new ModeloEmpleado();
-        
-        vista.getLblUsuarioRegistrado().setText(String.valueOf(modUsuario.getId_empleado()));
-        
+    public void CargarDisponibilidad(String busqueda) {//buscarProductos
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablapro().getModel();
+        tblModel.setNumRows(0);//limpiar campos
+        List<ClaseProductos> listapro = modelo.productitos(busqueda);
+        listapro.stream().forEach(lp -> {
+            String[] productos = {lp.getId() + "", lp.getNombre(), lp.getStock()+ ""};
+            tblModel.addRow(productos);
+
+        });
+
     }
 }

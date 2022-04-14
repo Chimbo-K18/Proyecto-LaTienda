@@ -24,7 +24,8 @@ import javax.imageio.stream.ImageInputStream;
  *
  * @author Santiago
  */
-public class ModeloEmpleado extends ClaseEmpleado{
+public class ModeloEmpleado extends ClaseEmpleado {
+
     ConectionBDD cpg = new ConectionBDD();
     PreparedStatement ps;
     ResultSet rs;
@@ -36,14 +37,14 @@ public class ModeloEmpleado extends ClaseEmpleado{
         super(id_empleado, cedula, nombre, apellido, direccion, genero, edad, id_usuario, salario, foto, imagen, largo);
     }
 
-    public List <ClaseEmpleado> listaEmpleados(){
-        List<ClaseEmpleado>lista=new ArrayList<ClaseEmpleado>();
+    public List<ClaseEmpleado> listaEmpleados() {
+        List<ClaseEmpleado> lista = new ArrayList<ClaseEmpleado>();
         try {
-            
-            String sql= "SELECT * from empleados";
-            ResultSet rs= cpg.consulta(sql);
+
+            String sql = "SELECT * from empleados";
+            ResultSet rs = cpg.consulta(sql);
             byte[] bytea;
-            while(rs.next()){
+            while (rs.next()) {
                 ClaseEmpleado empleado = new ClaseEmpleado();
                 empleado.setId_empleado(rs.getInt("id_empleado"));
                 empleado.setCedula(rs.getString("cedula"));
@@ -54,12 +55,12 @@ public class ModeloEmpleado extends ClaseEmpleado{
                 empleado.setEdad(rs.getInt("edad"));
                 empleado.setId_usuario(rs.getInt("id_usuario"));
                 empleado.setSalario(rs.getDouble("salario"));
-               //bytea> Bytes Array
-                bytea=rs.getBytes("foto");
-                if (bytea!=null){
-                //Decodificando del formato de la base.(Base64)
-                
-                 //bytea=Base64.decode(bytea,0,bytea.length);
+                //bytea> Bytes Array
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    //Decodificando del formato de la base.(Base64)
+
+                    //bytea=Base64.decode(bytea,0,bytea.length);
                     try {
                         empleado.setFoto(obtenerImagen(bytea));
                     } catch (IOException ex) {
@@ -70,30 +71,30 @@ public class ModeloEmpleado extends ClaseEmpleado{
             }
             rs.close();
             return lista;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
-    
-    private Image obtenerImagen(byte[] bytes) throws IOException{
-        ByteArrayInputStream bis=new ByteArrayInputStream(bytes);
-        Iterator it= ImageIO.getImageReadersByFormatName("jpeg");
-        ImageReader reader=(ImageReader)it.next();
-        Object source=bis;
-        ImageInputStream iis=ImageIO.createImageInputStream(source);
-        reader.setInput(iis,true);
-        ImageReadParam param= reader.getDefaultReadParam();
+
+    private Image obtenerImagen(byte[] bytes) throws IOException {
+        ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
+        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
+        ImageReader reader = (ImageReader) it.next();
+        Object source = bis;
+        ImageInputStream iis = ImageIO.createImageInputStream(source);
+        reader.setInput(iis, true);
+        ImageReadParam param = reader.getDefaultReadParam();
         param.setSourceSubsampling(1, 1, 0, 0);
-        return reader.read(0,param);
+        return reader.read(0, param);
     }
-    
-    public boolean crearEmpleado(){
+
+    public boolean crearEmpleado() {
         try {
             String sql;
-            sql="INSERT INTO empleados(id_empleado,cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto)";
-            sql+="VALUES(?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO empleados(id_empleado,cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto)";
+            sql += "VALUES(?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
             ps.setInt(1, getId_empleado());
             ps.setString(2, getCedula());
@@ -104,7 +105,7 @@ public class ModeloEmpleado extends ClaseEmpleado{
             ps.setInt(7, getEdad());
             ps.setInt(8, getId_usuario());
             ps.setDouble(9, getSalario());
-            ps.setBinaryStream(10,getImagen(),getLargo() );
+            ps.setBinaryStream(10, getImagen(), getLargo());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -112,78 +113,78 @@ public class ModeloEmpleado extends ClaseEmpleado{
             return false;
         }
     }
-    
-    public boolean editarEmpleado(){
-        
-        String sql="UPDATE empleados SET \n"+
-                "id_empleado='"+getId_empleado()+"',cedula='"+getCedula()+"',nombre='"+getNombre()+"',apellido='"+getApellido()+"',direccion='"+getDireccion()+
-                "',genero='"+getGenero()+"',edad='"+getEdad()+"',id_usuario='"+getId_usuario()+"',salario='"+getSalario()+"'"+
-                "WHERE id_empleado='"+getId_empleado()+"';";
+
+    public boolean editarEmpleado() {
+
+        String sql = "UPDATE empleados SET \n"
+                + "id_empleado='" + getId_empleado() + "',cedula='" + getCedula() + "',nombre='" + getNombre() + "',apellido='" + getApellido() + "',direccion='" + getDireccion()
+                + "',genero='" + getGenero() + "',edad='" + getEdad() + "',id_usuario='" + getId_usuario() + "',salario='" + getSalario() + "'"
+                + "WHERE id_empleado='" + getId_empleado() + "';";
         return cpg.accion(sql);
     }
-    
-    public boolean eliminarEmpleado(String id_empleado){
-        String sql="DELETE FROM empleados where id_empleado='"+id_empleado+"'";
+
+    public boolean eliminarEmpleado(String id_empleado) {
+        String sql = "DELETE FROM empleados where id_empleado='" + id_empleado + "'";
         return cpg.accion(sql);
     }
-    
-     public int existeEmpleado(Integer id_empleado){
+
+    public int existeEmpleado(Integer id_empleado) {
         //PreparedStatement ps = null;
         ResultSet rs = null;
         ConectionBDD cpg = new ConectionBDD();
-        
+
         String sql1 = "SELECT count(id_empleado) FROM empleados WHERE id_empleado=?";
-        
+
         try {
             PreparedStatement ps = cpg.getCon().prepareStatement(sql1);
             ps.setInt(1, id_empleado);
             rs = ps.executeQuery();
-            
-            if(rs.next()){
+
+            if (rs.next()) {
                 return rs.getInt(1);
             }
-            
+
             return 1;
         } catch (SQLException ex) {
             Logger.getLogger(ModeloCliente.class.getName()).log(Level.SEVERE, null, ex);
             return 1;
         }
-        
+
     }
-    
-    public boolean validarCorreo(String correo){
+
+    public boolean validarCorreo(String correo) {
 
         Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
         Matcher mather = pattern.matcher(correo);
-        
+
         return mather.find();
 
     }
-    
-    public boolean ValidarTelefono(String telefono){
-        if(telefono.matches("[0-9]{10}") == true){ 
-            return true; 
-        } else { 
-            return false; 
-        } 
-    }
-    
-    public boolean ValidarSalario(String salario){
-        if(salario.matches("[0-9]{1,5}") == true){ 
-            return true; 
-        } else { 
-            return false; 
-        } 
-    }
-    
-    public boolean validarEdad(String edad){
-        if(Integer.parseInt(edad) >= 18){
+
+    public boolean ValidarTelefono(String telefono) {
+        if (telefono.matches("[0-9]{10}") == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
+
+    public boolean ValidarSalario(String salario) {
+        if (salario.matches("[0-9]{1,5}") == true) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean validarEdad(String edad) {
+        if (Integer.parseInt(edad) >= 18) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean validarDeCedula(String cedula) {
         boolean cedulaCorrecta = false;
 
@@ -228,20 +229,20 @@ public class ModeloEmpleado extends ClaseEmpleado{
         }
         return cedulaCorrecta;
     }
-    
+
     public List<ClaseEmpleado> buscarEmpleado(String aguja) {
 
         try {
             String sql = " select id_empleado,cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto from empleados WHERE";
             sql += " UPPER(nombre) like UPPER('" + aguja + "%') or ";
             sql += " UPPER(cedula) like UPPER('" + aguja + "%') ";
-           // sql += " UPPER(precio) like UPPER('" + aguja + "%')";
+            // sql += " UPPER(precio) like UPPER('" + aguja + "%')";
             ResultSet rs = cpg.consulta(sql);
             List<ClaseEmpleado> lp = new ArrayList<ClaseEmpleado>();
             byte[] bytea;
             while (rs.next()) {
                 ClaseEmpleado emp = new ClaseEmpleado();
-                
+
                 emp.setId_empleado(rs.getInt("id_empleado"));
                 emp.setCedula(rs.getString("cedula"));
                 emp.setNombre(rs.getString("nombre"));
@@ -251,13 +252,13 @@ public class ModeloEmpleado extends ClaseEmpleado{
                 emp.setEdad(rs.getInt("edad"));
                 emp.setId_usuario(rs.getInt("id_usuario"));
                 emp.setSalario(rs.getDouble("salario"));
-                bytea=rs.getBytes("foto");
-                if (bytea!=null){
-                //Decodificando del formato de la base.(Base64)
-                
-                 //bytea=Base64.decode(bytea,0,bytea.length);
+                bytea = rs.getBytes("foto");
+                if (bytea != null) {
+                    //Decodificando del formato de la base.(Base64)
+
+                    //bytea=Base64.decode(bytea,0,bytea.length);
                     try {
-                       emp.setFoto(obtenerImagen(bytea));
+                        emp.setFoto(obtenerImagen(bytea));
                     } catch (IOException ex) {
                         Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -272,12 +273,66 @@ public class ModeloEmpleado extends ClaseEmpleado{
         }
 
     }
-    
-    public boolean validaOtrosCampoc(String campo){
-        if(campo.matches("[a-zA-Z\\s]{1,50}") == true){ 
-            return true; 
-        }else{
+
+    public boolean validaOtrosCampoc(String campo) {
+        if (campo.matches("[a-zA-Z\\s]{1,50}") == true) {
+            return true;
+        } else {
             return false;
         }
     }
+
+    public int codigoEmpleado(String id_empleado) {
+
+        try {
+            String sql;
+            sql = "SELECT id_empleado FROM empleados WHERE id_usuario = ?";
+
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ResultSet rs = null;
+            ps.setString(1, id_empleado);
+
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                return rs.getInt(1);
+            }
+
+            return 1;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Modelo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+            return 1;
+        }
+
+    }
+
+    public int ultimoUsuario() {
+
+        String serie = "";
+
+        try {
+
+            String sql;
+            sql = "SELECT MAX(id_empleado) AS id FROM empleados ";
+
+            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            ResultSet rs = cpg.consulta(sql);
+
+            while (rs.next()) {
+                
+                serie = rs.getString("id")+1;
+
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+        return 0;
+
+    }
+
 }

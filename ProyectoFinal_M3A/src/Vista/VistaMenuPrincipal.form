@@ -11,8 +11,20 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="menuCrearUsuarios">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Crear Usuario"/>
+            <Property name="text" type="java.lang.String" value="Administrador"/>
           </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuRegUsuario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Usuario"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuRegAdministrador">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Administrador"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
         </Menu>
       </SubComponents>
     </Menu>

@@ -2,7 +2,9 @@ package Controlador;
 
 import Clases.ClaseEmpleado;
 import Modelo.ModeloEmpleado;
+import Modelo.Modelo_Usuario;
 import Vista.VistaRegistroEmpleados;
+import Vista.VistaRegistroUsuarios;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -65,6 +67,7 @@ public class Controlador_Empleado {
         vistaE.getBtnActualizar().addActionListener(l->cargarEmpleados());
         vistaE.getBtnExaminar().addActionListener(l->examinaFoto());
         vistaE.getBtnGuardar().addActionListener(l->crearEditarEmpleado());
+        vistaE.getBtnCrearUsuario().addActionListener(l-> crearUsuario());
     }
     
     private void abrirDialogoEmpleados(int ce){
@@ -116,7 +119,8 @@ public class Controlador_Empleado {
                                             String direccion=vistaE.getTxtDireccion().getText();
                                             String genero=vistaE.getCbSexo().getSelectedItem().toString();
                                             String edad = vistaE.getTxtEdad().getText();
-                                            String id_usuario= vistaE.getTxtId_Usuario().getText();
+                                                                                        
+                                            
                                             String salario =vistaE.getTxtSalario().getText();
 
                                             ModeloEmpleado empleado = new ModeloEmpleado();
@@ -127,7 +131,7 @@ public class Controlador_Empleado {
                                             empleado.setDireccion(direccion);
                                             empleado.setGenero(genero);
                                             empleado.setEdad(Integer.parseInt(String.valueOf(edad)));
-                                            empleado.setId_usuario(Integer.parseInt(String.valueOf(id_usuario)));
+                                            empleado.setId_usuario(empleado.ultimoUsuario());
                                             empleado.setSalario(Double.parseDouble(String.valueOf(salario)));
                                             try {
                                                 FileInputStream img = new FileInputStream(jfc.getSelectedFile());
@@ -386,5 +390,14 @@ public class Controlador_Empleado {
         vistaE.getTxtIdEmpleado().setText("");
         vistaE.getTxtId_Usuario().setText("");
         vistaE.getLblFoto().setText("");
+    }
+    
+    public void crearUsuario(){
+        
+        Modelo_Usuario modeloUsu = new Modelo_Usuario();
+        VistaRegistroUsuarios vistaRegistroUsu = new VistaRegistroUsuarios();
+        Controlador_NuevoUsuario controladorRegUsuarios = new Controlador_NuevoUsuario(modeloUsu, vistaRegistroUsu);
+
+        controladorRegUsuarios.iniciaControl();
     }
 }

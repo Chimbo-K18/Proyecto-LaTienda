@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -111,6 +112,22 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         return accessibleContext;
     }
 
+    public JMenuItem getMenuRegAdministrador() {
+        return menuRegAdministrador;
+    }
+
+    public void setMenuRegAdministrador(JMenuItem menuRegAdministrador) {
+        this.menuRegAdministrador = menuRegAdministrador;
+    }
+
+    public JMenuItem getMenuRegUsuario() {
+        return menuRegUsuario;
+    }
+
+    public void setMenuRegUsuario(JMenuItem menuRegUsuario) {
+        this.menuRegUsuario = menuRegUsuario;
+    }
+
     public void setAccessibleContext(AccessibleContext accessibleContext) {
         this.accessibleContext = accessibleContext;
     }
@@ -168,6 +185,8 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jMenuBar = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         menuCrearUsuarios = new javax.swing.JMenu();
+        menuRegUsuario = new javax.swing.JMenuItem();
+        menuRegAdministrador = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -325,7 +344,14 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jMenu1.setText("Productos");
         jMenuBar.add(jMenu1);
 
-        menuCrearUsuarios.setText("Crear Usuario");
+        menuCrearUsuarios.setText("Administrador");
+
+        menuRegUsuario.setText("Registrar Usuario");
+        menuCrearUsuarios.add(menuRegUsuario);
+
+        menuRegAdministrador.setText("Registrar Administrador");
+        menuCrearUsuarios.add(menuRegAdministrador);
+
         jMenuBar.add(menuCrearUsuarios);
 
         setJMenuBar(jMenuBar);
@@ -403,5 +429,7 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTipoUsuario;
     private javax.swing.JMenu menuCrearUsuarios;
+    private javax.swing.JMenuItem menuRegAdministrador;
+    private javax.swing.JMenuItem menuRegUsuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -178,5 +178,8 @@ public class Modelo_Usuario extends ClaseUsuario {
         Matcher mather = patron.matcher(correo);
         return mather.find();
     }
+    
+
+    
 
 }
