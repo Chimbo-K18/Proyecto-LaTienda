@@ -48,6 +48,9 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         setBackground(new java.awt.Color(153, 255, 153));
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         jPanel1.setBackground(new java.awt.Color(230, 245, 254));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

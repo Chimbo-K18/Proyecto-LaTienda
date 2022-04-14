@@ -6,6 +6,7 @@ import Modelo.ModeloEmpleado;
 import Modelo.ModeloProductos;
 import Modelo.Modelo_Pedidos;
 import Modelo.Modelo_Usuario;
+import Vista.VistaLogin;
 import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistroClientes;
 import Vista.VistaRegistroProductos;
@@ -35,6 +36,7 @@ public class Controlador_MenuPrincipal {
         vistaMenu.getBtnAdminProductos().addActionListener(l-> crudProductos());
         vistaMenu.getBtnAdminPersonal().addActionListener(l-> crudEmpleados());
         vistaMenu.getBtnRegistrarClientes().addActionListener(l->crudClientes());
+        vistaMenu.getMnSalir().addActionListener(l->cerrar());
         vistaMenu.getBtnV2().addActionListener(l-> {
             try {
                 abrirVentas2();
@@ -86,6 +88,13 @@ public class Controlador_MenuPrincipal {
         Controlador_Ventas2 controla = new Controlador_Ventas2(vistaVentas, modeloV);
         controla.iniciaControl();
        
+    }
+    public void cerrar(){
+        VistaLogin vl = new VistaLogin();
+        Controlador_Login cl = new Controlador_Login(vl);
+        cl.iniciaControl();
+        vistaMenu.dispose();
+        vl.setVisible(true);
     }
     
 }

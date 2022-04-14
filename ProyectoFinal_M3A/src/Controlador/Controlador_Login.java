@@ -66,7 +66,7 @@ public class Controlador_Login {
 
                 VistaMenuPrincipal vista = new VistaMenuPrincipal();
                 Controlador_MenuPrincipal controla = new Controlador_MenuPrincipal(vista);
-                
+                vistaInicio.dispose();
                 controla.iniciaControl();
                 
                 vista.getLblNombre().setText(modUsuario.getNombre());
