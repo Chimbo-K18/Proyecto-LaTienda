@@ -56,36 +56,51 @@ public class Controlador_Cliente {
         };
         vista.getTxtBuscar().addKeyListener(k1);
         vista.getBtnActualizar().addActionListener(l->cargarClientes());
-        vista.getBtnCrear().addActionListener(l->abrirDialogo(1));
-        vista.getBtnEditar().addActionListener(l->abrirDialogo(2));
+  
         vista.getBtnEliminar().addActionListener(l->eliminarCliente());
         vista.getBtnOk().addActionListener(l->crearEditarClientes());
     }
     
-    private void abrirDialogo(int ce){
-        String title;
-        if(ce==1){
-            title="CREAR CLIENTE";
-            vista.getTxtCedula().setEnabled(true);
-            vista.getDlgClientes().setName("crear");
-            limpiarCampos();
-        }else{
-            title="EDITAR CLIENTE";
-            vista.getTxtCedula().setEnabled(false);
-            vista.getDlgClientes().setName("editar");
-            modificar();
-            //cargarPersonas();
-        }
-        vista.getDlgClientes().setLocationRelativeTo(vista);
-        vista.getDlgClientes().setSize(447,500);
-        vista.getDlgClientes().setTitle(title);
-        vista.getDlgClientes().setVisible(true);
-        vista.getDlgClientes().setLocationRelativeTo(vista);
-    }
+public void EditarCliente(){
+      if(vista.getTxtCedula().getText().equals("")||vista.getTxtNombre().getText().equals("")||
+                    vista.getTxtApellido().getText().equals("")||vista.getTxtDireccion().getText().equals("")||
+                    vista.getTxtTelefono().getText().equals("")||vista.getTxtEmail().getText().equals("")){ 
+                JOptionPane.showMessageDialog(vista, "HAY CAMPOS VACIOS");
+                
+            }else{ 
+                
+                if (modelo.ValidarTelefono(vista.getTxtTelefono().getText())) {
+                    if (modelo.validarCorreo(vista.getTxtEmail().getText())) {
+
+                        ModeloCliente ec = new ModeloCliente();
+
+                        ec.setCedula(vista.getTxtCedula().getText());
+                        ec.setNombre(vista.getTxtNombre().getText());
+                        ec.setApellido(vista.getTxtApellido().getText());
+                        ec.setDireccion(vista.getTxtDireccion().getText());
+                        ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
+                        ec.setEmail(vista.getTxtEmail().getText());
+
+                        if (ec.editarCliente()) {
+                            JOptionPane.showMessageDialog(vista, "Editado exitosamente");
+                            vista.getDlgClientes().setVisible(false);
+                        } else {
+                            JOptionPane.showMessageDialog(vista, "No se edito");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
+                }
+                cargarClientes();
+                    
+           }     
     
+      }
     private void crearEditarClientes(){
         
-        if(vista.getDlgClientes().getName()=="crear"){
+     
             //crear
             if(vista.getTxtCedula().getText().equals("")||vista.getTxtNombre().getText().equals("")||
                     vista.getTxtApellido().getText().equals("")||vista.getTxtDireccion().getText().equals("")||
@@ -142,44 +157,11 @@ public class Controlador_Cliente {
                     
                }else{
                         JOptionPane.showMessageDialog(vista, "La cédula ya esta registrada");
-                    } 
-           }     
-        }else if(vista.getDlgClientes().getName()=="editar"){
-            if(vista.getTxtCedula().getText().equals("")||vista.getTxtNombre().getText().equals("")||
-                    vista.getTxtApellido().getText().equals("")||vista.getTxtDireccion().getText().equals("")||
-                    vista.getTxtTelefono().getText().equals("")||vista.getTxtEmail().getText().equals("")){ 
-                JOptionPane.showMessageDialog(vista, "HAY CAMPOS VACIOS");
-                
-            }else{ 
-                
-                if (modelo.ValidarTelefono(vista.getTxtTelefono().getText())) {
-                    if (modelo.validarCorreo(vista.getTxtEmail().getText())) {
-
-                        ModeloCliente ec = new ModeloCliente();
-
-                        ec.setCedula(vista.getTxtCedula().getText());
-                        ec.setNombre(vista.getTxtNombre().getText());
-                        ec.setApellido(vista.getTxtApellido().getText());
-                        ec.setDireccion(vista.getTxtDireccion().getText());
-                        ec.setTelefono(Integer.parseInt(String.valueOf(vista.getTxtTelefono().getText())));
-                        ec.setEmail(vista.getTxtEmail().getText());
-
-                        if (ec.editarCliente()) {
-                            JOptionPane.showMessageDialog(vista, "Editado exitosamente");
-                            vista.getDlgClientes().setVisible(false);
-                        } else {
-                            JOptionPane.showMessageDialog(vista, "No se edito");
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
-                }
-                cargarClientes();
                     
            }     
         }
+        
+       
         
     }
     

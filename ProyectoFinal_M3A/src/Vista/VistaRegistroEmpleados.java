@@ -23,6 +23,17 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
      */
     public VistaRegistroEmpleados() {
         initComponents();
+        TextPrompt texto = new TextPrompt("Nombre",txtNombre);
+        TextPrompt texto1 = new TextPrompt("Apellido",txtApellido);
+        TextPrompt texto2 = new TextPrompt("Direccion",txtDireccion);
+        TextPrompt texto3 = new TextPrompt("ID Empleado",txtIdEmpleado);
+
+       
+        TextPrompt texto7 = new TextPrompt("Edad",txtEdad);
+        TextPrompt texto8 = new TextPrompt("Salario",txtSalario);
+        TextPrompt texto9 = new TextPrompt("Cédula",txtCedulaEmpleado);
+         TextPrompt texto90= new TextPrompt("Id Usuario",txtId_Usuario);
+        
     }
 
     public JButton getBtnGuardar() {
@@ -50,13 +61,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     }
 
 
-    public JButton getBtnCrear() {
-        return btnCrear;
-    }
-
-    public void setBtnCrear(JButton btnCrear) {
-        this.btnCrear = btnCrear;
-    }
+    
 
     public JButton getBtnEditar() {
         return btnEditar;
@@ -213,37 +218,34 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        txtApellido = new javax.swing.JTextField();
-        txtDireccion = new javax.swing.JTextField();
-        txtEdad = new javax.swing.JTextField();
-        txtId_Usuario = new javax.swing.JTextField();
-        txtSalario = new javax.swing.JTextField();
-        lblFoto = new javax.swing.JLabel();
-        btnExaminar = new javax.swing.JButton();
-        txtIdEmpleado = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        txtCedulaEmpleado = new javax.swing.JTextField();
-        cbSexo = new javax.swing.JComboBox<>();
         jLabel19 = new javax.swing.JLabel();
-        btnGuardar = new javax.swing.JButton();
-        btnCrearUsuario = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txtBuscar = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        btnCrear = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnImprimir = new javax.swing.JButton();
-        jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaEmpleados = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        txtIdEmpleado = new javax.swing.JTextField();
+        txtCedulaEmpleado = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        cbSexo = new javax.swing.JComboBox<>();
+        txtEdad = new javax.swing.JTextField();
+        txtId_Usuario = new javax.swing.JTextField();
+        btnCrearUsuario = new javax.swing.JButton();
+        txtSalario = new javax.swing.JTextField();
+        lblFoto = new javax.swing.JLabel();
+        btnExaminar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -268,36 +270,12 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
         jLabel18.setText("SALARIO:");
         jPanel5.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-        jPanel5.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 140, -1));
-        jPanel5.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 140, -1));
-        jPanel5.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 140, -1));
-        jPanel5.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 140, -1));
-        jPanel5.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 40, -1));
-        jPanel5.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 140, -1));
-
-        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        lblFoto.setOpaque(true);
-        jPanel5.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, 160, 140));
-
-        btnExaminar.setText("Examinar");
-        jPanel5.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, -1, -1));
-        jPanel5.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 50, 140, -1));
 
         jLabel1.setText("CÉDULA:");
         jPanel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
-        jPanel5.add(txtCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 140, -1));
-
-        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
-        jPanel5.add(cbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, 140, -1));
 
         jLabel19.setText("EDAD:");
         jPanel5.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, -1, -1));
-
-        btnGuardar.setText("Guardar");
-        jPanel5.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, -1));
-
-        btnCrearUsuario.setText("Crear Usuario");
-        jPanel5.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 330, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(17, 177, 124));
 
@@ -360,27 +338,23 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         jLabel21.setText("Buscar ID/Nombre");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, 20));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 460, 40));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 880, 40));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnCrear.setText("Crear");
-        jPanel4.add(btnCrear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 120, -1));
+        jLabel2.setFont(new java.awt.Font("Felix Titling", 1, 36)); // NOI18N
+        jLabel2.setText("EMPLEADOS");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
 
         btnActualizar.setText("Actualizar");
-        jPanel4.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 120, -1));
+        jPanel1.add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 350, 120, 30));
 
         btnEditar.setText("Editar");
-        jPanel4.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 120, -1));
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 350, 120, 30));
 
         btnEliminar.setText("Eliminar");
-        jPanel4.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 120, -1));
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 120, 30));
 
         btnImprimir.setText("Imprimir");
-        jPanel4.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 120, -1));
-
-        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 130, 310));
+        jPanel1.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 120, 30));
 
         tablaEmpleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -395,22 +369,31 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 790, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-        );
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 900, 110));
+        jPanel1.add(txtIdEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 140, 40));
+        jPanel1.add(txtCedulaEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 80, 140, 40));
+        jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 140, 40));
+        jPanel1.add(txtApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 140, 40));
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 140, 40));
 
-        jPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 160, 790, 280));
+        cbSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Femenino" }));
+        jPanel1.add(cbSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 232, 140, 40));
+        jPanel1.add(txtEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 140, 40));
+        jPanel1.add(txtId_Usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 40, 30));
 
-        jLabel2.setFont(new java.awt.Font("Felix Titling", 1, 36)); // NOI18N
-        jLabel2.setText("EMPLEADOS");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 20, -1, -1));
+        btnCrearUsuario.setText("Crear Usuario");
+        jPanel1.add(btnCrearUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, -1, -1));
+        jPanel1.add(txtSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 140, 40));
+
+        lblFoto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        lblFoto.setOpaque(true);
+        jPanel1.add(lblFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, 160, 140));
+
+        btnExaminar.setText("Examinar");
+        jPanel1.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, -1, -1));
+
+        btnGuardar.setText("Guardar");
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -421,8 +404,8 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -440,7 +423,6 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
-    private javax.swing.JButton btnCrear;
     private javax.swing.JButton btnCrearUsuario;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
@@ -464,9 +446,7 @@ public class VistaRegistroEmpleados extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFoto;
     private javax.swing.JTable tablaEmpleados;

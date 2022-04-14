@@ -308,31 +308,31 @@ public class ModeloEmpleado extends ClaseEmpleado {
 
     }
 
-    public int ultimoUsuario() {
-
-        String serie = "";
-
-        try {
-
-            String sql;
-            sql = "SELECT MAX(id_empleado) AS id FROM empleados ";
-
-            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ResultSet rs = cpg.consulta(sql);
-
-            while (rs.next()) {
-                
-                serie = rs.getString("id")+1;
-
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, e);
-        }
-
-        return 0;
-
-    }
+//    public int ultimoUsuario() {
+//
+//        String serie = "";
+//
+//        try {
+//
+//            String sql;
+//            sql = "SELECT MAX(id_empleado) AS id FROM empleados ";
+//
+//            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+//            ResultSet rs = cpg.consulta(sql);
+//
+//            while (rs.next()) {
+//                
+//                serie = rs.getString("id")+1;
+//
+//            }
+//            rs.close();
+//
+//        } catch (SQLException e) {
+//            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//
+//        return 0;
+//
+//    }
 
 }

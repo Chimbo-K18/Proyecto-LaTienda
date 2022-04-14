@@ -3,6 +3,7 @@ package Controlador;
 import Clases.ClaseEmpleado;
 import Modelo.ModeloEmpleado;
 import Modelo.Modelo_Usuario;
+import Vista.VistaMenuPrincipal;
 import Vista.VistaRegistroEmpleados;
 import Vista.VistaRegistroUsuarios;
 import java.awt.Image;
@@ -33,6 +34,7 @@ import javax.xml.ws.Holder;
 public class Controlador_Empleado {
     private ModeloEmpleado  modeloE;
     private VistaRegistroEmpleados vistaE;
+    VistaMenuPrincipal vistaMenu;
     private JFileChooser jfc;
 
     public Controlador_Empleado(ModeloEmpleado modeloE, VistaRegistroEmpleados vistaE) {
@@ -61,11 +63,11 @@ public class Controlador_Empleado {
             }
         };
         vistaE.getTxtBuscar().addKeyListener(k1);
-        vistaE.getBtnCrear().addActionListener(l->abrirDialogoEmpleados(1));
-        vistaE.getBtnEditar().addActionListener(l->abrirDialogoEmpleados(2));
+    
         vistaE.getBtnEliminar().addActionListener(l->eliminarEmpleado());
         vistaE.getBtnActualizar().addActionListener(l->cargarEmpleados());
         vistaE.getBtnExaminar().addActionListener(l->examinaFoto());
+        vistaE.getBtnEditar().addActionListener(l->EditarEmpleado());
         vistaE.getBtnGuardar().addActionListener(l->crearEditarEmpleado());
         vistaE.getBtnCrearUsuario().addActionListener(l-> crearUsuario());
     }
@@ -95,82 +97,13 @@ public class Controlador_Empleado {
         //vista.getBtnSalir().addActionListener(l->salir());
     }
     
-    private void crearEditarEmpleado(){
+    public void EditarEmpleado(){
         
-        if(vistaE.getDlgEmpleados().getName()=="crear"){
-            //crear
-            if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
-                    vistaE.getTxtEdad().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
-                JOptionPane.showMessageDialog(vistaE, "HAY CAMPOS VACIOS");
-                
-            }else{
-                if(modeloE.existeEmpleado(Integer.parseInt(vistaE.getTxtIdEmpleado().getText()))==0){
-                    if(modeloE.validarDeCedula(vistaE.getTxtCedulaEmpleado().getText())){
-                        if(modeloE.validarEdad(vistaE.getTxtEdad().getText())){
-                            if(modeloE.ValidarSalario(vistaE.getTxtSalario().getText())){
-                                if(modeloE.validaOtrosCampoc(vistaE.getTxtNombre().getText())){
-                                    if(modeloE.validaOtrosCampoc(vistaE.getTxtApellido().getText())){
-                                        if(modeloE.validaOtrosCampoc(vistaE.getTxtDireccion().getText())){
+      int fila=vistaE.getTablaEmpleados().getSelectedRow();
 
-                                            String id_empleado=vistaE.getTxtIdEmpleado().getText();
-                                            String cedula=vistaE.getTxtCedulaEmpleado().getText();
-                                            String nombre=vistaE.getTxtNombre().getText();
-                                            String apellido=vistaE.getTxtApellido().getText();
-                                            String direccion=vistaE.getTxtDireccion().getText();
-                                            String genero=vistaE.getCbSexo().getSelectedItem().toString();
-                                            String edad = vistaE.getTxtEdad().getText();
-                                                                                        
-                                            
-                                            String salario =vistaE.getTxtSalario().getText();
-
-                                            ModeloEmpleado empleado = new ModeloEmpleado();
-                                            empleado.setId_empleado(Integer.parseInt(String.valueOf(id_empleado)));
-                                            empleado.setCedula(cedula);
-                                            empleado.setNombre(nombre);
-                                            empleado.setApellido(apellido);
-                                            empleado.setDireccion(direccion);
-                                            empleado.setGenero(genero);
-                                            empleado.setEdad(Integer.parseInt(String.valueOf(edad)));
-                                            empleado.setId_usuario(empleado.ultimoUsuario());
-                                            empleado.setSalario(Double.parseDouble(String.valueOf(salario)));
-                                            try {
-                                                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
-                                                int largo=(int)jfc.getSelectedFile().length();
-                                                empleado.setImagen(img);
-                                                empleado.setLargo(largo);
-                                            } catch (FileNotFoundException ex) {
-                                                Logger.getLogger(Controlador_Empleado.class.getName()).log(Level.SEVERE, null, ex);
-                                            }
-                                            if(empleado.crearEmpleado()){
-                                                JOptionPane.showMessageDialog(vistaE, "Creado exitosamente");
-                                                vistaE.getDlgEmpleados().setVisible(false);
-                                            }else{
-                                                JOptionPane.showMessageDialog(vistaE, "No se creo");
-                                            }
-                                        }else{
-                                                JOptionPane.showMessageDialog(vistaE, "El campo de la dirección debe contener solo letras");
-                                            }
-                                    }else{
-                                            JOptionPane.showMessageDialog(vistaE, "El campo del apellido debe contener solo letras");
-                                        }    
-                                }else{
-                                        JOptionPane.showMessageDialog(vistaE, "El campo de nombre debe contener solo letras");
-                                    }
-                            }else{
-                                    JOptionPane.showMessageDialog(vistaE, "El salario debe ser un valor numerico");
-                                }    
-                        }else{
-                                JOptionPane.showMessageDialog(vistaE, "Debe ser mayor de edad");
-                        }    
-                   }else{
-                            JOptionPane.showMessageDialog(vistaE, "Cédula incorrecta");
-                    }
-               }else{
-                    JOptionPane.showMessageDialog(vistaE, "El ID ya existe");
-                }
-           }     
-        }else if(vistaE.getDlgEmpleados().getName()=="editar"){
-           if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
+           if (fila != -1) {
+              modificarEmpleado();
+               if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
                     vistaE.getTxtEdad().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
                 JOptionPane.showMessageDialog(vistaE, "HAY CAMPOS VACIOS");
                 
@@ -224,8 +157,102 @@ public class Controlador_Empleado {
                    
                
             }
-           cargarEmpleados();
+              
+              
+        }else{
+  
+           JOptionPane.showConfirmDialog(vistaE, "Debe elegir una fila ");
+            //cargarPersonas();
+            
+//            if(rsp==0){
+//              
+//           cargarEmpleados();
+//                
+//            }else{
+//               JOptionPane.showConfirmDialog(vistaE, "NO SE ELIMINO"); 
+//            }
         }
+        
+        
+        
+            
+       }
+    private void crearEditarEmpleado(){
+        
+    
+            //crear
+            if(vistaE.getTxtIdEmpleado().getText().equals("")||vistaE.getTxtCedulaEmpleado().getText().equals("")||vistaE.getTxtNombre().getText().equals("")||vistaE.getTxtApellido().getText().equals("")||vistaE.getTxtDireccion().getText().equals("")||
+                    vistaE.getTxtEdad().getText().equals("")||vistaE.getTxtSalario().getText().equals("")){ 
+                JOptionPane.showMessageDialog(vistaE, "HAY CAMPOS VACIOS");
+                
+            }else{
+                if(modeloE.existeEmpleado(Integer.parseInt(vistaE.getTxtIdEmpleado().getText()))==0){
+                    if(modeloE.validarDeCedula(vistaE.getTxtCedulaEmpleado().getText())){
+                        if(modeloE.validarEdad(vistaE.getTxtEdad().getText())){
+                            if(modeloE.ValidarSalario(vistaE.getTxtSalario().getText())){
+                                if(modeloE.validaOtrosCampoc(vistaE.getTxtNombre().getText())){
+                                    if(modeloE.validaOtrosCampoc(vistaE.getTxtApellido().getText())){
+                                        if(modeloE.validaOtrosCampoc(vistaE.getTxtDireccion().getText())){
+
+                                            String id_empleado=vistaE.getTxtIdEmpleado().getText();
+                                            String cedula=vistaE.getTxtCedulaEmpleado().getText();
+                                            String nombre=vistaE.getTxtNombre().getText();
+                                            String apellido=vistaE.getTxtApellido().getText();
+                                            String direccion=vistaE.getTxtDireccion().getText();
+                                            String genero=vistaE.getCbSexo().getSelectedItem().toString();
+                                            String edad = vistaE.getTxtEdad().getText();
+                                            String idusuario=   vistaE.getTxtId_Usuario().getText();                      
+                                            
+                                            String salario =vistaE.getTxtSalario().getText();
+
+                                            ModeloEmpleado empleado = new ModeloEmpleado();
+                                            empleado.setId_empleado(Integer.parseInt(String.valueOf(id_empleado)));
+                                            empleado.setCedula(cedula);
+                                            empleado.setNombre(nombre);
+                                            empleado.setApellido(apellido);
+                                            empleado.setDireccion(direccion);
+                                            empleado.setGenero(genero);
+                                            empleado.setEdad(Integer.parseInt(String.valueOf(edad)));
+                                            empleado.setId_usuario(Integer.parseInt(idusuario));
+                                            empleado.setSalario(Double.parseDouble(String.valueOf(salario)));
+                                            try {
+                                                FileInputStream img = new FileInputStream(jfc.getSelectedFile());
+                                                int largo=(int)jfc.getSelectedFile().length();
+                                                empleado.setImagen(img);
+                                                empleado.setLargo(largo);
+                                            } catch (FileNotFoundException ex) {
+                                                Logger.getLogger(Controlador_Empleado.class.getName()).log(Level.SEVERE, null, ex);
+                                            }
+                                            if(empleado.crearEmpleado()){
+                                                JOptionPane.showMessageDialog(vistaE, "Creado exitosamente");
+                                                vistaE.getDlgEmpleados().setVisible(false);
+                                            }else{
+                                                JOptionPane.showMessageDialog(vistaE, "No se creo");
+                                            }
+                                        }else{
+                                                JOptionPane.showMessageDialog(vistaE, "El campo de la dirección debe contener solo letras");
+                                            }
+                                    }else{
+                                            JOptionPane.showMessageDialog(vistaE, "El campo del apellido debe contener solo letras");
+                                        }    
+                                }else{
+                                        JOptionPane.showMessageDialog(vistaE, "El campo de nombre debe contener solo letras");
+                                    }
+                            }else{
+                                    JOptionPane.showMessageDialog(vistaE, "El salario debe ser un valor numerico");
+                                }    
+                        }else{
+                                JOptionPane.showMessageDialog(vistaE, "Debe ser mayor de edad");
+                        }    
+                   }else{
+                            JOptionPane.showMessageDialog(vistaE, "Cédula incorrecta");
+                    }
+               }else{
+                    JOptionPane.showMessageDialog(vistaE, "El ID ya existe");
+                }
+           }     
+        
+      
         
     }
     

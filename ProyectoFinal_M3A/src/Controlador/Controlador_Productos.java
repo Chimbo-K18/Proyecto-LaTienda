@@ -63,11 +63,11 @@ public class Controlador_Productos {
         vista.getTxtBuscarRp().addKeyListener(kl);//
         //cargarProductos();
 
-        vista.getBtnNuevoRp().addActionListener(l -> abrirDialogo(1));
-        vista.getBtnEditarRp().addActionListener(l -> abrirDialogo(2));
+      //   vista.getBtnNuevoRp().addActionListener(l -> abrirDialogo(1));
+     //    vista.getBtnEditarRp().addActionListener(l -> abrirDialogo(2));
         vista.getBtnGuardarRp().addActionListener(l -> cargarProductos());
-        vista.getBtnAceptar().addActionListener(l -> crearEditarProducto());
-        vista.getBtnCancelar().addActionListener(l -> cancelar());
+        vista.getBtnAceptar().addActionListener(l -> Crear());
+     
         vista.getBtnEliminarRp().addActionListener(l -> eliminar());
         vista.getBtnExaminar().addActionListener(l -> examinaFoto());
         //vista.getBtnImprimir().addActionListener(l->ImprimirListaProductos());
@@ -99,29 +99,18 @@ public class Controlador_Productos {
         if (ce == 1) {
             limpiarCampos();
             title = "Crear nuevo Producto";
-            vista.getDialogoProducto().setName("crear");
+            
 
         } else {
             modificarProducto();
             title = "Editar Producto";
-            vista.getDialogoProducto().setName("editar");
+         
         }
-        vista.getDialogoProducto().setLocationRelativeTo(vista);
-        vista.getDialogoProducto().setSize(549, 399);
-        vista.getDialogoProducto().setTitle(title);
-        vista.getDialogoProducto().setVisible(true);
-        vista.getDialogoProducto().setResizable(false);
+      
+      
     }
 
-    private void crearEditarProducto() {
-        if (vista.getDialogoProducto().getName() == "crear") {
-            Crear();
-
-        }
-        if (vista.getDialogoProducto().getName() == "editar") {
-            Modificar();
-        }
-    }
+ 
 
     public void Crear() {
 
@@ -135,14 +124,14 @@ public class Controlador_Productos {
                     double precio = Double.valueOf(vista.getTxtprecio().getText());
                     int stock = Integer.parseInt(vista.getTxtStock().getText());
                     String descripcion = vista.getAreaDescripcion().getText();
-                    String categoria= vista.getComboCategoria().getSelectedItem().toString();
+                
                     ModeloProductos producto = new ModeloProductos();
                     //producto.setId(id);
                     producto.setId(producto.contar());
                     producto.setNombre(nombre);
                     producto.setPrecio(precio);
                     producto.setStock(stock);
-                    producto.setCategoria(categoria);
+             
                     producto.setDescripcion(descripcion);              
                     producto.setFoto(foto);
 
@@ -164,7 +153,7 @@ public class Controlador_Productos {
                             if (producto.crearProductoByte()) {
                                 //cargarProductos();
                                 limpiarCampos();
-                                vista.getDialogoProducto().setVisible(false);
+                          
                                 JOptionPane.showMessageDialog(vista, "Producto Creado Satisfactoriamente");
                             } else {
                                 JOptionPane.showMessageDialog(vista, "No se pudo crear el producto");
@@ -196,20 +185,20 @@ public class Controlador_Productos {
         double precio = Double.valueOf(vista.getTxtprecio().getText());
         int stock = Integer.parseInt(vista.getTxtStock().getText());
         String descripcion = vista.getAreaDescripcion().getText();
-        String categoria= vista.getComboCategoria().getSelectedItem().toString();
+     
         ModeloProductos producto = new ModeloProductos();
         producto.setId(id);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
         producto.setStock(stock);
-        producto.setCategoria(categoria);
+ 
         producto.setDescripcion(descripcion);
         ImageIcon ic = (ImageIcon) vista.getLblFoto().getIcon();
         producto.setFoto(ic.getImage());
 
         if (producto.modificar(vista.getTxtID().getText())) {
             //cargarProductos();
-            vista.getDialogoProducto().setVisible(false);//cierra el dialogo
+   
             JOptionPane.showMessageDialog(vista, "Producto modificado satisfactoriamente");
         } else {
             JOptionPane.showMessageDialog(vista, "No se pudo modificar el producto");
@@ -324,7 +313,7 @@ public class Controlador_Productos {
             vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
             vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
             vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
-            vista.getComboCategoria().setSelectedItem(tblProductos.getValueAt(fila, 4).toString());
+          
             vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 5).toString());
 
             JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 6);
@@ -381,12 +370,10 @@ public class Controlador_Productos {
         vista.getTxtnombreP().setText(null);
         vista.getTxtprecio().setText(null);
         vista.getTxtStock().setText(null);
-        vista.getComboCategoria().setSelectedIndex(0);
+      
 
     }
 
-    private void cancelar() {
-        vista.getDialogoProducto().setVisible(false);
-    }
+  
 
 }

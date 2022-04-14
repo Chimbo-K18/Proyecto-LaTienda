@@ -29,7 +29,7 @@ public class Controlador_Login {
 
     public void iniciaControl() {
 
-        vistaInicio.getBtnRegistrarse().addActionListener(l -> registrarUsuario());
+     
         vistaInicio.getBtnIniciarSesion().addActionListener(l -> iniciarSistema());
 
     }
