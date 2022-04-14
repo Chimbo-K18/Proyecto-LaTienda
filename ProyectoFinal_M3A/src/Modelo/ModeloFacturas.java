@@ -39,7 +39,7 @@ public class ModeloFacturas extends ClaseFactura{
             while(rs.next()){
                 ClaseFactura fac = new ClaseFactura();
                 fac.setIdFactura(rs.getInt("id_factura"));
-                fac.setIdCliente(rs.getInt("id_cliente"));
+                fac.setIdCliente(rs.getString("id_cliente"));
                 fac.setIdEmpleado(rs.getInt("id_empleado"));
                 fac.setFecha(rs.getString("fecha"));
                 fac.setTotal(rs.getDouble("total"));

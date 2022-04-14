@@ -13,7 +13,7 @@ import java.util.Date;
  */
 public class ClaseFactura {
     private int idFactura;
-    private int idCliente;
+    private String idCliente;
     private int idEmpleado;
     private double total;
     private String fecha;
@@ -21,7 +21,7 @@ public class ClaseFactura {
     public ClaseFactura() {
     }
 
-    public ClaseFactura(int idFactura, int idCliente, int idEmpleado, double total, String fecha) {
+    public ClaseFactura(int idFactura, String idCliente, int idEmpleado, double total, String fecha) {
         this.idFactura = idFactura;
         this.idCliente = idCliente;
         this.idEmpleado = idEmpleado;
@@ -45,13 +45,14 @@ public class ClaseFactura {
         this.idFactura = idFactura;
     }
 
-    public int getIdCliente() {
+    public String getIdCliente() {
         return idCliente;
     }
 
-    public void setIdCliente(int idCliente) {
+    public void setIdCliente(String idCliente) {
         this.idCliente = idCliente;
     }
+
 
     public double getTotal() {
         return total;
@@ -61,7 +62,6 @@ public class ClaseFactura {
         this.total = total;
     }
 
-
     public String getFecha() {
         return fecha;
     }
@@ -69,6 +69,11 @@ public class ClaseFactura {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+
+
+
+
+
     
     
 }

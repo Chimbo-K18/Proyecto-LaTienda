@@ -81,6 +81,8 @@ public class Controlador_MenuPrincipal {
         
         ModeloDetalleFactura modeloV = new ModeloDetalleFactura();
         VistaRegistroVentas vistaVentas = new VistaRegistroVentas();
+        vistaMenu.getjDeskPanel().add(vistaVentas);
+
         Controlador_Ventas2 controla = new Controlador_Ventas2(vistaVentas, modeloV);
         controla.iniciaControl();
        
