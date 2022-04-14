@@ -6,6 +6,8 @@ import Vista.VistaRegistroProductos;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -37,7 +39,7 @@ public class Controlador_Productos {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
-       
+        
     }
 
     public void iniciaControl() {
@@ -60,14 +62,42 @@ public class Controlador_Productos {
 
             }
         };
+        
+        
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                
+                modificarProducto();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+            
+        };
         vista.getTxtBuscarRp().addKeyListener(kl);//
         //cargarProductos();
-
-      //   vista.getBtnNuevoRp().addActionListener(l -> abrirDialogo(1));
-     //    vista.getBtnEditarRp().addActionListener(l -> abrirDialogo(2));
+        
+        //   vista.getBtnNuevoRp().addActionListener(l -> abrirDialogo(1));
+        vista.getBtnEditarRp().addActionListener(l -> Modificar());
         vista.getBtnGuardarRp().addActionListener(l -> cargarProductos());
         vista.getBtnAceptar().addActionListener(l -> Crear());
-     
+
         vista.getBtnEliminarRp().addActionListener(l -> eliminar());
         vista.getBtnExaminar().addActionListener(l -> examinaFoto());
         //vista.getBtnImprimir().addActionListener(l->ImprimirListaProductos());
@@ -94,24 +124,6 @@ public class Controlador_Productos {
         }
     }
 
-    private void abrirDialogo(int ce) {
-        String title;
-        if (ce == 1) {
-            limpiarCampos();
-            title = "Crear nuevo Producto";
-            
-
-        } else {
-            modificarProducto();
-            title = "Editar Producto";
-         
-        }
-      
-      
-    }
-
- 
-
     public void Crear() {
 
         //int id = Integer.parseInt(vista.getTxtID().getText());
@@ -124,15 +136,15 @@ public class Controlador_Productos {
                     double precio = Double.valueOf(vista.getTxtprecio().getText());
                     int stock = Integer.parseInt(vista.getTxtStock().getText());
                     String descripcion = vista.getAreaDescripcion().getText();
-                
+
                     ModeloProductos producto = new ModeloProductos();
                     //producto.setId(id);
                     producto.setId(producto.contar());
                     producto.setNombre(nombre);
                     producto.setPrecio(precio);
                     producto.setStock(stock);
-             
-                    producto.setDescripcion(descripcion);              
+
+                    producto.setDescripcion(descripcion);
                     producto.setFoto(foto);
 
                     if (foto == null) {
@@ -153,7 +165,6 @@ public class Controlador_Productos {
                             if (producto.crearProductoByte()) {
                                 //cargarProductos();
                                 limpiarCampos();
-                          
                                 JOptionPane.showMessageDialog(vista, "Producto Creado Satisfactoriamente");
                             } else {
                                 JOptionPane.showMessageDialog(vista, "No se pudo crear el producto");
@@ -167,11 +178,10 @@ public class Controlador_Productos {
 
                 } else {
 
-                  
                     JOptionPane.showMessageDialog(vista, "En el campo de nombre ingrese solo letras");
                 }
             } else {
-                
+
                 JOptionPane.showMessageDialog(vista, "En el campo de stock ingrese solo numeros");
 
             }
@@ -180,25 +190,26 @@ public class Controlador_Productos {
     }
 
     public void Modificar() {
+        
         int id = Integer.parseInt(vista.getTxtID().getText());
         String nombre = vista.getTxtnombreP().getText();
         double precio = Double.valueOf(vista.getTxtprecio().getText());
         int stock = Integer.parseInt(vista.getTxtStock().getText());
         String descripcion = vista.getAreaDescripcion().getText();
-     
+       
         ModeloProductos producto = new ModeloProductos();
         producto.setId(id);
         producto.setNombre(nombre);
         producto.setPrecio(precio);
         producto.setStock(stock);
- 
+
         producto.setDescripcion(descripcion);
         ImageIcon ic = (ImageIcon) vista.getLblFoto().getIcon();
         producto.setFoto(ic.getImage());
 
         if (producto.modificar(vista.getTxtID().getText())) {
             //cargarProductos();
-   
+            
             JOptionPane.showMessageDialog(vista, "Producto modificado satisfactoriamente");
         } else {
             JOptionPane.showMessageDialog(vista, "No se pudo modificar el producto");
@@ -228,6 +239,7 @@ public class Controlador_Productos {
     }
 
     private void cargarProductos() {
+ 
         vista.getTablaProductos().setDefaultRenderer(Object.class, new ImagenTablaEmpleado());//La manera de renderizar la tabla.
         vista.getTablaProductos().setRowHeight(100);
         //Enlazar el modelo de tabla con mi controlador.
@@ -243,9 +255,7 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
-
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
             Image foto = pe.getFoto();
             if (foto != null) {
 
@@ -253,10 +263,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 6);
+                vista.getTablaProductos().setValueAt(null, i.value, 5);
             }
             i.value++;
 
@@ -280,8 +290,7 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
 
             Image foto = pe.getFoto();
             if (foto != null) {
@@ -290,10 +299,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 6);
+                vista.getTablaProductos().setValueAt(null, i.value, 5);
             }
             i.value++;
 
@@ -304,6 +313,7 @@ public class Controlador_Productos {
     private void modificarProducto() {
 
         vista.getTxtID().setVisible(false);
+               
         ClaseProductos pro = new ClaseProductos();
         DefaultTableModel tblProductos = (DefaultTableModel) vista.getTablaProductos().getModel();
         int fila = vista.getTablaProductos().getSelectedRow();
@@ -313,10 +323,10 @@ public class Controlador_Productos {
             vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
             vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
             vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
-          
-            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 5).toString());
 
-            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 6);
+            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 4).toString());
+
+            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 5);
             vista.getLblFoto().setIcon(lbl.getIcon());
         } else {
             JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN PRODUCTO Y LUEGO EN EDITAR", "AVISO", 2);
@@ -341,8 +351,7 @@ public class Controlador_Productos {
             vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
             vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
             vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getCategoria(), i.value, 4);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 5);
+            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
 
             Image foto = pe.getFoto();
             if (foto != null) {
@@ -351,10 +360,10 @@ public class Controlador_Productos {
                 ImageIcon icono = new ImageIcon(nimg);
                 DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
                 renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 6);
+                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
 
             } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 6);
+                vista.getTablaProductos().setValueAt(null, i.value, 5);
             }
             i.value++;
 
@@ -370,10 +379,7 @@ public class Controlador_Productos {
         vista.getTxtnombreP().setText(null);
         vista.getTxtprecio().setText(null);
         vista.getTxtStock().setText(null);
-      
 
     }
-
-  
 
 }

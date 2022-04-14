@@ -51,6 +51,8 @@ public class Controlador_Ventas2 {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
+         CargarDisponibilidad("");
+         numeroVentas();
     }
     
     
@@ -91,8 +93,8 @@ public class Controlador_Ventas2 {
          
         CargaImagenenes();
         suma();
-        numeroVentas();
-        CargarDisponibilidad("");
+        
+       
         vista.getTxtbuscarPro().addKeyListener(kl);//
         fechaActual();
 
@@ -280,6 +282,7 @@ public class Controlador_Ventas2 {
             int resta = count - cantidad;
             //System.out.println("La cantidad es: "+count+"  La cantidad comprada es: " +cantidad+" y me voy a guardar como: "+resta);
             modelodeta.setCantidad(resta);
+             modelodeta.setIdProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
             if (modelodeta.controlStock()) {
 
                 System.out.println("Conexion Fresh X4");

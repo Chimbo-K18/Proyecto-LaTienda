@@ -28,11 +28,11 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
     }
 
     public JButton getBtnNuevaVenta() {
-        return btnNuevaVenta;
+        return jButton1;
     }
 
     public void setBtnNuevaVenta(JButton btnNuevaVenta) {
-        this.btnNuevaVenta = btnNuevaVenta;
+        this.jButton1 = btnNuevaVenta;
     }
 
     public void setTxtbuscarPro(JTextField txtbuscarPro) {
@@ -338,7 +338,7 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
         jLabel13 = new javax.swing.JLabel();
         btnGenerarVenta = new javax.swing.JButton();
         btnCancelarPed = new javax.swing.JButton();
-        btnNuevaVenta = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -599,7 +599,7 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
 
         btnCancelarPed.setText("Cancelar");
 
-        btnNuevaVenta.setText("Nueva Venta");
+        jButton1.setText("Nueva Venta");
 
         jButton2.setText("jButton2");
 
@@ -620,7 +620,7 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
                             .addComponent(btnCancelarPed, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnNuevaVenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
@@ -660,7 +660,7 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnGenerarVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnNuevaVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnCancelarPed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -679,7 +679,6 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelarPed;
     private javax.swing.JButton btnCrearCliente;
     private javax.swing.JButton btnGenerarVenta;
-    private javax.swing.JButton btnNuevaVenta;
     private javax.swing.JButton btnProducto01;
     private javax.swing.JButton btnProducto02;
     private javax.swing.JButton btnProducto03;
@@ -692,6 +691,7 @@ public class VistaRegistroVentas extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnProducto10;
     private javax.swing.JButton btnProducto11;
     private javax.swing.JButton btnProducto12;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
