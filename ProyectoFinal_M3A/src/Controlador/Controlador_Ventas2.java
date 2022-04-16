@@ -52,7 +52,7 @@ public class Controlador_Ventas2 {
         this.modelo = modelo;
         vista.setVisible(true);
         CargarDisponibilidad("");
-         numeroVentas();
+        numeroVentas();
     }
     
     
@@ -226,12 +226,11 @@ public class Controlador_Ventas2 {
     }
     
     public void suma() {
+        
         int contar = vista.getTblPedido().getRowCount();
         double suma = 0;
         for (int i = 0; i < contar; i++) {
             suma = suma + Double.parseDouble(vista.getTblPedido().getValueAt(i, 4).toString());
-
-
         }
         vista.getTxtSubTotal().setText(Double.toString(suma));
 
@@ -273,7 +272,7 @@ public class Controlador_Ventas2 {
     }
     private void stock() {
 
-        DefaultTableModel tblModel = (DefaultTableModel) vista.getTablapro().getModel();
+        DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
 
         for (int i = 0; i < tblModel.getRowCount(); i++) {
@@ -300,6 +299,7 @@ public class Controlador_Ventas2 {
         crearPedidos();
         crearFactura();
         stock();
+        CargarDisponibilidad("");
         JOptionPane.showMessageDialog(vista, "Factura Creada con Exito");
 
     }
@@ -420,6 +420,7 @@ public class Controlador_Ventas2 {
         vista.getTxtSubTotal().setText(null);
         vista.getTxtTotalPagar().setText(null);
         vista.getTxtbuscarPro().setText(null);
+        vista.getTxtBuscarEmpleado().setText(null);
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
         tblModel.setNumRows(0);// campos
     }
