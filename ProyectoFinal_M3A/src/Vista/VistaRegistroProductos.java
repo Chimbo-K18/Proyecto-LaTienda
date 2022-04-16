@@ -73,7 +73,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
 
             },
             new String [] {
-                "ID Producto", "Nombre", "Precio", "Stock", "Categoria", "Descripcion", "Foto"
+                "ID Producto", "Nombre", "Precio", "Stock", "Descripcion", "Foto"
             }
         ));
         jScrollPane1.setViewportView(tablaProductos);
@@ -100,7 +100,7 @@ public class VistaRegistroProductos extends javax.swing.JInternalFrame  {
         areaDescripcion.setRows(5);
         jScrollPane2.setViewportView(areaDescripcion);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 160, 60));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 400, 60));
 
         btnExaminar.setText("Examinar");
         jPanel1.add(btnExaminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 160, -1, 30));

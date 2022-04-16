@@ -80,7 +80,7 @@ public class ModeloEmpleado extends ClaseEmpleado {
 
     private Image obtenerImagen(byte[] bytes) throws IOException {
         ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
-        Iterator it = ImageIO.getImageReadersByFormatName("jpeg");
+        Iterator it = ImageIO.getImageReadersByFormatName("png");
         ImageReader reader = (ImageReader) it.next();
         Object source = bis;
         ImageInputStream iis = ImageIO.createImageInputStream(source);
@@ -93,19 +93,19 @@ public class ModeloEmpleado extends ClaseEmpleado {
     public boolean crearEmpleado() {
         try {
             String sql;
-            sql = "INSERT INTO empleados(id_empleado,cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto)";
-            sql += "VALUES(?,?,?,?,?,?,?,?,?,?)";
+            sql = "INSERT INTO empleados(cedula,nombre,apellido,direccion,genero,edad,id_usuario,salario,foto)";
+            sql += "VALUES(?,?,?,?,?,?,?,?,?)";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ps.setInt(1, getId_empleado());
-            ps.setString(2, getCedula());
-            ps.setString(3, getNombre());
-            ps.setString(4, getApellido());
-            ps.setString(5, getDireccion());
-            ps.setString(6, getGenero());
-            ps.setInt(7, getEdad());
-            ps.setInt(8, getId_usuario());
-            ps.setDouble(9, getSalario());
-            ps.setBinaryStream(10, getImagen(), getLargo());
+
+            ps.setString(1, getCedula());
+            ps.setString(2, getNombre());
+            ps.setString(3, getApellido());
+            ps.setString(4, getDireccion());
+            ps.setString(5, getGenero());
+            ps.setInt(6, getEdad());
+            ps.setInt(7, getId_usuario());
+            ps.setDouble(8, getSalario());
+            ps.setBinaryStream(9, getImagen(), getLargo());
             ps.executeUpdate();
             return true;
         } catch (SQLException ex) {
@@ -282,57 +282,46 @@ public class ModeloEmpleado extends ClaseEmpleado {
         }
     }
 
-    public int codigoEmpleado(String id_empleado) {
+    public int codigoEmpleado() {
 
         try {
-            String sql;
-            sql = "SELECT id_empleado FROM empleados WHERE id_usuario = ?";
+            
+            String sql = "SELECT MAX(id_usuario) AS numero "
+                    + "FROM usuarios;";
 
-            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-            ResultSet rs = null;
-            ps.setString(1, id_empleado);
-
-            rs = ps.executeQuery();
-
-            if (rs.next()) {
-
-                return rs.getInt(1);
+            ResultSet rs = cpg.consulta(sql);
+            
+            while (rs.next()){
+                
+                return rs.getInt("numero") ;
+                       
             }
 
-            return 1;
+            return 0;
 
         } catch (SQLException ex) {
             Logger.getLogger(Modelo_Usuario.class.getName()).log(Level.SEVERE, null, ex);
-            return 1;
         }
+
+     return 0;
 
     }
 
-//    public int ultimoUsuario() {
-//
-//        String serie = "";
-//
-//        try {
-//
-//            String sql;
-//            sql = "SELECT MAX(id_empleado) AS id FROM empleados ";
-//
-//            PreparedStatement ps = cpg.getCon().prepareStatement(sql);
-//            ResultSet rs = cpg.consulta(sql);
-//
-//            while (rs.next()) {
-//                
-//                serie = rs.getString("id")+1;
-//
-//            }
-//            rs.close();
-//
-//        } catch (SQLException e) {
-//            Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, e);
-//        }
-//
-//        return 0;
-//
-//    }
+    
+        public int contar(){
+         try {
+             String sql = "select count(id_empleado) as numero from empleados;";
+             ResultSet rs=cpg.consulta(sql);
+             while(rs.next()){
+                 return rs.getInt("numero")+1;
+                 
+             }
+             return 0;
+         } catch (SQLException ex) {
+             Logger.getLogger(ModeloEmpleado.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         return 0; 
+     }
+
 
 }

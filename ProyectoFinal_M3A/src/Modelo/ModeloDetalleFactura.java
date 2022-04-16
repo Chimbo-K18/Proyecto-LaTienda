@@ -207,6 +207,7 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         try {
             String sql = "SELECT count(id_factura) AS numero "
                     + "FROM facturas;";
+            
             ResultSet rs = cpg.consulta(sql);
             while (rs.next()) {
                 return rs.getInt("numero") + 1;
@@ -225,6 +226,7 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
                     + "SET stock= ? "
                     + "WHERE id_producto=? ;";
             PreparedStatement ps = cpg.getCon().prepareStatement(sql);
+            
             ps.setInt(1, getCantidad());
             ps.setInt(2, getIdProducto());
             ps.executeUpdate();
@@ -235,11 +237,10 @@ public class ModeloDetalleFactura extends ClaseDetalleFactura {
         return false;
     }
 
-    public int numeroStock(int numero) {
+         public int buscameid(int numero) {
         try {
-            String sql = "SELECT stock FROM productos WHERE id_producto ='" + numero + "';";
+            String sql = "select stock from productos where id_producto='"+numero+"';";
             ResultSet rs = cpg.consulta(sql);
-            
             while (rs.next()) {
                 return rs.getInt("stock");
 

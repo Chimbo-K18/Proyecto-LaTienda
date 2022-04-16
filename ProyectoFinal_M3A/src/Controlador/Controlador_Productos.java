@@ -66,9 +66,9 @@ public class Controlador_Productos {
         
         MouseListener ml = new MouseListener() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                
-                modificarProducto();
+            public void mouseClicked(MouseEvent e) {        
+            modificarProducto(e);
+   
             }
 
             @Override
@@ -81,16 +81,15 @@ public class Controlador_Productos {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
             
         };
         vista.getTxtBuscarRp().addKeyListener(kl);//
+        vista.getTablaProductos().addMouseListener(ml);
         //cargarProductos();
         
         //   vista.getBtnNuevoRp().addActionListener(l -> abrirDialogo(1));
@@ -102,6 +101,7 @@ public class Controlador_Productos {
         vista.getBtnExaminar().addActionListener(l -> examinaFoto());
         //vista.getBtnImprimir().addActionListener(l->ImprimirListaProductos());
 
+        
     }
 
     private void examinaFoto() {
@@ -274,64 +274,20 @@ public class Controlador_Productos {
 
     }
 
-    private void cargarProductitos(String buscar) {
-        vista.getTablaProductos().setDefaultRenderer(Object.class, new ImagenTablaEmpleado());//La manera de renderizar la tabla.
-        vista.getTablaProductos().setRowHeight(100);
-        //Enlazar el modelo de tabla con mi controlador.
-        DefaultTableModel tblModel;
-        tblModel = (DefaultTableModel) vista.getTablaProductos().getModel();
-        tblModel.setNumRows(0);//limpio filas de la tabla.
-        List<ClaseProductos> listap = modelo.listarProductos();//Enlazo al Modelo y obtengo los datos
-        Holder<Integer> i = new Holder<>(0);//contador para el no. fila
-        listap.stream().forEach(pe -> {
 
-            tblModel.addRow(new Object[11]);//Creo una fila vacia/
-            vista.getTablaProductos().setValueAt(pe.getId(), i.value, 0);
-            vista.getTablaProductos().setValueAt(pe.getNombre(), i.value, 1);
-            vista.getTablaProductos().setValueAt(pe.getPrecio(), i.value, 2);
-            vista.getTablaProductos().setValueAt(pe.getStock(), i.value, 3);
-            vista.getTablaProductos().setValueAt(pe.getDescripcion(), i.value, 4);
+    private void modificarProducto(MouseEvent evento) {
 
-            Image foto = pe.getFoto();
-            if (foto != null) {
+        int seleccionar = vista.getTablaProductos().rowAtPoint(evento.getPoint());
 
-                Image nimg = foto.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-                ImageIcon icono = new ImageIcon(nimg);
-                DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-                renderer.setIcon(icono);
-                vista.getTablaProductos().setValueAt(new JLabel(icono), i.value, 5);
+            vista.getTxtID().setText(String.valueOf(vista.getTablaProductos().getValueAt(seleccionar, 0)));
+            vista.getTxtnombreP().setText(String.valueOf(vista.getTablaProductos().getValueAt(seleccionar, 1)));
+            vista.getTxtprecio().setText(String.valueOf(vista.getTablaProductos().getValueAt(seleccionar, 2)));
+            vista.getTxtStock().setText(String.valueOf(vista.getTablaProductos().getValueAt(seleccionar, 3)));
+            vista.getAreaDescripcion().setText(String.valueOf(vista.getTablaProductos().getValueAt(seleccionar, 4)));
 
-            } else {
-                vista.getTablaProductos().setValueAt(null, i.value, 5);
-            }
-            i.value++;
-
-        });
-
-    }
-
-    private void modificarProducto() {
-
-        vista.getTxtID().setVisible(false);
-               
-        ClaseProductos pro = new ClaseProductos();
-        DefaultTableModel tblProductos = (DefaultTableModel) vista.getTablaProductos().getModel();
-        int fila = vista.getTablaProductos().getSelectedRow();
-        if (fila != -1) {
-
-            vista.getTxtID().setText(tblProductos.getValueAt(fila, 0).toString());
-            vista.getTxtnombreP().setText(tblProductos.getValueAt(fila, 1).toString());
-            vista.getTxtprecio().setText(tblProductos.getValueAt(fila, 2).toString());
-            vista.getTxtStock().setText(tblProductos.getValueAt(fila, 3).toString());
-
-            vista.getAreaDescripcion().setText(tblProductos.getValueAt(fila, 4).toString());
-
-            JLabel lbl = (JLabel) tblProductos.getValueAt(fila, 5);
+            JLabel lbl = (JLabel) vista.getTablaProductos().getValueAt(seleccionar, 5);
             vista.getLblFoto().setIcon(lbl.getIcon());
-        } else {
-            JOptionPane.showMessageDialog(vista, "DE PRIMERO CLICK ENCIMA EN ALGUN PRODUCTO Y LUEGO EN EDITAR", "AVISO", 2);
 
-        }
 
     }
 
@@ -366,7 +322,6 @@ public class Controlador_Productos {
                 vista.getTablaProductos().setValueAt(null, i.value, 5);
             }
             i.value++;
-
         });
 
     }

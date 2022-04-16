@@ -9,6 +9,8 @@ import Vista.VistaRegistroClientes;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.sql.Date;
@@ -54,9 +56,37 @@ public class Controlador_Cliente {
                 buscarCliente(vista.getTxtBuscar().getText());
             }
         };
+        
+        
+        MouseListener ml = new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                modificarProducto(e);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+            
+        };
+
         vista.getTxtBuscar().addKeyListener(k1);
+        vista.getTblClientes().addMouseListener(ml);
+
         vista.getBtnActualizar().addActionListener(l->cargarClientes());
-  
+        vista.getBtnEditar().addActionListener(l-> EditarCliente());
         vista.getBtnEliminar().addActionListener(l->eliminarCliente());
         vista.getBtnOk().addActionListener(l->crearEditarClientes());
     }
@@ -69,7 +99,7 @@ public void EditarCliente(){
                 
             }else{ 
                 
-                if (modelo.ValidarTelefono(vista.getTxtTelefono().getText())) {
+//                if (modelo.ValidarTelefono(vista.getTxtTelefono().getText())) {
                     if (modelo.validarCorreo(vista.getTxtEmail().getText())) {
 
                         ModeloCliente ec = new ModeloCliente();
@@ -90,9 +120,9 @@ public void EditarCliente(){
                     } else {
                         JOptionPane.showMessageDialog(vista, "El correo no cumple con los parametros");
                     }
-                } else {
-                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
-                }
+//                } else {
+//                    JOptionPane.showMessageDialog(vista, "El número de télefono debe contener unicamente valores numericos");
+//                }
                 cargarClientes();
                     
            }     
@@ -134,7 +164,7 @@ public void EditarCliente(){
 
                                         if (cliente.crearCliente()) {
                                             JOptionPane.showMessageDialog(vista, "Creado exitosamente");
-                                            vista.getDlgClientes().setVisible(false);
+                                            limpiarCampos();
                                         } else {
                                             JOptionPane.showMessageDialog(vista, "No se creo");
                                         }
@@ -181,28 +211,19 @@ public void EditarCliente(){
         });
     }
     
-    public void modificar(){
-        int select = vista.getTblClientes().getSelectedRow();
-        
-        if(select!=-1){
-            String rsp = vista.getTblClientes().getValueAt(select, 0).toString();
-            List<ClaseCliente> tabla = modelo.listarClientes();
-            
-            for(int j= 0; j<tabla.size(); j++){
-                if(tabla.get(j).getCedula().equals(rsp)){
-                    vista.getTxtCedula().setText(tabla.get(j).getCedula());
-                    vista.getTxtNombre().setText(tabla.get(j).getNombre());
-                    vista.getTxtApellido().setText(tabla.get(j).getApellido());
-                    vista.getTxtDireccion().setText(tabla.get(j).getDireccion());
-                    vista.getTxtTelefono().setText(String.valueOf(tabla.get(j).getTelefono()));
-                    vista.getTxtEmail().setText(tabla.get(j).getEmail());
-                }
-            }
-        }
-        else{
-            JOptionPane.showMessageDialog(vista, "NO SE SELECCIONO NINGUNA FILA");
-        }
+    private void modificarProducto(MouseEvent evento) {
+
+        int seleccionar = vista.getTblClientes().rowAtPoint(evento.getPoint());
+
+            vista.getTxtCedula().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 0)));
+            vista.getTxtNombre().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 1)));
+            vista.getTxtApellido().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 2)));
+            vista.getTxtDireccion().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 3)));
+            vista.getTxtTelefono().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 4)));
+            vista.getTxtEmail().setText(String.valueOf(vista.getTblClientes().getValueAt(seleccionar, 5)));
+
     }
+
     
     public void eliminarCliente(){
         ModeloCliente cl = new ModeloCliente();

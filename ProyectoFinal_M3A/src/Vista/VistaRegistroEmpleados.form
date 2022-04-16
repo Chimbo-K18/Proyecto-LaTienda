@@ -203,7 +203,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="4" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -223,60 +223,70 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="400" pref="400" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtIdEmpleado" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtNombre" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtDireccion" min="-2" pref="140" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="txtCedulaEmpleado" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtApellido" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Component id="txtEdad" min="-2" pref="140" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
-                  <Component id="lblFoto" min="-2" pref="160" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
                   <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
                   <Component id="txtSalario" min="-2" pref="140" max="-2" attributes="0"/>
                   <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cbSexo" min="-2" pref="140" max="-2" attributes="0"/>
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="cbSexo" min="-2" pref="140" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+                          <Component id="btnExaminar" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Component id="txtId_Usuario" min="-2" pref="40" max="-2" attributes="0"/>
-                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnCrearUsuario" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnAsignarUsuario" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="179" pref="179" max="-2" attributes="0"/>
-                  <Component id="btnExaminar" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
               <Group type="102" attributes="0">
-                  <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
-                  <Component id="btnGuardar" min="-2" pref="80" max="-2" attributes="0"/>
-                  <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
-                  <Component id="btnActualizar" min="-2" pref="120" max="-2" attributes="0"/>
-                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                  <Component id="btnEditar" min="-2" pref="120" max="-2" attributes="0"/>
-                  <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
-                  <Component id="btnEliminar" min="-2" pref="120" max="-2" attributes="0"/>
-                  <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                  <Component id="btnImprimir" min="-2" pref="120" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" pref="880" max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
-                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="900" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="400" pref="400" max="-2" attributes="0"/>
+                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtIdEmpleado" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtNombre" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtDireccion" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtCedulaEmpleado" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtApellido" min="-2" pref="140" max="-2" attributes="0"/>
+                              <Component id="txtEdad" min="-2" pref="140" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="160" pref="160" max="-2" attributes="0"/>
+                          <Component id="lblFoto" min="-2" pref="160" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="90" pref="90" max="-2" attributes="0"/>
+                          <Component id="btnGuardar" min="-2" pref="80" max="-2" attributes="0"/>
+                          <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
+                          <Component id="btnActualizar" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnEditar" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
+                          <Component id="btnEliminar" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
+                          <Component id="btnImprimir" min="-2" pref="120" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                          <Component id="jPanel2" min="-2" pref="880" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" pref="900" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -315,9 +325,10 @@
                       <Group type="102" attributes="0">
                           <Component id="cbSexo" min="-2" pref="40" max="-2" attributes="0"/>
                           <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtId_Usuario" min="-2" pref="30" max="-2" attributes="0"/>
-                              <Component id="btnCrearUsuario" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txtId_Usuario" alignment="0" min="-2" pref="30" max="-2" attributes="0"/>
+                              <Component id="btnAsignarUsuario" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnCrearUsuario" alignment="1" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" attributes="0">
@@ -354,9 +365,6 @@
           </Layout>
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtBuscar">
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtBuscarActionPerformed"/>
-              </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                   <AbsoluteConstraints x="170" y="10" width="300" height="-1"/>
@@ -503,9 +511,10 @@
         <Component class="javax.swing.JComboBox" name="cbSexo">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="Masculino"/>
-                <StringItem index="1" value="Femenino"/>
+              <StringArray count="3">
+                <StringItem index="0" value="Seleccione..."/>
+                <StringItem index="1" value="Masculino"/>
+                <StringItem index="2" value="Femenino"/>
               </StringArray>
             </Property>
           </Properties>
@@ -542,6 +551,11 @@
         <Component class="javax.swing.JButton" name="btnGuardar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Guardar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnAsignarUsuario">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Asignar Usuario"/>
           </Properties>
         </Component>
       </SubComponents>

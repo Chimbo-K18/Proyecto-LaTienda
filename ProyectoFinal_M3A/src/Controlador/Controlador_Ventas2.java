@@ -51,7 +51,7 @@ public class Controlador_Ventas2 {
         this.vista = vista;
         this.modelo = modelo;
         vista.setVisible(true);
-         CargarDisponibilidad("");
+        CargarDisponibilidad("");
          numeroVentas();
     }
     
@@ -277,13 +277,14 @@ public class Controlador_Ventas2 {
         ModeloDetalleFactura modelodeta = new ModeloDetalleFactura();
 
         for (int i = 0; i < tblModel.getRowCount(); i++) {
-            int count = modelodeta.numeroStock(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            int count = modelodeta.buscameid(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
             int cantidad = Integer.parseInt(tblModel.getValueAt(i, 2).toString());
             int resta = count - cantidad;
             //System.out.println("La cantidad es: "+count+"  La cantidad comprada es: " +cantidad+" y me voy a guardar como: "+resta);
             modelodeta.setCantidad(resta);
-             modelodeta.setIdProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
-            if (modelodeta.controlStock()) {
+            modelodeta.setIdProducto(Integer.parseInt(tblModel.getValueAt(i, 0).toString()));
+            
+             if (modelodeta.controlStock()) {
 
                 System.out.println("Conexion Fresh X4");
             } else {
@@ -420,9 +421,10 @@ public class Controlador_Ventas2 {
         vista.getTxtTotalPagar().setText(null);
         vista.getTxtbuscarPro().setText(null);
         DefaultTableModel tblModel = (DefaultTableModel) vista.getTblPedido().getModel();
-        tblModel.setNumRows(0);//limpiar campos
+        tblModel.setNumRows(0);// campos
     }
     
 
 
 }
+

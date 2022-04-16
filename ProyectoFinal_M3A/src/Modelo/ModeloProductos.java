@@ -88,13 +88,7 @@ public class ModeloProductos extends ClaseProductos {
 
     }
 
-    public boolean crearProducto() {
-        String sql;
-        sql = "INSERT INTO productos (id_producto,nombre,precio,stock,descripcion)";
-        sql += "VALUES('" + getId() + "',' " + getNombre() + "','" + getPrecio() + "','" + getStock() +  "',' " + getDescripcion() + "');";
 
-        return cpg.accion(sql);
-    }
 
     public boolean crearProductoByte() {
         try {

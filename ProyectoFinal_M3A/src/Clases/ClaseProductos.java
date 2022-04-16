@@ -17,7 +17,6 @@ public class ClaseProductos {
     private String nombre;
     private Double precio;
     private int stock;
-    private String categoria;
     private String descripcion;
     //Foto
     private Image foto;
@@ -35,13 +34,7 @@ public class ClaseProductos {
         return imagen;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
 
     public void setImagen(FileInputStream imagen) {
         this.imagen = imagen;
